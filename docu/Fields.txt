@@ -1,0 +1,54 @@
+Bosonen (Naturkräfte)
+=====================
+ Gravitation, Elektromagnetismus, schwache Wechselwirkung und starke Wechselwirkung
+ https://de.wikipedia.org/wiki/Fundamentale_Wechselwirkung
+ 
+=>	Gravitations-Kraft
+=>	Elektromagnetische-Kraft
+=>	Starke-Kern-Kraft
+=>	Schwache-Kern-Kraft
+
+=>	Higgs-Boson ?
+
+Zwei der vier Wechselwirkungen (die elektromagnetische und die schwache Wechselwirkung) 
+werden im heutigen Standardmodell der Elementarteilchenphysik aus einer gemeinsamen Grundlage hergeleitet, 
+die den Namen elektroschwache Wechselwirkung trägt. 
+Daher wird zuweilen von insgesamt nur drei fundamentalen Wechselwirkungen gesprochen. 
+Andererseits enthält das Standardmodell das neuartige Higgs-Feld, 
+das durch eine besondere Art der Wechselwirkung den zunächst als masselos angesetzten Fermionen, 
+z. B. den Elektronen, ihre Masse verleiht. 
+Diese Wechselwirkung wird jedoch gewöhnlich nicht als fünfte fundamentale Wechselwirkung bezeichnet.
+
+Wie die Gravitation hat die elektromagnetische Wechselwirkung eine unendliche Reichweite. 
+Sie wirkt aber je nach Vorzeichen der elektrischen Ladung anziehend oder abstoßend und 
+lässt sich deshalb im Gegensatz zur Gravitation abschirmen oder gar eliminieren 
+(positive und negative Ladungen kompensieren sich üblicherweise fast exakt). 
+
+Fermionen (Materie-Teilchen, Partikel)
+======================================
+=>	Quarks (Farbwechsel)
+	> 	up,   charm,   top
+	> 	down, strange, bottom 
+=>	Leptonen (leichte Teilchen)
+	>	Neutrino:	-Elektron,	-Myon,	-Tau
+	>				Elektron,	Myon,	Tau
+=>	Eichbosonen
+	>	Photon,	Gluon,	Z-Boson,	W-Boson
+
+Hadronen
+--------
+Als Hadronen (von altgriechisch ἁδρός hadrós ‚dick‘, ‚stark‘)[1] bezeichnet man Teilchen, 
+die von der starken Wechselwirkung zusammengehalten werden. 
+Die bekanntesten Hadronen sind die Nukleonen (Neutronen und Protonen), die Bestandteil der Atomkerne sind.
+
+=>	Neutron
+=>	Proton
+
+Mesonen, sie haben ganzzahligen Spin und sind damit Bosonen. 
+Sie bestehen aus einem Quark und einem Antiquark, dem Antiteilchen eines Quarks. 
+Beispiele für Mesonen sind Pi-Meson und K-Meson.
+
+Baryonen, sie haben halbzahligen Spin und sind damit Fermionen. 
+Sie bestehen aus drei Quarks (Antibaryonen aus drei Antiquarks). 
+Beispiele für Baryonen sind Proton und Neutron.
+

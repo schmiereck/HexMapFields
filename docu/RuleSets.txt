@@ -1,0 +1,47 @@
+
+Empty
+	Leerer Raum, alles auf inaktive.
+	In der Mitte ein MapField mit alles auf aktive.
+	Regeln für alles Inputs inaktive, dann Ergbnis alles auf inaktive.
+	
+Die aktiven Inputs führen zur NoRuleFoundException.
+=>	Anlegen eines neuen RuleSets für diesen Input.
+
+Bewertung RuleSet:
+=>	Es gibt viele States von ihm in der Map.
+=>	
+
+Wie verhindern, das es nur noch NextStateNodes gibt, die EmptyNodes produzieren?
+Verbieten kann man es ja nicht...
+
+Vielleicht doch nur StateNodes bewerten?
+
+Gut:
+	Sie werden oft angewendet.
+	SIe verwenden viele verschiedene States.
+	
+Tot:
+	Sie werden nie angewendet.
+	Sie verwenden States die es in der Map nicht gibt.
+
+Konkurenz erzeugen:
+	Es müsste für gleiche Inputs verschiedene NextStateNodes geben die konkurieren können.
+	Sie kommen alle zur Anwendung und ihre Ergebnisse überlagern sich.
+	Sie kommen mit einer gewissen Wahrscheinlichkeit alternierend zur Anwendung.
+	Kombination aus beidem, dann müssten auch die Ergebnisse nach ihrer Wahrscheinlichkeit abgelegt werden.
+
+Massiver Ansatz:
+	Es werden für alle Felder alle möglichen Kombinationen von NextStateNodes angelegt.
+	Alle haben die gleiche Wahrscheinlichkeit angewendet zu werden.
+	Im weiterem Verlauf werden die NextStateNodes mit einer höheren Wahrscheinlichkeit 
+	ausgestatet, die
+		=> überhaupt einmal angewendet werden.
+		=> jeweils ein neues Feld erzeugen/ vernichten???
+		=> "interessant" sind???
+		=> Den Energieerhaltungssatz einhalten?
+			> Wenn das Ergebnis eine Masse/ Energie erzeugt, muss der Input die gleiche vernichten.
+		=> Einen Zyklus bilden (mindestens erzeugen und vernichten).
+			> Quantenschaum im leeren Raum mit geringer Warsch. ja, aber nur der erzeugen und gleich wieder vernichten Fall.
+		=> ???
+		
+		

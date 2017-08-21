@@ -1,0 +1,438 @@
+see also "FlatFields" Project
+--------------------------------------------------------------------------------
+http://www.kernfragen.de/der-atomkern
+Vergleicht man nun die „Stärke” der vier Kräfte 
+Gravitation, elektromagnetische, schwache sowie starke Kraft und 
+setzt die der Gravitation mit 1 an, so ergibt sich:
+1 : Gravitation
+10^2 : elektromagnetische
+10^13 : schwache Kraft
+10^38 : starke Kraft
+
+Während bei der elektromagnetischen Kraft Fel die Wirkung 
+entsprechend der 2. Potenz des Abstands r - also entsprechend 1/r2 - abnimmt, 
+nimmt die Kernkraft mit der 7. Potenz des Abstands ab - also entsprechend 1/r7 (Abb. 1). 
+
+Die Masse des ruhenden Elektrons beträgt 
+m = 9,109 381 88 · 10–31 kg; 
+es ist rund 1836-mal leichter als das Proton.
+
+https://de.wikipedia.org/wiki/Atomkern
+
+Hadron
+- Proton	https://de.wikipedia.org/wiki/Proton
+	Ladung 1 e (+1,602 · 10−19 C)
+	Masse 1,007 276 466 879(91)[1] u
+	      1,672 621 898(21) · 10−27[2] kg
+???
+- Elektron	https://de.wikipedia.org/wiki/Elektron
+	Ladung −1 e (−1,602 176 6208(98) · 10−19 C[1])
+	Masse 5,485 799 090 70(16) · 10−4 [2] u
+		  9,109 383 56(11) · 10−31 [3] kg
+
+- Photon	https://de.wikipedia.org/wiki/Photon
+
+--------------------------------------------------------------------------------
+Fragen:
+* beeinflussen elektromagnetische felder den partikel selbst der sie aussendet?
+
+			/ Den Spin benutzen um die Dir in jeweils eine neue Richtung zu drehen
+			/ Ist bei DIR6 interessant, da der Dir somit die Orientierung zwischen 2,1 und 1,2 wechseln würde.
+			/ Einen DIR12 bauen?!
+			
+--------------------------------------------------------------------------------
+Bremsstrahlung Elektron
+
+Hallo,
+
+Wenn ein Elektron einen Atomkern (Proton) kreuzt oder in die Nähe kommt wird es nach meiner Logik erst beschleunigt und dann abgebremst.
+Sendet es dann erst eine Bremsstahlung beim beschleunigen und dann wieder beim abbremsen aus?
+
+Wenn es vorbeifliegt, wird seine Bahn abgelenkt.
+Ich habe es so verstanden, dass die Bremsstrahlung aussließlich durch das beschleunigen und das abbremsen emitiert wird, und nicht durch die ablenkung seiner Bahn.
+Sonst würde ja ein Elektron das sich kreisförmig um im ein Proton bewegt, ohne seine Geschwindigkeit zu verändern, ständig eine Bremsstrahlung aussenden.
+
+http://www.physikerboard.de/index.php
+https://www.physikerboard.de/topic,52458,e5f1cd572d527e3871b8a13f245968d2,-bremsstrahlung-eines-elektrons-bei-passage-eines-atomkerns.html
+
+http://www.quanten.de/forum/showthread.php5?p=84382&page=2
+
+--------------------------------------------------------------------------------
+Verzerrung des Raumes:
+* Eine Kraft die auf einen Raumquant einwirkt verkürzt diesen in Richtung der Kraft?
+* Vorstellbar wäre auch, dass sich sozusagen der Mittelpunkt verschiebt und 
+  "Dinge" die sich darin befinden damit eher an einer der Seiten austreten.
+  Damit würden sich auch problemlos fließend verschiendene Richtungen darstellen 
+  lassen in denen die Kräfte wirken.
+* Die "Verkürzungen" würden sich einfach so dargstellen, dass andere Dinge 
+  in dem Raumquant weniger Rechenschritte benötigen würden um ihn zu durchqueren.
+
+Möglich wäre auch die betrachtung, das sich ein Teil gar nicht "durch" den
+Raumquant bewegt, sondern nur die Wahrscheinlichkeit ansteigt in der verkürzten 
+Richtung den Raumquant zu verlassen.
+Jeder Rechenschritt wäre dann nur ein "Würfeln" für eine neue Position.
+
+
+ 
+Hat nicht direkt damit damit zu tun aber sehr schön anschaulich:
+http://www.quanten.de/forum/showthread.php5?p=84163#post84163
+
+--------------------------------------------------------------------------------
+
+Quantisierter Raum. 2D Modell.
+Kann aus gleichseitigen Dreiecken gebildet werden.
+Diese lassen sich auch als gepackte Fläche aus Kreisen darstellen.
+Die natürliche sich ergebende Geometrie ist ein Sechseck.
+Die Mittelpunkte der Dreiecke ergeben eine zu den ursprünglichen Dreiecken 
+um 60° gedrehte gleiche Geometrie.
+
+------------------
+http://www.mathematische-basteleien.de/figuriertezahlen.htm
+
+http://www.walser-h-m.ch/hans/Miniaturen/G/Ganze_Zahlen_im_gls_Dreieck/Ganze_Zahlen_im_gls_Dreieck.pdf
+
+https://de.wikipedia.org/wiki/Polygonalzahl
+
+----------------
+https://de.wikipedia.org/wiki/Sechseckraster
+
+Sechseckige Parkettierungen/ hexagonal tiling
+https://de.wikipedia.org/wiki/Sechseck
+
+--------------------------------------------------------------------------------
+Alle Bewegungen speed usw werden in alle Richtungen aufgelöst.
+Wenn eine Entscheidung ansteht wird entschieden,
+welche der Möglichkeiten zuerst Eintritt.
+Treffen zwei zur gleichen Zeit ein, wird die Skala der letzten Ereignisste verkleinert, 
+bis eine Entscheidung möglich ist.
+=> Expansion des Raumes. => Da dies immer öfter auftritt, "expandiert" der ganze Raum.
+
+--------------------------------------------------------------------------------
+Schleifenquantengravitation 
+Quantenfeldtheorie
+Kausalmengen-Modell
+http://www.spektrum.de/news/der-ursprung-von-raum-und-zeit/1207031
+http://www.einstein-online.info/vertiefung/Kausalmengen?set_language=de
+
+--------------------------------------------------------------------------------
+https://de.wikipedia.org/wiki/Elementarteilchen
+
+--------------------------------------------------------------------------------
+Felder:
+	Gravitation, Elekrtomagnetismus -
+	Ein Feld hat eine Richtung. Es breitet sich nur in dieser Richtung aus.
+	Es tritt an einer Seite eines Dreicks ein und an den gegenüberligenden Seiten wieder aus.
+	Es wird nur die Eigenschaft weitergegeben.
+	Die Stärke wird jeweils halbiert und im Ziel aufsummiert.
+	Die Felder beeinflussen sich nicht.
+	
+	Magnetismus -
+	Das Feld hat keine Richtung.
+	Es tritt an einer Seite eines Dreicks ein und an den allen wieder aus.
+	Allerdings ist seine Wirkung jeweils entgegen der Eintrittsseite, also "Nord" und "Süd".
+	
+	Kernkäfte -
+	Begrenzte Reichweite.
+	a.
+	Summieren sich nicht auf?
+	b.
+	Heben sich selbst wieder auf?
+	
+	Photon -
+	Beschleuniger/ Energie.
+	Haben eine Richtung, Spalten sich aber nicht auf.
+	Doch eher Partikel?
+
+	=>	Zustandsautomat.
+		Der innere Zustand und der der angrenzenden MapFields bestimmen den 
+		nächsten Zustand des MapFields.
+	=>	Es könnte mehrere Ergebnisse für einen Zustand geben, diese sind mit 
+		Wahrscheinlichketen versehen. Aus dieser Liste wird bei einem Ereignis
+		dann eines, mit Berücksichtigung der Wahrscheinlichkeiten, 
+		als Ergebnis zufällig ausgewählt.
+		Bis dahin werden diese parallel weiter berechnet.
+	=>	Ein State besteht nur aus einem Inner-State und einem In-State für jede Seite.
+		Somit hat selbst ein 1D-Objekt zwei Seiten (AB und BA) die jweils einen
+		einen Inner- und In-State haben und den Inner-State an die andere Seite
+		weiter geben können.
+	=>	States können kombiniert werden und zu neuen States zusammengesetzt werden
+		dies pro Seite gesetzt werden können.
+		Für verscheidene Felder verschiendene States anlegen.
+		Zwei gleiche Felder in einem MapField geht nur, 
+		wenn für diese Kombination extra neue States angelegt werden.
+		für Felder die sich beeinflussen müssen Meta-States mit den
+		entsprechenden Ergebnisses angelegt werden.
+	=>	Sollen sich Felder nicht beeinflussen
+		-> muss für jedes MapFields eine eigene StateNode pro Field verwaltet werden.
+		->	Wie können sich dan Felder überhaupt beeinflussen?
+			Möglich wäre dies z.B. über eigene Austausch-Fields auf die
+			jeder Zugriff hat.
+		-> Evtl. gar nicht nötig, wenn nur Wahrscheinlichkeiten sich Ausbreiten, 
+			die sich nicht beeinflussen.
+	=>	Können sich Felder beeinflussen, 
+		-> muss es für jedes Feld einen eigenen "aktiv"/ "inaktiv" State geben.
+		-> die Rules können diese beliebig verwenden.
+			
+Partikel:
+	Spin:
+	Befinden sich mehrere Felder in einem Dreieck, addieren sich deren Spins.
+	Ein Partikel(-Feld) bewegt sich in die Richtung in die sein Spin gerade zeigt.
+	Ein ruhender Partikel ohne Energie bewegt sich also auf der sechseckigen Bahn im Kreis.
+
+Rechenschritte:
+	Feld:
+		Weitergabe der Eigenschaft an die Nachbar-Dreicke.
+	Spin:
+		Drehung um jeweils eine Achse (drei)
+	Wirkung:
+		Wirkung eines Feldes auf ein Partikel(-Feld).
+		
+Buffer:
+	Die Herausforderung ist die Abbildung von nichtlokalen Ereignissen (Fernwirkung).
+	Hierbei müsste eine "Ausbreitung" nur als "Möglichkeit (mit Wahrscheinlichkeit)"
+	erfasst werden die zu einem späteren Zeitpunkt, wenn die Notwendigkeit besteht,
+	aufgelöst wird.
+	a. (Classic)
+	Jeweils zwei Maps deren Zustand jeweils als Ergebnis in das andere hinein
+	geschrieben wird. Dann vertauschen der Rollen.
+	b. (Path/ Float/ Tree)
+	Jedes Feld (Dreieck) hat seinen eigenen Buffer mit den Ergebnissen
+	der aller Berechnungen und deren Quelle.
+	
+Meta-Level:
+	Zusammenfassen mehrerer Zellen zu einer größeren mit der Summe derer Eigenschaften.
+	Ziel ist es, die Speicher- und Rechenkapazität für Effekte die über gößere
+	Entfernungen wirken zu begrenzen (Gravitation).
+	Die Schwierigkeit ist es, auszuwählen was als der jeweilige Mittelpunkt
+	gewählt werden soll, wenn nicht für jedes Dreieck ein solcher Meta-Level
+	gebildet werden soll.
+	a. 
+	Eine gute Möglichkeit wäre sechs Dreiecke zu einem Sechseck,
+	drei Sechsecke zu einem neuen Dreieck, usw.
+	b.
+	Eine andere wäre, jeweils die drei Nachbardreicke eines Dreiecks zu einem
+	neuen "größeren" Dreick zu verbinden.
+	Schön wäre es, einen Weg zu finden, bei dem ein bestimmtes Eingangsereignis 
+	immer den gleichen Effekt auf einer Meta-Ebene hätte, er sich also direkt daraus
+	ableiten ließe - ohne weitere Berechnungen.
+	Ein Teichen wäre dann z.B. etwas, was sich zyklisch im Kreis bewegt.
+	Die Bewegung dieses könnte dann auf dem Meta-Level statt finden, 
+	ohne komplizierte Berechnungen auf der Detailebene des darunter liegenden Feldes.
+	=>	Alle Möglichkeiten sind schon vorberechnet, Zyklen schon erkannt.
+		Nur bei Ereigniss müssen die neuen Zustände (lokal) gesetzt werden.
+		Zeit ist dann nur ein Zeiger der in einem bekannten Möglichkeitsraum 
+		den aktuellen Schritt/ Zustand anzeigt.
+	=>	Jede Zeit ist lokal zyklisch.
+		Im Grunde wird nur noch nach neuen Zyklen gesucht die noch nicht gefunden wurden.
+		Hier findet die eigentliche "Expansion" statt.
+	=>	Suchfunktion aufbauen, die aus dem Zustand eines zusammenhängenden Raumes
+		den nächsten Zustand finden kann, ohne Berechnungen anzustellen. (Holistisch?)
+			->	Wie mit der Kombination aus mehreren Feldern umgehen 
+				die sich gegenseitig beeinflussen?
+	=>	Ein Dreick hat an jedem Ausgang eine "Farbe".
+		Die Regeln besagen, für jedes Feld wenn es in eine Farbe eintritt, 
+		an welchen Farben es wieder Austritt.
+		"Meta"-Dreiecke haben an jder Seite eine eindeutige Kombination
+		aus Farben von der untergeordneten Dreiecke. Es können also auch hierfür
+		Regeln definiert werden.
+			->	Ergibt sich die "Meta"-Regel aus den Basis-Regeln?
+			->	Die Kombination für jedes MapField aus innerem Zustand und dem
+				Zustand der drei Nachbarn ergbit automatisch die nächste Ebene
+				für die wieder ein eindeutiger State berechnet werden kann.
+				Es gilt also immer, das der State das Ergebnis des Meta-Sates ist.
+				Ergo gilt:
+				Für jedes MapField den Meta-State ermitteln und aus diesem 
+				den nächsten State des MapFields auslesen.
+	
+	TODO	Momentan sind nur StateNode implementiertdie die direkten Nachbarseiten als Input haben.
+			Damit können einfache Zustände abgebildet werden.
+			Es muß aber auch eine Implementierung geben die den ganzen Zustand der Nachbar-MapFields berücksichtigt.
+			Nur so sind komplexere Zustände abbildbar.
+			Außerdem ergibt sich aus solch einem StateNode automatisch die nächste Meta-Ebene.
+				
+Q-Bit:
+	Welchen Informationsgehalt kann ein Zustand haben.
+	Interessant in dem Zusammenhang wie er sich im Raum "verteilen" kann,
+	wenn er doch nicht teilbar ist.
+	a.
+	Er selbst verteilt sich nicht, sondern nur die Wahrscheinlichkeit 
+	der Richtung in der er sich "verbreitet". Beim eintreffen eines Ereignisses
+	wird die Wahrscheinlichkeit aufglöst und er bekommt seinen "ganzen" Wert.
+	b.
+	Es wird jeweils gewartet, bis mindestens zwei Informationen vorliegen,
+	so das diese sich wieder aufteilen können.
+	
+Field:
+	Ausbreitung anhand von Wahrscheinlichkeiten.
+	Austritts-Warsch. anhand Feldeigenschaften (Richtung, Eintrittsseite, Spin).
+	Warsch.maximum bewegt sich mit der Zeit.
+	->	Wie das?
+		Aufsummieren der Wahrscheinlichkeiten?
+		Wahrscheinlichkeit nimmt an "alter" Position ab und wird an
+		neuen Positionen wahrscheinlicher (wegen Eigenschaften).
+	Zusammenbruch der Wahrscheinlichkeit bei erreichen einer "Messung".
+	->	Was ist eine "Messung"?
+		Zusammentreffen von zwei Feldern die sich nicht nur ablenken,
+		sondern miteinander "reagieren" und sich dabei umwandeln.
+	->	Zusammenbruch?
+		Also eine Art Flood-Fill bei dem alle anderen MapFields gelöscht werden können.
+		Oder eben der Zusammenbruch des Feldes auf größeren Skalen (Meta-Level).
+	kleinste Zyklen:
+	0.	Feld bleibt am Ort. Zykluszahl 1. 
+	1.	Feld pendelt zwischen zwei Orten. Wahrscheinlichkeit jeweils 50%. Zykluszahl 2.
+	2.	
+	
+Genetischer Spaß:
+	Um Regeln für die Felder zu erhalten könnten Rules-Sets gegeneinander antreten.
+	=>	Wie damit umgehen, wenn Inputs entstehen für die es keinen NextStateNode gibt?
+		->	Da jeder State von einem Parent-State erbt, kann rekursiv mit diesen Parents gesucht werden,
+			ob es für diese Inputs NextStateNodes gibt.
+			>	Komplizierter Algorithmus, da im Binärbaum rückwärts gesucht werden muß,
+				wenn es weiter oben auch nix gibt... (DONE :)
+	=>	Begrenzung der Anzahl Regeln pro Rules-Set.
+	=>	Begenzung der States die diese haben können.
+	=>	Begrenzung der Gesammtenergie des Systems, so das eine Konkurenz um die States entsteht.
+		Im einfachsten Fall zählt einfach jeder State als ein Energie-Quant.
+		Die Rules eines Sets dürfen dann aber als Ergebnis nur "eigene" States und deren Parents erzeugen.
+		Es darf keine zweite Rule für einen schon bestehenden Input erzeugt werden.
+		Den State "Leeren Raum" darf jedes Ruleset erzeugen.
+!!		->	Idee:
+			>	Die Energie eines States steigt mit der Anzahl der Parents.
+			>	Die Energie der erzeugten Parents muß der der Inputs entsprechen.
+			>	Das kann beim erzeugen der NextStateNode schon Bedingung sein.
+				-	Spiegelt dann aber nicht die reale Situation wieder (wegen der akzeptierten Parens als Input).
+					Es muss also nach niederenergetischen NextStateNode gesucht werden, bis etwas passendes gefunden wird.
+					Der State in dem MapField selber könnte eine Energie erhalten, die er weiter geben kann.
+					Nö, blöd, lieber neue States mit höherer Energie verwenden.
+				-	Funktioniert nicht, es muß auch einer Enrgie vernichtung statt finden können.
+					Wenn das eine MapField Energie erhält, muß der Nachbar abgeben.
+						Das kann die simple Prüffunktion für neue RueSets sein:
+							Wenn sich die gesammt Energie das Systems ändert -> Fail.
+						Prüfung zur Laufzeit und dann Rollback. Fertig.
+			>	Um eine initiale Energie zu bekommen, 
+				-	kann der ganze Raum mit einem Energiereichem State initialisiert werden (gut)
+				-	kann es in der Mitte einen State geben der immer wieder gesetzt wird (blöd).
+	=>	Neue Rule-Sets durch Mutation (random) eines bestehenden Rule-Sets.
+	=>	Neue Rule-Sets durch Kreuzung zweier bestehender Rule-Sets.
+		->	eher doof
+	=>	Umgebenung:
+		->	Es müssen immer wieder einmal zufällig neue States erzeugt werden,
+			um deren Rule-Sets eine Chance zu geben sich zu bewähren.
+			>	Evtl. nicht nötig, da es jedem Rule-Set frei steht 
+				eine nicht benutzte Kombination aus anderen States zu finden
+				um sich zu erzeugen.
+		->	Es muß ein Basis-Ruleset "Leerer-Raum" geben, dass kein anderes
+			einfach kapern darf. (Alle Inputs leerer Raum in eine meiner States verwandeln).
+		->	Soll ein Ruleset "sterben", wenn keine States von ihm mehr in der Map vorkommen?
+		->	Es könnte einen initialen State "in der Mitte" geben der nicht gelöscht wird.
+			An diesem könnten sich immer neure Rule-Sets "hoch ziehen".
+	=>	Ziel: Kooperative Rule-Sets die miteiander reagieren ohne sich immer gleich
+		gegenseitig zu zerstören.
+	=>	Hierarchie aus Rule-Sets bilden?
+		Nur ein State darf neu erzeugt werden oder so, alle anderen "erben" vom Parent?
+		->	Analyse wäre einfacher.
+		->	Es könnten ganze Zweige absterben aus denen eh nix mehr wird.
+		->	Das Basis Rule-Set benötigt keine Energie zur anwening eines neuen States.
+			Davon abgeleitete States schon jeweils einen mehr.
+			Hä? Wie das?
+			Vielleicht genau umgekehrt?!
+			Mit maximaler Energie starten und zu weniger vererben?
+			Idee:
+			>	Energie wird als Wahrscheinlichkeit angeben, dass ein Regel Anwendnung findet.
+				Geerbte Regeln werden mit immer geringerer Wahrscheinlichkeit angewendet.
+			>	Gravitation ist das erste und wichtigste RuleSet.
+				Alle anderen beginnen sich davon zu emanzipeiren und durch andere Regeln zu ersetzen.
+				Masse
+					Gravitation
+		// DONE: RuleSet im Node speichern.
+		// DONE: Cnt in RuleSet hoch zählen
+		// DONE: Run-Counter hochzählen und damit die Rule-Sets markieren die tatsächlich "In use" sind (und nicht löschen).
+		//		StartRunCnt	LastRunCnt runCnt
+		//		Wenn diff StartRunCnt zu runCnt > 1000 und
+		//			LastRunCnt == -1
+		//			oder
+		//			LastRunCnt zu runCnt > 1000 
+		//				=> weg
+		
+						
+----------------------------------------------------------------------------------------------------
+Farbladung:
+https://de.wikipedia.org/wiki/Quark_(Physik)
+Passt, es gibt drei Farben pro MapField die kombiniert werden können.
+Das MapField kann damit seine relative Lage im Raum ermitteln, 
+da nur die jeweils gleichfarbige Seite des Nachbarn ermittelt werden kann.
+
+Elektrische Ladung:
+https://de.wikipedia.org/wiki/Quark_(Physik)
+Die elektrische Ladung der Quarks ist entweder −1/3 oder +2/3 der Elementarladung. 
+Wäre an einer Seite rein, an den zwei anderen heraus.
+
+----------------------------------------------------------------------------------------------------
+Stehende Welle:
+
+*	Ganz neuer Ansatz (siehe "loopStatic1.png").
+	Ein Status (mit "Energie") kann sich auf beliebig viele Felder im Raum ausbreiten,
+	solange er "von sich selbst" abhängt.
+	Wird die "Schleife" unterbrochen, bricht diese Zusammen und der Status "wirkt" nur noch in der 
+	Zelle in der die Schleife unterbrochen wurde.
+*	Würde sich irgenwie auch zur Kraftvermittlung (Bindungsenergie) eignen.
+	Vielleicht möglich einen "Gummieband"-Effekt damit herzustellen, der sich überdehnt, bis er "reißt".
+
+*	Energie-Teilchen 
+	=>	breiten sich über den Raum aus.
+	=>	besetzen immer mehr Raum. 
+	=>	können an einem Punkt umgewandelt werden, dann bricht der Rest zusammen.
+*	Partikel-Teilchen
+	=>	existieren als geschlossener Circel.
+	=>	besetzen einen abgegrenzten Raum.
+	=>	können an einem Punkt umgewandelt werden, dann bricht der Rest zusammen.
+
+*	Bewegung
+	=>	Ist die Wahrscheinlichkeit, das sich ein Status an einen anderen Ort "bewegt".
+		Anders gesagt, dass eine Regel angewendet wird.
+		->	Da jede Regel immer angewendet wird, muss diese mit der Wahrscheinlichkeit verknüpft sein.
+		->	Wenn auch die Wahrscheinlichkeit diskret ist, kann diese in das Meta-Model einfließen.
+		->	Es können also für einen Ausgangszustand mehrere Regeln mit unterschiedlichen 
+			Wahrscheinlichkeiten existieren.
+			Diese werden gleichzeitig angewendet.
+			>	Das ergibt die Verteilung der Energie im Raum (mit gleicher Wahrscheinlichkeit).
+			>	Das ergibt die "verschmierte" Verteilung von Partikeln auf ihre Circles.
+				Wenn ein Status mit 50% an seinem Ursprungsort bleibt, ist er dort im nächten Schritt
+				nur noch mit 25%.
+		->	Es wird abgelegt, mit welcher Wahrscheinlichkeit sich der Status von A nach B bewegt hat,
+			somit wird die Bewegung also Rückverfolgbar zum Ursprung.
+	=>	Trifft ein Zustand auf "sich selbst"
+		-> addieren sich sein Wahrscheinlichkeiten?
+		-> überschreibt die größere die kleiner Wahrscheinlichkeit?
+		->	Auf jeden Fall kann ein Zustand nicht zweimal am gleichem Ort existieren.
+	=>	Geradlinige Bewegungen von Teilchen in beliebige Richtungen
+		-> Nicht nur in die (sechs) Richtungen der Raumstruktur, auch Bewegungen dazwischen sind gefordert.
+			>	Kann realisiert werden, in dem jede n-te Drehung/Schwingung 
+				die Wahrscheinlichkeit der Hauptrichtung variiert wird.
+			>	Läßt sich eigentlich nur durch mitgeschleppte Bewegungsrichtungs-Teilchen realisieren...
+	
+*	Umwandlungen
+	=>	Umwandlungen geschehen, wenn verschiedene Out- und Inner-States auf eine Zelle wirken
+		(wie bisher).
+	
+*	Meta-Ebene
+	=> EIN Zustand breitet sich in seine Meta-Ebene aus.
+		-> Diese existieren parallel, können aber wechselwirken.
+	=>	Abbildung mit endlichem Speicherplatz nur über Meta-Ebenen möglich,
+		die über größere Räume die immer gleichen Zustände pro Teilchen abbilden.
+	=>	Wichtig ist das zusammenbrechen der Meta-Ebenen 
+		-> 	Diese entsteht, sobald über das ermitteln von zwei Wahrscheinlichkeiten für ein
+			Ergebnis entschieden werden muss.
+			> Oder können sich Wahrscheinlichkeiten unendlich addieren???
+			????
+	=>	Meta-Ebenen-Templates werden bei der Entstehung mit einem Teilchen und einem Ort verknüpft.
+		Ab da werden pro Schritt nur neue Meta-Ebenen zugewiesen.
+	=>	Meta-Ebenen werden gelöscht, sobald eine Umwandlung statt findet.
+		Dann werden neue Meta-Ebenen gesucht oder berechnet.
+	=>	Umwandlungen werden auf Ebene der Meta-Ebenen erkannt.
+		Hier kommen dann auch die Wahrscheinlichkeiten ins Spiel?
+		
+	=>	Hierarchie aus Meta-Ebenen bilden.
+		->	
+	
+----------------------------------------------------------------------------------------------------
