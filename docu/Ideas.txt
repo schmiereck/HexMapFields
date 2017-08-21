@@ -431,9 +431,10 @@ Stehende Welle:
 		Dann werden neue Meta-Ebenen gesucht oder berechnet.
 	=>	Umwandlungen werden auf Ebene der Meta-Ebenen erkannt.
 		Hier kommen dann auch die Wahrscheinlichkeiten ins Spiel?
+	=>	Besteht aus Ausgangs-Ort, Zustand.
+		>	Ab hier beginnen die Meta-Ebenen die die relativen nächsten Zustände abbilden.
 		
 	=>	Hierarchie aus Meta-Ebenen bilden.
 		->	
 	
 ----------------------------------------------------------------------------------------------------
-git test23
