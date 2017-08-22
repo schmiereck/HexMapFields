@@ -375,21 +375,15 @@ Stehende Welle:
 	solange er "von sich selbst" abhängt.
 	Wird die "Schleife" unterbrochen, bricht diese Zusammen und der Status "wirkt" nur noch in der 
 	Zelle in der die Schleife unterbrochen wurde.
-*	Würde sich irgenwie auch zur Kraftvermittlung (Bindungsenergie) eignen.
-	Vielleicht möglich einen "Gummieband"-Effekt damit herzustellen, der sich überdehnt, bis er "reißt".
+*	Würde sich irgenwie auch zur Kraftvermittlung (Bindungsenergie) eignen?
+	Vielleicht möglich einen "Gummieband"-Effekt damit herzustellen, der sich überdehnt, bis er "reißt"?
 
-*	Energie-Teilchen 
-	=>	breiten sich über den Raum aus.
-	=>	besetzen immer mehr Raum. 
-	=>	können an einem Punkt umgewandelt werden, dann bricht der Rest zusammen.
-*	Partikel-Teilchen
-	=>	existieren als geschlossener Circel.
-	=>	besetzen einen abgegrenzten Raum.
-	=>	können an einem Punkt umgewandelt werden, dann bricht der Rest zusammen.
-
-*	Bewegung
+*	Wahrscheinlichkeiten
 	=>	Ist die Wahrscheinlichkeit, das sich ein Status an einen anderen Ort "bewegt".
-		Anders gesagt, dass eine Regel angewendet wird.
+		->	StateNode Berechnung:
+			>	Für einen Eingangszustand (Inner und In) eines Feldes wird ja ein NextState festgelegt.
+			>	Anders gesagt, eine Regel kann mehrere Ergebnisse mit verschiedenen Wahrscheinlichkeiten haben.
+			>	Ein Feld kann also verschiedene Status mit verschiedenen Wahrscheinlichkeiten haben.
 		->	Da jede Regel immer angewendet wird, muss diese mit der Wahrscheinlichkeit verknüpft sein.
 		->	Wenn auch die Wahrscheinlichkeit diskret ist, kann diese in das Meta-Model einfließen.
 		->	Es können also für einen Ausgangszustand mehrere Regeln mit unterschiedlichen 
@@ -405,6 +399,21 @@ Stehende Welle:
 		-> addieren sich sein Wahrscheinlichkeiten?
 		-> überschreibt die größere die kleiner Wahrscheinlichkeit?
 		->	Auf jeden Fall kann ein Zustand nicht zweimal am gleichem Ort existieren.
+	=>	Gangbare Logik wäre irgendwie, dass für jeden wahrscheinlichen Status eine eigene 
+		Meta-Ebene gestartet wird.
+		->	Beim Auflößen des Ergebnisses wird dann nur dessen Wahrscheinlichkeit 
+			mit der Wahrscheinlichkeit des Ergebnis-Status multipliziert.
+	
+*	Energie-Teilchen 
+	=>	breiten sich über den Raum aus.
+	=>	besetzen immer mehr Raum. 
+	=>	können an einem Punkt umgewandelt werden, dann bricht der Rest zusammen.
+*	Partikel-Teilchen
+	=>	existieren als geschlossener Circel.
+	=>	besetzen einen abgegrenzten Raum.
+	=>	können an einem Punkt umgewandelt werden, dann bricht der Rest zusammen.
+
+*	Bewegung
 	=>	Geradlinige Bewegungen von Teilchen in beliebige Richtungen
 		-> Nicht nur in die (sechs) Richtungen der Raumstruktur, auch Bewegungen dazwischen sind gefordert.
 			>	Kann realisiert werden, in dem jede n-te Drehung/Schwingung 
@@ -433,8 +442,31 @@ Stehende Welle:
 		Hier kommen dann auch die Wahrscheinlichkeiten ins Spiel?
 	=>	Besteht aus Ausgangs-Ort, Zustand.
 		>	Ab hier beginnen die Meta-Ebenen die die relativen nächsten Zustände abbilden.
+	=>	Vielleicht wäre es sinnvoll, auch Kombinationen mit anderen Zuständen gleich in der 
+		Meta-DB abzulegen, so das auch auflößbare (elastische?) Kombinationen behandelt werden können?
+	=>	Ziel:
+		>	Ausgangszustand bleibt "stehen" und verweißt zur noch auf den jeweiligen "aktuellen"
+			Zustand in der Meta-DB.
+		>	Tritt ein nicht auflößbarer Status ein, werden die betroffenen Felder auf den
+			aktuellen Zustand gesetzt und es wird weiter gesucht.
 		
-	=>	Hierarchie aus Meta-Ebenen bilden.
-		->	
-	
+*	Meta-DB
+	=> 	Zu jedem Ausgangs-Feld (mit seinen Zuständen) wird jeweils das resultierende Feld und 
+		die drei benachbarten Felder abgelegt (als 4 Felder).
+	=>	Diese Bilden also jweils eine Liste mit Folge-Feldern.
+	=>	Felder deren Zustand sich nicht ändert haben sich selbst als "Nachfolger".
+		>	Dardurch vergößert sich der gespeicherte Raum nicht automatisch und wird immer größer.
+		>	Problem? Wenn sich der Status Aufgrund von Nachbarfeldern später ändert?
+	=>	Sich wiederholdende Zustände werden als Verweiß auf bestehende Zustände angelegt.
+		>	Sollte zu (Platzsparenden) zirkulären Strukturen führen.
+		>	Problem? Hängt der Zustand der Nachbarfelder nicht auch von deren Nachbarfeldern ab usw...?
+		
+*	Abbildung auf der "reale Ebene"
+	=>	Status eines Feldes verweißt ggf. auf eine Meta-Ebene (oder mehrere Meta-Ebenen).
+		Aus dieser lässt sich der Status auslesen.
+	=>	Strengere Strennung zwischen RuleSets?
+		->	RuleSets können zwar den Status eines anderen RuleSets als Eingang verwenden,
+			aber nur einen eigenen Status als Außgang benutzen?
+			>	Jain: Hierarchie von RuleSets?
+				
 ----------------------------------------------------------------------------------------------------
