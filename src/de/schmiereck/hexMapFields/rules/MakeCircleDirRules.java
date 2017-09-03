@@ -47,7 +47,7 @@ public class MakeCircleDirRules
 		{
 			// AB active, others inactive
 			rMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s1EdgeState, s0EdgeState, s0EdgeState);
 	
 		}
@@ -55,7 +55,7 @@ public class MakeCircleDirRules
 		{
 			// AB & BC active, others inactive
 			rgMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s1EdgeState, s1EdgeState, s0EdgeState);
 	
 		}
@@ -63,7 +63,7 @@ public class MakeCircleDirRules
 		{
 			// BC active, others inactive
 			gMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s1EdgeState, s0EdgeState);
 	
 		}
@@ -71,7 +71,7 @@ public class MakeCircleDirRules
 		{
 			// BC & CA active, others inactive
 			gbMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s1EdgeState, s1EdgeState);
 	
 		}
@@ -79,7 +79,7 @@ public class MakeCircleDirRules
 		{
 			// CA active, others inactive
 			bMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s0EdgeState, s3EdgeState);
 	
 		}
@@ -87,7 +87,7 @@ public class MakeCircleDirRules
 		{
 			// AB & CA active, others inactive
 			rbMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s1EdgeState, s0EdgeState, s1EdgeState);
 	
 		}
@@ -98,7 +98,7 @@ public class MakeCircleDirRules
 		{
 			// inB -> RG
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s0EdgeState, s0EdgeState,
 					                          s0EdgeState, s0EdgeState, s3EdgeState);
 			
@@ -107,7 +107,7 @@ public class MakeCircleDirRules
 		{
 			// RG -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s1EdgeState, s1EdgeState, s0EdgeState,
 					                          s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -117,7 +117,7 @@ public class MakeCircleDirRules
 		{
 			// inRG -> B
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s0EdgeState, s0EdgeState,
 					                          s1EdgeState, s1EdgeState, s0EdgeState);
 			
@@ -126,7 +126,7 @@ public class MakeCircleDirRules
 		{
 			// B -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s0EdgeState, s1EdgeState,
 					                          s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -137,7 +137,7 @@ public class MakeCircleDirRules
 		{
 			// inR -> G
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s0EdgeState, s0EdgeState,
 					                          s1EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -146,7 +146,7 @@ public class MakeCircleDirRules
 		{
 			// G -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s1EdgeState, s0EdgeState,
 					                          s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -155,7 +155,7 @@ public class MakeCircleDirRules
 		{
 			// inG -> R
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s0EdgeState, s0EdgeState,
 					                          s0EdgeState, s1EdgeState, s0EdgeState);
 			
@@ -164,7 +164,7 @@ public class MakeCircleDirRules
 		{
 			// R -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			

@@ -41,7 +41,7 @@ public class MakeRunnerRules
 		{
 			// AB active, others inactive
 			rMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 	
 		}
@@ -49,7 +49,7 @@ public class MakeRunnerRules
 		{
 			// AB & BC active, others inactive
 			rgMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s1EdgeState, s0EdgeState);
 	
 		}
@@ -57,7 +57,7 @@ public class MakeRunnerRules
 		{
 			// BC active, others inactive
 			gMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 	
 		}
@@ -65,7 +65,7 @@ public class MakeRunnerRules
 		{
 			// BC & CA active, others inactive
 			gbMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s1EdgeState, s1EdgeState);
 	
 		}
@@ -73,7 +73,7 @@ public class MakeRunnerRules
 		{
 			// CA active, others inactive
 			bMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 	
 		}
@@ -81,7 +81,7 @@ public class MakeRunnerRules
 		{
 			// AB & CA active, others inactive
 			rbMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s0EdgeState, s1EdgeState);
 	
 		}
@@ -89,7 +89,7 @@ public class MakeRunnerRules
 		{
 			// R -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -98,7 +98,7 @@ public class MakeRunnerRules
 		{
 			// inR -> G
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -107,7 +107,7 @@ public class MakeRunnerRules
 		{
 			// G -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -116,7 +116,7 @@ public class MakeRunnerRules
 		{
 			// inG -> B
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 			
@@ -125,7 +125,7 @@ public class MakeRunnerRules
 		{
 			// B -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -134,7 +134,7 @@ public class MakeRunnerRules
 		{
 			// inB -> R
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 			

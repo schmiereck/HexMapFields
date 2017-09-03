@@ -378,7 +378,12 @@ Stehende Welle:
 *	Würde sich irgenwie auch zur Kraftvermittlung (Bindungsenergie) eignen?
 	Vielleicht möglich einen "Gummieband"-Effekt damit herzustellen, der sich überdehnt, bis er "reißt"?
 
-*	Wahrscheinlichkeiten
+*	Unendlichkeit
+	=>	Ist es möglich, eine Map zu konstruieren (minimal 16*6=96, 24*2=48 ???), 
+		die an den Rändern die gleichen (passenden) Farben hat, deren Sechsecke ineinander passen
+		und eine Meta-Map aus sich wiederholdenen Meta-Sechecken (x?, y?) zu bilden?
+
+*	Warscheinlichkeiten (probability)
 	=>	Ist die Wahrscheinlichkeit, das sich ein Status an einen anderen Ort "bewegt".
 		->	StateNode Berechnung:
 			>	Für einen Eingangszustand (Inner und In) eines Feldes wird ja ein NextState festgelegt.
@@ -424,8 +429,9 @@ Stehende Welle:
 	=>	Umwandlungen geschehen, wenn verschiedene Out- und Inner-States auf eine Zelle wirken
 		(wie bisher).
 	
-*	Meta-Ebene
-	=> EIN Zustand breitet sich in seine Meta-Ebene aus.
+*	Meta-Ebene (MetaLevel)
+	=>	Meta-Level verweißen auf einen Eintrag in der Meta-DB.
+	=>	EIN Zustand breitet sich in seine Meta-Ebene aus.
 		-> Diese existieren parallel, können aber wechselwirken.
 	=>	Abbildung mit endlichem Speicherplatz nur über Meta-Ebenen möglich,
 		die über größere Räume die immer gleichen Zustände pro Teilchen abbilden.
@@ -450,7 +456,7 @@ Stehende Welle:
 		>	Tritt ein nicht auflößbarer Status ein, werden die betroffenen Felder auf den
 			aktuellen Zustand gesetzt und es wird weiter gesucht.
 		
-*	Meta-DB
+*	Meta-DB (MetaDB)
 	=> 	Zu jedem Ausgangs-Feld (mit seinen Zuständen) wird jeweils das resultierende Feld und 
 		die drei benachbarten Felder abgelegt (als 4 Felder).
 	=>	Diese Bilden also jweils eine Liste mit Folge-Feldern.
@@ -474,5 +480,45 @@ Stehende Welle:
 		->	Wie das auf die reale Ebene abbilden???
 			>	Zu jedem realen-Feld existieren Meta-Ebenen.
 				Diese müssen jeweils dort eingetragen werden?
-				
+	=>	Wann wird eine Superposition aufgelößt?
+		https://de.wikipedia.org/wiki/Kollaps_der_Wellenfunktion
+		https://de.wikipedia.org/wiki/Lokalit%C3%A4t_(Physik)
+		https://www.leifiphysik.de/quantenphysik/quantenobjekt-photon
+		Elastische und unelastische Stöße...
+		>	Bei einem elastischen Stoß zwischen einem Photon und einem "gebundenem" Elektron
+			wird das Photon nur abgelenkt.
+		>	Bei einem elastischen Stoß zwischen einem Photon und einem "freien" Elektron
+			wird das Photon nur abgelenkt und verliert Energie (niedrigere Frequenz) die es
+			an das Elektron abgibt.
+		
+*	Implementierung
+	=>	Wenn jedem StatNode Ergebnis (Next-StateNode) genau ein Meta-Entry eines Meta-Level
+		zugeordnet werden kann, entsteht kein Problem.
+	=>	StateNode hat ein MetaEntry.
+		Next-StateNode hat ein MetaEntry.
+			->	Über die Nachbarn des MapEntry kann der Nachbar des MapEntry ermittelt werden
+				und so der MetaLevel aufgebaut werden.
+	=>	calc-In-States
+		->	Prüfen, ob jeder verwendete StateNode schon einen MetaEntry hat.
+		calc-Next-States
+		->	
+	
+*	Datenstruktur
+	=>	MapField
+		->	stateNode
+		->	inStateNode	->	nextStateNode
+		->	field
+		->	metaEntry
+	=>	MetaEntry
+		->	neighbour-MapEntry
+		->	next-MetaEntry
+		->	previous-MetaEntry
+		->	metaLevel
+	=>	MetaLevel
+		->	start-MetaEntry
+	=>	Field
+		->	status: "dead" or "life"	
+	=>	StateNode
+		->	metaEntry
+		
 ----------------------------------------------------------------------------------------------------

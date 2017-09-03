@@ -3,13 +3,16 @@
  */
 package de.schmiereck.hexMapFields;
 
+import de.schmiereck.hexMapFields.fields.Field;
 import de.schmiereck.hexMapFields.genetic.GeneticService;
+import de.schmiereck.hexMapFields.metaDB.MetaDBService;
 import de.schmiereck.hexMapFields.rules.MakeBlinkerRules;
 import de.schmiereck.hexMapFields.rules.MakeCircleBig1StaticRules;
 import de.schmiereck.hexMapFields.rules.MakeCircleDirRules;
 import de.schmiereck.hexMapFields.rules.MakeCircleStaticRules;
 import de.schmiereck.hexMapFields.rules.MakeDirFieldRules;
 import de.schmiereck.hexMapFields.rules.MakeRunnerRules;
+import de.schmiereck.hexMapFields.rules.RulesService;
 
 /**
  * <p>
@@ -70,8 +73,8 @@ public class Main
 	{
 		// All inactive
 		s0MapFieldStateNode = 
-				MainService.makeStateNode(stateNodes, emptyRuleSet,
-				                          s0EdgeState, s0EdgeState, s0EdgeState);
+				RulesService.makeStateNode(stateNodes, emptyRuleSet,
+				                           s0EdgeState, s0EdgeState, s0EdgeState);
 	}
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //	// In-States:
@@ -90,9 +93,9 @@ public class Main
 	{
 		// In-State: All inactive
 		s0InStateNode = 
-				MainService.makeStateNode(stateNodes, emptyRuleSet,
-				                          Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState,
-				                          Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState);
+				RulesService.makeStateNode(stateNodes, emptyRuleSet,
+				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState,
+				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState);
 		
 		s0InStateNode.setNextStateNode(s0MapFieldStateNode);
 	}
@@ -101,6 +104,9 @@ public class Main
 	{
 		emptyRuleSet.setInitStateNode(s0MapFieldStateNode);
 	}
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	public static final Field emptyField = new Field();
+	
 	//**********************************************************************************************
 	// Functions:
 	
@@ -133,17 +139,17 @@ public class Main
 		final int ySizeView = 920 * 2;
 		
 		final int xRepeatMapFields = 1;
-		final int yRepeatMapFields = 1;;
+		final int yRepeatMapFields = 1;
 		
 		// minimale Metamap garantieren:
-		final int xMetamap = xRepeatMapFields * 16;
-		final int yMetamap = yRepeatMapFields * 3*2*2*2;
+		final int xMetamap = xRepeatMapFields * 2*2*2*2;	// 16
+		final int yMetamap = yRepeatMapFields * 3*2*2*2;	// 24
 		
-		// minimale Sechecke garantieren:
+		// minimale Sechsecke garantieren:
 		final int xHexagon = xMetamap * 6;
 		final int yHexagon = yMetamap * 2;
 		
-		final Map map = new Map(xHexagon, yHexagon);
+		final Map map = new Map(xHexagon/8, yHexagon/8);	// 16*6=96 (12), 24*2=48 (6)
 		
 		//------------------------------------------------------------------------------------------
 		final int xSize = map.getXSize();
@@ -156,6 +162,7 @@ public class Main
 				final MapField mapField = map.getMapField(xPos, yPos);
 				
 				final StateNode stateNode;
+				final Field field;
 				
 //				if ((xPos == 0) && (yPos == 0))
 				if ((xPos == 6) && (yPos == 2))
@@ -167,12 +174,14 @@ public class Main
 //					stateNode = circleDirRuleSet.getInitStateNode();
 //					stateNode = dirFieldRuleSet.getInitStateNode();
 //					stateNode = runnerRuleSet.getInitStateNode();
+					field = new Field();		// A inital new Field is born.
 				}
 				else
 				{
 					if ((xPos == 7) && (yPos == 3))
 					{
 						stateNode = emptyRuleSet.getInitStateNode();
+						field = emptyField;
 //						stateNode = blinkerRuleSet.getInitStateNode();
 //						stateNode = circleStaticRuleSet.getInitStateNode();
 //						stateNode = circleDirRuleSet.getInitStateNode();		// Error.
@@ -182,10 +191,12 @@ public class Main
 					else
 					{
 						stateNode = s0MapFieldStateNode;
+						field = emptyField;
 					}
 				}
 
 				mapField.setStateNode(stateNode);
+				mapField.setField(field);
 			}
 		}
 		
@@ -197,6 +208,7 @@ public class Main
 			geneticService = new GeneticService(map);
 			
 			geneticService.addRuleSet(emptyRuleSet);
+			geneticService.addRuleSet(blinkerRuleSet);
 			geneticService.addRuleSet(runnerRuleSet);
 			geneticService.addRuleSet(circleStaticRuleSet);
 			geneticService.addRuleSet(circleDirRuleSet);
@@ -206,6 +218,12 @@ public class Main
 		{
 			geneticService = null;
 		}
+		
+		//------------------------------------------------------------------------------------------
+		final MetaDBService metaDBService;
+		
+		metaDBService = new MetaDBService();
+		
 		//------------------------------------------------------------------------------------------
 		final ViewService viewService = new ViewService(geneticService);
 		
@@ -218,7 +236,8 @@ public class Main
 		MainService.calc(map, 
 		                 mainView,
 		                 stateNodes,
-		                 geneticService);
+		                 geneticService,
+		                 metaDBService);
 		
 		//==========================================================================================
 	}

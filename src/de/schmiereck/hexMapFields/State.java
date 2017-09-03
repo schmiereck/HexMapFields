@@ -10,6 +10,14 @@ import java.util.Vector;
  * <p>
  *	Zustände der Felder in einem Raumbereich.
  * </p>
+ * Jede Seite eines MapFields hat einen aktuellen State.
+ * Dieser wird durch eine Liste von States beschrieben.
+ * 
+ * Aus diesen States und den States der umgebenden Fields
+ * wird der neue State des MapFields gebildet.
+ * 
+ * Der "Grundzustand" jedes MapFields weißt jeder Seite schon einmal eines State (Farbe) zu.
+ * Die anderen möglichen Eingangszustände und Ausgangszustände kommen dann hinzu.
  * 
  * @author smk
  * @version <p>01.06.2017:	created, smk</p>
@@ -18,17 +26,6 @@ public class State
 {
 	//**********************************************************************************************
 	// Fields:
-	
-	/**
-	 * Jede Seite eines MapFields hat einen aktuellen State.
-	 * Dieser wird durch eine Liste von States beschrieben.
-	 * 
-	 * Aus diesen States und den States der umgebenden Fields
-	 * wird der neue State des MapFields gebildet.
-	 * 
-	 * Der "Grundzustand" jedes MapFields weißt jeder Seite schon einmal eines State (Farbe) zu.
-	 * Die anderen möglichen Eingangszustände und Ausgangszustände kommen dann hinzu.
-	 */
 	
 	/**
 	 * Inner-State.

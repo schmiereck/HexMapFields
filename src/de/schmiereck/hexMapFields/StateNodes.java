@@ -3,6 +3,8 @@
  */
 package de.schmiereck.hexMapFields;
 
+import de.schmiereck.hexMapFields.metaDB.MetaEntry;
+
 /**
  * <p>
  *	States.
@@ -22,12 +24,15 @@ public class StateNodes
 	 * 
 	 * Binärbaum aus: state, abState, bcState, caState
 	 */
-	private final StateNode rootNode = new StateNode(null, null, null);
+	private final StateNode rootNode = new StateNode(null, null, null, null);
 	
 	//**********************************************************************************************
 	// Functions:
 
-	public StateNode makeNode(final StateNode parentStateNode, final State state, final RuleSet ruleSet)
+	public StateNode makeNode(final StateNode parentStateNode, 
+	                          final State state, 
+	                          final RuleSet ruleSet,
+	                          final MetaEntry metaEntry)
 	{
 		//==========================================================================================
 		final StateNode retStateNode;
@@ -36,7 +41,7 @@ public class StateNodes
 
 		if (localStateNode == null)
 		{
-			retStateNode = new StateNode(parentStateNode, state, ruleSet);
+			retStateNode = new StateNode(parentStateNode, state, ruleSet, metaEntry);
 			
 //			retStateNode.setState(state);
 			

@@ -44,7 +44,7 @@ public class MakeDirFieldRules
 		{
 			// AB active, others inactive
 			rMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 	
 		}
@@ -52,7 +52,7 @@ public class MakeDirFieldRules
 		{
 			// AB & BC active, others inactive
 			rgMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s1EdgeState, s0EdgeState);
 	
 		}
@@ -60,7 +60,7 @@ public class MakeDirFieldRules
 		{
 			// BC active, others inactive
 			gMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 	
 		}
@@ -68,7 +68,7 @@ public class MakeDirFieldRules
 		{
 			// BC & CA active, others inactive
 			gbMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s1EdgeState, s1EdgeState);
 	
 		}
@@ -76,7 +76,7 @@ public class MakeDirFieldRules
 		{
 			// CA active, others inactive
 			bMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 	
 		}
@@ -84,7 +84,7 @@ public class MakeDirFieldRules
 		{
 			// AB & CA active, others inactive
 			rbMapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s0EdgeState, s1EdgeState);
 	
 		}
@@ -92,7 +92,7 @@ public class MakeDirFieldRules
 		{
 			// R -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -101,7 +101,7 @@ public class MakeDirFieldRules
 		{
 			// G -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -110,7 +110,7 @@ public class MakeDirFieldRules
 		{
 			// B -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -119,7 +119,7 @@ public class MakeDirFieldRules
 		{
 			// RG -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -128,7 +128,7 @@ public class MakeDirFieldRules
 		{
 			// GB -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s1EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -137,7 +137,7 @@ public class MakeDirFieldRules
 		{
 			// RB -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s1EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -147,7 +147,7 @@ public class MakeDirFieldRules
 		{
 			// inR -> GB
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -157,7 +157,7 @@ public class MakeDirFieldRules
 		{
 			// inG -> RB
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 			
@@ -166,7 +166,7 @@ public class MakeDirFieldRules
 		{
 			// inB -> RG
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 			
@@ -176,7 +176,7 @@ public class MakeDirFieldRules
 		{
 			// inRB -> B
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s1EdgeState, s0EdgeState);
 			
@@ -185,7 +185,7 @@ public class MakeDirFieldRules
 		{
 			// inGB -> R
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s1EdgeState);
 			
@@ -194,7 +194,7 @@ public class MakeDirFieldRules
 		{
 			// inRB -> G
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s1EdgeState);
 			
@@ -203,7 +203,7 @@ public class MakeDirFieldRules
 		{
 			// inRGB -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s1EdgeState, s1EdgeState);
 			

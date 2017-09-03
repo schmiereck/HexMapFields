@@ -46,14 +46,14 @@ public class MakeCircleBig1StaticRules
 		{
 			// r1-AB active, others inactive
 			r1MapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s1EdgeState, s0EdgeState, s0EdgeState);
 		}
 		final StateNode r2MapFieldStateNode; 
 		{
 			// r2-AB active, others inactive
 			r2MapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s2EdgeState, s0EdgeState, s0EdgeState);
 		}
 		
@@ -61,14 +61,14 @@ public class MakeCircleBig1StaticRules
 		{
 			// g1-BC active, others inactive
 			g1MapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s1EdgeState, s0EdgeState);
 		}
 		final StateNode g2MapFieldStateNode; 
 		{
 			// g2-BC active, others inactive
 			g2MapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s2EdgeState, s0EdgeState);
 		}
 		
@@ -76,14 +76,14 @@ public class MakeCircleBig1StaticRules
 		{
 			// b1-CA active, others inactive
 			b1MapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s0EdgeState, s1EdgeState);
 		}
 		final StateNode b2MapFieldStateNode; 
 		{
 			// b2-CA active, others inactive
 			b2MapFieldStateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s0EdgeState, s0EdgeState, s2EdgeState);
 		}
 		//------------------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// R1 -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s1EdgeState, s0EdgeState, s0EdgeState,
 					                          s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -100,7 +100,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// R2 -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                          s2EdgeState, s0EdgeState, s0EdgeState,
 					                          s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -110,7 +110,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// inR1 -> G1
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -119,7 +119,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// inR2 -> B2
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s2EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -130,7 +130,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// G1 -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -139,7 +139,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// G2 -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s2EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -149,7 +149,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// inG1 -> B1
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 			
@@ -158,7 +158,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// inG2 -> R2
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s2EdgeState, s0EdgeState);
 			
@@ -169,7 +169,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// B1 -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -178,7 +178,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// B2 -> s0
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s2EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
@@ -188,7 +188,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// inB1 -> G2
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 			
@@ -197,7 +197,7 @@ public class MakeCircleBig1StaticRules
 		{
 			// inB2 -> R1
 			final StateNode stateNode = 
-					MainService.makeStateNode(stateNodes, ruleSet,
+					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s2EdgeState);
 			

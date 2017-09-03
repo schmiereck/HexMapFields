@@ -6,6 +6,7 @@ package de.schmiereck.hexMapFields;
 import java.util.List;
 
 import de.schmiereck.hexMapFields.genetic.GeneticService;
+import de.schmiereck.hexMapFields.metaDB.MetaDBService;
 
 /**
  * <p>
@@ -32,7 +33,8 @@ public class MainService
 	public static void calc(final Map map, 
 	                        final MainView mainView, 
 	                        final StateNodes stateNodes,
-	                        final GeneticService geneticService)
+	                        final GeneticService geneticService,
+	                        final MetaDBService metaDBService)
 	{
 		//==========================================================================================
 		final MapHolder mapHolder = new MapHolder();
@@ -63,6 +65,11 @@ public class MainService
 			}
 
 			calcInStates(map, stateNodes);
+			
+			if (metaDBService != null)
+			{
+				metaDBService.calcMetaStates(map, stateNodes);
+			}
 			
 			calcNextStates(map, stateNodes);
 
@@ -504,32 +511,6 @@ public class MainService
 	}
 
 	public static StateNode
-	makeStateNode(final StateNodes stateNodes, final RuleSet ruleSet,
-	              final State abState, final State bcState, final State caState)
-	{
-		//==========================================================================================
-		final StateNode retStateNode;
-		
-		// Suche in einem Binärbaum.
-		final StateNode rootNode = stateNodes.getRootNode();
-		
-		//------------------------------------------------------------------------------------------
-		final StateNode abStateNode = stateNodes.makeNode(rootNode, abState, ruleSet);
-		
-		final StateNode bcStateNode = stateNodes.makeNode(abStateNode, bcState, ruleSet);
-		
-		final StateNode caStateNode = stateNodes.makeNode(bcStateNode, caState, ruleSet);
-
-		//------------------------------------------------------------------------------------------
-		retStateNode = caStateNode;
-		
-		ruleSet.addStateNode(retStateNode);
-		
-		//==========================================================================================
-		return retStateNode;
-	}
-
-	public static StateNode
 	searchStateNode(final StateNodes stateNodes,
 	                final State abState, final State bcState, final State caState)
 	{
@@ -563,40 +544,6 @@ public class MainService
 			
 		//------------------------------------------------------------------------------------------
 		retStateNode = caStateNode;
-		
-		//==========================================================================================
-		return retStateNode;
-	}
-
-	public static StateNode
-	makeStateNode(final StateNodes stateNodes, final RuleSet ruleSet,
-                    final State abState, final State bcState, final State caState,
-                    final State abInState, final State bcInState, final State caInState)
-	{
-		//==========================================================================================
-		final StateNode retStateNode;
-		
-		// Suche in einem Binärbaum.
-		final StateNode rootStateNode = stateNodes.getRootNode();
-		
-		//------------------------------------------------------------------------------------------
-		final StateNode abStateNode = stateNodes.makeNode(rootStateNode, abState, ruleSet);
-		
-		final StateNode bcStateNode = stateNodes.makeNode(abStateNode, bcState, ruleSet);
-		
-		final StateNode caStateNode = stateNodes.makeNode(bcStateNode, caState, ruleSet);
-		
-		//------------------------------------------------------------------------------------------
-		final StateNode abInStateNode = stateNodes.makeNode(caStateNode, abInState, ruleSet);
-		
-		final StateNode bcInStateNode = stateNodes.makeNode(abInStateNode, bcInState, ruleSet);
-		
-		final StateNode caInStateNode = stateNodes.makeNode(bcInStateNode, caInState, ruleSet);
-		
-		//------------------------------------------------------------------------------------------
-		retStateNode = caInStateNode;
-
-		ruleSet.addStateNode(retStateNode);
 		
 		//==========================================================================================
 		return retStateNode;

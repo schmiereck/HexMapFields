@@ -4,6 +4,7 @@
 package de.schmiereck.hexMapFields;
 
 import de.schmiereck.hexMapFields.Map.Orientation;
+import de.schmiereck.hexMapFields.fields.Field;
 
 /**
  * <p>
@@ -15,6 +16,14 @@ import de.schmiereck.hexMapFields.Map.Orientation;
  */
 public class MapField
 {
+	//**********************************************************************************************
+	// Constants:
+	
+	/**
+	 * Anzahl Nachbarfelder.
+	 */
+	public static final int NEIGHBOURS_CNT = 3;
+	
 	//**********************************************************************************************
 	// Fields:
 	
@@ -28,7 +37,7 @@ public class MapField
 	 * 1: BC
 	 * 2: CA
 	 */
-	private final MapField[] outFields = new MapField[3];
+	private final MapField[] outFields = new MapField[NEIGHBOURS_CNT];
 
 	/**
 	 * Der Inner-State für jede Seite:
@@ -48,6 +57,11 @@ public class MapField
 	 * 5: inCA (inB)
 	 */
 	private StateNode inStateNode = null;
+	
+	/**
+	 * Field.
+	 */
+	private Field field = null;
 	
 	//**********************************************************************************************
 	// Functions:
@@ -206,7 +220,6 @@ public class MapField
 	{
 		this.stateNode = stateNode;
 	}
-
 	
 	/**
 	 * @return 
@@ -216,7 +229,6 @@ public class MapField
 	{
 		return this.inStateNode;
 	}
-
 	
 	/**
 	 * @param inStateNode
@@ -225,6 +237,24 @@ public class MapField
 	public void setInStateNode(StateNode inStateNode)
 	{
 		this.inStateNode = inStateNode;
+	}
+	
+	/**
+	 * @return 
+	 *			the value of attribute {@link #field}.
+	 */
+	public Field getField()
+	{
+		return this.field;
+	}
+	
+	/**
+	 * @param field 
+	 * 			used to set the value of attribute {@link #field}.
+	 */
+	public void setField(Field field)
+	{
+		this.field = field;
 	}
 	
 }
