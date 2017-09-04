@@ -378,12 +378,16 @@ Stehende Welle:
 *	Würde sich irgenwie auch zur Kraftvermittlung (Bindungsenergie) eignen?
 	Vielleicht möglich einen "Gummieband"-Effekt damit herzustellen, der sich überdehnt, bis er "reißt"?
 
+<<<<<<< HEAD
 *	Unendlichkeit
 	=>	Ist es möglich, eine Map zu konstruieren (minimal 16*6=96, 24*2=48 ???), 
 		die an den Rändern die gleichen (passenden) Farben hat, deren Sechsecke ineinander passen
 		und eine Meta-Map aus sich wiederholdenen Meta-Sechecken (x?, y?) zu bilden?
 
 *	Warscheinlichkeiten (probability)
+=======
+*	Wahrscheinlichkeiten
+>>>>>>> branch 'master' of https://github.com/schmiereck/HexMapFields.git
 	=>	Ist die Wahrscheinlichkeit, das sich ein Status an einen anderen Ort "bewegt".
 		->	StateNode Berechnung:
 			>	Für einen Eingangszustand (Inner und In) eines Feldes wird ja ein NextState festgelegt.
@@ -456,6 +460,7 @@ Stehende Welle:
 		>	Tritt ein nicht auflößbarer Status ein, werden die betroffenen Felder auf den
 			aktuellen Zustand gesetzt und es wird weiter gesucht.
 		
+<<<<<<< HEAD
 *	Meta-DB (MetaDB)
 	=> 	Zu jedem Ausgangs-Feld (mit seinen Zuständen) wird jeweils das resultierende Feld und 
 		die drei benachbarten Felder abgelegt (als 4 Felder).
@@ -521,4 +526,25 @@ Stehende Welle:
 	=>	StateNode
 		->	metaEntry
 		
+=======
+*	Meta-DB
+	=> 	Zu jedem Ausgangs-Feld (mit seinen Zuständen) wird jeweils das resultierende Feld und 
+		die drei benachbarten Felder abgelegt (als 4 Felder).
+	=>	Diese Bilden also jweils eine Liste mit Folge-Feldern.
+	=>	Felder deren Zustand sich nicht ändert haben sich selbst als "Nachfolger".
+		>	Dardurch vergößert sich der gespeicherte Raum nicht automatisch und wird immer größer.
+		>	Problem? Wenn sich der Status Aufgrund von Nachbarfeldern später ändert?
+	=>	Sich wiederholdende Zustände werden als Verweiß auf bestehende Zustände angelegt.
+		>	Sollte zu (Platzsparenden) zirkulären Strukturen führen.
+		>	Problem? Hängt der Zustand der Nachbarfelder nicht auch von deren Nachbarfeldern ab usw...?
+		
+*	Abbildung auf der "reale Ebene"
+	=>	Status eines Feldes verweißt ggf. auf eine Meta-Ebene (oder mehrere Meta-Ebenen).
+		Aus dieser lässt sich der Status auslesen.
+	=>	Strengere Strennung zwischen RuleSets?
+		->	RuleSets können zwar den Status eines anderen RuleSets als Eingang verwenden,
+			aber nur einen eigenen Status als Außgang benutzen?
+			>	Jain: Hierarchie von RuleSets?
+				
+>>>>>>> branch 'master' of https://github.com/schmiereck/HexMapFields.git
 ----------------------------------------------------------------------------------------------------
