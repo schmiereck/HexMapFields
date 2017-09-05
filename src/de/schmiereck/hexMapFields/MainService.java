@@ -123,16 +123,13 @@ public class MainService
 				final State abState = abStateNode.getState();
 
 				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-				final MapField abOutField = mapField.getABOutField();
-				final StateNode abInStateNode = abOutField.getStateNode().getParentNode().getParentNode();
+				final StateNode abInStateNode = MapFieldUtils.extractABStateNode(mapField);
 				final State abInState = abInStateNode.getState();
 				
-				final MapField bcOutField = mapField.getBCOutField();
-				final StateNode bcInStateNode = bcOutField.getStateNode().getParentNode();
+				final StateNode bcInStateNode = MapFieldUtils.extractBCStateNode(mapField);
 				final State bcInState = bcInStateNode.getState();
 				
-				final MapField caOutField = mapField.getCAOutField();
-				final StateNode caInStateNode = caOutField.getStateNode();
+				final StateNode caInStateNode = MapFieldUtils.extractCAStateNode(mapField);
 				final State caInState = caInStateNode.getState();
 				
 				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

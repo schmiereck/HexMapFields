@@ -513,14 +513,14 @@ Stehende Welle:
 		->	stateNode
 		->	inStateNode	->	nextStateNode
 		->	field
-		->	metaEntry
+		->	metaEntry ???
 	=>	MetaEntry
 		->	neighbour-MapEntry
 		->	next-MetaEntry
 		->	previous-MetaEntry
 		->	metaLevel
 	=>	MetaLevel
-		->	start-MetaEntry
+		->	start-MetaEntry ???
 	=>	Field
 		->	status: "dead" or "life"	
 	=>	StateNode
