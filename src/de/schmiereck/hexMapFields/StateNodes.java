@@ -24,15 +24,14 @@ public class StateNodes
 	 * 
 	 * Binärbaum aus: state, abState, bcState, caState
 	 */
-	private final StateNode rootNode = new StateNode(null, null, null, null);
+	private final StateNode rootNode = new StateNode(null, null, null);
 	
 	//**********************************************************************************************
 	// Functions:
 
 	public StateNode makeNode(final StateNode parentStateNode, 
 	                          final State state, 
-	                          final RuleSet ruleSet,
-	                          final MetaEntry metaEntry)
+	                          final RuleSet ruleSet)
 	{
 		//==========================================================================================
 		final StateNode retStateNode;
@@ -41,7 +40,7 @@ public class StateNodes
 
 		if (localStateNode == null)
 		{
-			retStateNode = new StateNode(parentStateNode, state, ruleSet, metaEntry);
+			retStateNode = new StateNode(parentStateNode, state, ruleSet);
 			
 //			retStateNode.setState(state);
 			

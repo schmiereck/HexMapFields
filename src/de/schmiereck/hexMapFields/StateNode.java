@@ -57,7 +57,7 @@ public class StateNode
 	
 	private /*final*/ RuleSet ruleSet;
 	
-	private final MetaEntry metaEntry;
+	private MetaEntry metaEntry;
 	
 	//**********************************************************************************************
 	// Functions:
@@ -68,8 +68,7 @@ public class StateNode
 	 */
 	public StateNode(final StateNode parentNode, 
 	                 final State state, 
-	                 final RuleSet ruleSet,
-	                 final MetaEntry metaEntry)
+	                 final RuleSet ruleSet)
 	{
 		//==========================================================================================
 		this.parentNode = parentNode;
@@ -101,7 +100,6 @@ public class StateNode
 		
 		this.energie = energieParentNode + energieState;
 		this.ruleSet = ruleSet;
-		this.metaEntry = metaEntry;
 		
 		//==========================================================================================
 	}
@@ -277,6 +275,15 @@ public class StateNode
 	public MetaEntry getMetaEntry()
 	{
 		return this.metaEntry;
+	}
+	
+	/**
+	 * @param metaEntry 
+	 * 			used to set the value of attribute {@link #metaEntry}.
+	 */
+	public void setMetaEntry(MetaEntry metaEntry)
+	{
+		this.metaEntry = metaEntry;
 	}
 
 }

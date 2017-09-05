@@ -33,11 +33,11 @@ public class RulesService
 		final StateNode rootNode = stateNodes.getRootNode();
 		
 		//------------------------------------------------------------------------------------------
-		final StateNode abStateNode = stateNodes.makeNode(rootNode, abState, ruleSet, null);
+		final StateNode abStateNode = stateNodes.makeNode(rootNode, abState, ruleSet);
 		
-		final StateNode bcStateNode = stateNodes.makeNode(abStateNode, bcState, ruleSet, null);
+		final StateNode bcStateNode = stateNodes.makeNode(abStateNode, bcState, ruleSet);
 		
-		final StateNode caStateNode = stateNodes.makeNode(bcStateNode, caState, ruleSet, null);
+		final StateNode caStateNode = stateNodes.makeNode(bcStateNode, caState, ruleSet);
 
 		//------------------------------------------------------------------------------------------
 		retStateNode = caStateNode;
@@ -60,18 +60,18 @@ public class RulesService
 		final StateNode rootStateNode = stateNodes.getRootNode();
 		
 		//------------------------------------------------------------------------------------------
-		final StateNode abStateNode = stateNodes.makeNode(rootStateNode, abState, ruleSet, null);
+		final StateNode abStateNode = stateNodes.makeNode(rootStateNode, abState, ruleSet);
 		
-		final StateNode bcStateNode = stateNodes.makeNode(abStateNode, bcState, ruleSet, null);
+		final StateNode bcStateNode = stateNodes.makeNode(abStateNode, bcState, ruleSet);
 		
-		final StateNode caStateNode = stateNodes.makeNode(bcStateNode, caState, ruleSet, null);
+		final StateNode caStateNode = stateNodes.makeNode(bcStateNode, caState, ruleSet);
 		
 		//------------------------------------------------------------------------------------------
-		final StateNode abInStateNode = stateNodes.makeNode(caStateNode, abInState, ruleSet, null);
+		final StateNode abInStateNode = stateNodes.makeNode(caStateNode, abInState, ruleSet);
 		
-		final StateNode bcInStateNode = stateNodes.makeNode(abInStateNode, bcInState, ruleSet, null);
+		final StateNode bcInStateNode = stateNodes.makeNode(abInStateNode, bcInState, ruleSet);
 		
-		final StateNode caInStateNode = stateNodes.makeNode(bcInStateNode, caInState, ruleSet, null);
+		final StateNode caInStateNode = stateNodes.makeNode(bcInStateNode, caInState, ruleSet);
 		
 		//------------------------------------------------------------------------------------------
 		retStateNode = caInStateNode;
