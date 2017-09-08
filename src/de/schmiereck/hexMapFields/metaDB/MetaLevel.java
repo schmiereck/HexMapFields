@@ -26,9 +26,27 @@ package de.schmiereck.hexMapFields.metaDB;
 public class MetaLevel
 {
 	
-	/**
-	 * Eine Map aus {@link MetaEntry} des aktuellen Zustandes beliebiger Ausdehnung 
-	 * mit Verweis auf die jeweiligen Nachbarfelder.<br/>
-	 */
-	private MetaEntry startMetaEntry;
+//	/**
+//	 * Eine Map aus {@link MetaEntry} des aktuellen Zustandes beliebiger Ausdehnung 
+//	 * mit Verweis auf die jeweiligen Nachbarfelder.<br/>
+//	 */
+//	private MetaEntry startMetaEntry = null;
+//	
+//	/**
+//	 * @return 
+//	 *			the value of attribute {@link #startMetaEntry}.
+//	 */
+//	public MetaEntry getStartMetaEntry()
+//	{
+//		return this.startMetaEntry;
+//	}
+//	
+//	/**
+//	 * @param startMetaEntry 
+//	 * 			used to set the value of attribute {@link #startMetaEntry}.
+//	 */
+//	public void setStartMetaEntry(MetaEntry startMetaEntry)
+//	{
+//		this.startMetaEntry = startMetaEntry;
+//	}
 }

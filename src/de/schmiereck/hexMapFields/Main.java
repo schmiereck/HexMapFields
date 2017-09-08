@@ -117,13 +117,6 @@ public class Main
 	public static void main(final String[] args)
 	{
 		//==========================================================================================
-		System.out.print("1:" + Math.log(1) + ", ");
-		System.out.print("2:" + Math.log(2) + ", ");
-		System.out.print("3:" + Math.log(3) + ", ");
-		System.out.print("4:" + Math.log(4) + ", ");
-		System.out.println();
-		
-		//------------------------------------------------------------------------------------------
 		// Farbladung:
 		final RuleSet blinkerRuleSet = MakeBlinkerRules.makeRules(stateNodes, emptyRuleSet, s0MapFieldStateNode);
 		final RuleSet runnerRuleSet = MakeRunnerRules.makeRules(stateNodes, emptyRuleSet, s0MapFieldStateNode);
@@ -167,14 +160,15 @@ public class Main
 //				if ((xPos == 0) && (yPos == 0))
 				if ((xPos == 6) && (yPos == 2))
 				{
-//					stateNode = emptyRuleSet.getInitStateNode();
+					stateNode = emptyRuleSet.getInitStateNode();
+					field = emptyField;
 //					stateNode = blinkerRuleSet.getInitStateNode();
 //					stateNode = circleStaticRuleSet.getInitStateNode();
-					stateNode = circleStaticBig1RuleSet.getInitStateNode();
+//					stateNode = circleStaticBig1RuleSet.getInitStateNode();
 //					stateNode = circleDirRuleSet.getInitStateNode();
 //					stateNode = dirFieldRuleSet.getInitStateNode();
 //					stateNode = runnerRuleSet.getInitStateNode();
-					field = new Field();		// A inital new Field is born.
+//					field = new Field();		// A inital new Field is born.
 				}
 				else
 				{

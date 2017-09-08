@@ -68,11 +68,18 @@ public class MainService
 			
 			if (metaDBService != null)
 			{
-				metaDBService.calcMetaStates(map, stateNodes);
+				metaDBService.calcMetaEntries(map, stateNodes);
+
+				metaDBService.calcMetaLevels(map, stateNodes);
 			}
 			
 			calcNextStates(map, stateNodes);
 
+			if (metaDBService != null)
+			{
+				metaDBService.calcNextMetaEntries(map, stateNodes);
+			}
+			
 //			if (energie != nextEnergie)
 //			{
 //				throw new RuntimeException("energie \"" + map.getEnergie() + "\" != map.nextEnergie \"" + nextEnergie + "\"");

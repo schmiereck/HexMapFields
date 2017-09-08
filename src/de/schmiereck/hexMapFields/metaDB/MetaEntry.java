@@ -25,18 +25,21 @@ public class MetaEntry
 	
 	/**
 	 * Neighbour Meta-Entries.
+	 * 0: AB
+	 * 1: BC
+	 * 2: CA
 	 */
-	private MetaEntry[] neighbourMetaEntries = new MetaEntry[MapField.NEIGHBOURS_CNT];
+	private final MetaEntry[] neighbourMetaEntries = new MetaEntry[MapField.NEIGHBOURS_CNT];
 	
 	/**
 	 * In- and Inner-State-Node of Field.
 	 */
-	private StateNode inStateNode;
+	private final StateNode inStateNode;
 	
 	/**
 	 * Next-MetaEntry of Field.
 	 */
-	private MetaEntry nextMetaEntry;
+	private MetaEntry nextMetaEntry = null;
 	
 	/**
 	 * Previous-MetaEntry of Field.
@@ -48,9 +51,10 @@ public class MetaEntry
 	//**********************************************************************************************
 	// Fields:
 	
-	public MetaEntry(final MetaLevel metaLevel)
+	public MetaEntry(final MetaLevel metaLevel, final StateNode inStateNode)
 	{
 		this.metaLevel = metaLevel;
+		this.inStateNode = inStateNode;
 	}
 	
 	/**
@@ -60,5 +64,46 @@ public class MetaEntry
 	public MetaLevel getMetaLevel()
 	{
 		return this.metaLevel;
+	}
+	
+	/**
+	 * @param pos
+	 * 			ist the given pos.
+	 * @return 
+	 *			the value of attribute {@link #neighbourMetaEntries} at given pos.
+	 */
+	public MetaEntry getNeighbourMetaEntry(final int pos)
+	{
+		return this.neighbourMetaEntries[pos];
+	}
+
+	
+	/**
+	 * @return 
+	 *			the value of attribute {@link #inStateNode}.
+	 */
+	public StateNode getInStateNode()
+	{
+		return this.inStateNode;
+	}
+
+	
+	/**
+	 * @return 
+	 *			the value of attribute {@link #nextMetaEntry}.
+	 */
+	public MetaEntry getNextMetaEntry()
+	{
+		return this.nextMetaEntry;
+	}
+
+	
+	/**
+	 * @param nextMetaEntry 
+	 * 			used to set the value of attribute {@link #nextMetaEntry}.
+	 */
+	public void setNextMetaEntry(MetaEntry nextMetaEntry)
+	{
+		this.nextMetaEntry = nextMetaEntry;
 	}
 }
