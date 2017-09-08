@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import de.schmiereck.hexMapFields.Map.Orientation;
+import de.schmiereck.hexMapFields.metaDB.MetaEntry;
 
 /**
  * <p>
@@ -399,7 +400,16 @@ public class MainView
 		this.drawOval(g2,
 		              xm, ym, 
 		              xRadius, yRadius);
+
+		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+		final MetaEntry metaEntry = mapField.getMetaEntry();
 		
+		if (metaEntry != null)
+		{
+			this.drawString(g2,
+			                xm, ym,
+			                "(" + metaEntry.getLevelNo() + ")");
+		}
 		//==========================================================================================
 	}
 	
@@ -447,14 +457,6 @@ public class MainView
 		
 	}
 
-	/**
-	 * @param g2
-	 * @param xm
-	 * @param ym
-	 * @param xab
-	 * @param yab
-	 * @param e
-	 */
 	private void drawStateOval(	final Graphics2D g2, double xm, double ym, double xab,
 								double yab, final double e)
 	{
@@ -475,6 +477,15 @@ public class MainView
 		
 	}
 
+	private void drawString(final Graphics2D g2, final double xm, final double ym, final String str)
+	{
+		//==========================================================================================
+		g2.drawString(str, 
+		              (int)(xm * this.xScale), (int)(ym * this.yScale));
+
+		//==========================================================================================
+	}
+	
 	private void drawLine(final Graphics2D g2,
 	                      final double xm, final double ym,
 	                      final double xDir, final double yDir)
