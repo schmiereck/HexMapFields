@@ -50,7 +50,7 @@ public class MetaDBService
 				{
 					// Wenn dieser noch keinen hate einen neuen MetaEntry mit neuem MetaLevel anlegen und dem StateNode zuweisen.
 					final MetaEntry localMetaEntry = newInStateNode.getMetaEntry();
-					
+	 				
 					// Hat der inStateNode keinen MetaEntry?
 					if (localMetaEntry == null)
 					{
