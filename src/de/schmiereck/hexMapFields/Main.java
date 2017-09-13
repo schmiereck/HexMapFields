@@ -164,6 +164,7 @@ public class Main
 					field = emptyField;
 //					stateNode = blinkerRuleSet.getInitStateNode();
 					stateNode = circleStaticRuleSet.getInitStateNode();
+//					stateNode = circleStaticRuleSet.getInitStateNode();
 //					stateNode = circleStaticBig1RuleSet.getInitStateNode();
 //					stateNode = circleDirRuleSet.getInitStateNode();
 //					stateNode = dirFieldRuleSet.getInitStateNode();

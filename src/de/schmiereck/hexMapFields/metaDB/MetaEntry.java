@@ -81,33 +81,6 @@ public class MetaEntry
 	
 	/**
 	 * @return 
-	 *			the value of attribute {@link #inStateNode}.
-	 */
-	public StateNode getInStateNode()
-	{
-		return this.inStateNode;
-	}
-	
-	/**
-	 * @return 
-	 *			the value of attribute {@link #nextMetaEntry}.
-	 */
-	public MetaEntry getNextMetaEntry()
-	{
-		return this.nextMetaEntry;
-	}
-	
-	/**
-	 * @param nextMetaEntry 
-	 * 			used to set the value of attribute {@link #nextMetaEntry}.
-	 */
-	public void setNextMetaEntry(MetaEntry nextMetaEntry)
-	{
-		this.nextMetaEntry = nextMetaEntry;
-	}
-
-	/**
-	 * @return 
 	 *			the value of attribute {@link #previousMetaEntry}.
 	 */
 	public MetaEntry getPreviousMetaEntry()
@@ -135,4 +108,34 @@ public class MetaEntry
 		return this.levelNo;
 	}
 	
+	/**
+	 * @return 
+	 *			the value of attribute {@link #inStateNode}.
+	 */
+	public StateNode getInStateNode()
+	{
+		//==========================================================================================
+		return this.inStateNode;
+	}
+	
+	/**
+	 * @return 
+	 *			the value of attribute {@link #nextMetaEntry}.
+	 */
+	public MetaEntry getNextMetaEntry()
+	{
+		//==========================================================================================
+		return this.nextMetaEntry;
+	}
+
+	/**
+	 * @param nextMetaEntry 
+	 * 			used to set the value of attribute {@link #nextMetaEntry}.
+	 */
+	public void setNextMetaEntry(MetaEntry nextMetaEntry)
+	{
+		//==========================================================================================
+		this.nextMetaEntry = nextMetaEntry;
+		//==========================================================================================
+	}
 }

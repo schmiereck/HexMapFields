@@ -40,12 +40,36 @@ public class MetaDBService
 				//----------------------------------------------------------------------------------
 				final MapField mapField = map.getMapField(xPos, yPos);
 
-//				final StateNode stateNode = mapField.getStateNode();
-				final StateNode inStateNode = mapField.getInStateNode();
+				final StateNode newInStateNode = mapField.getInStateNode();
 				
-				// Den (neuen) MapEntry berechnen.
-				final MetaEntry inStateNodeMetaEntry = this.findOrCreateInStateMetaEntry(mapField, inStateNode);
+				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+				// Den (neuen) MapEntry berechnen:
+				
+				// Den MetaEntry des (neuen) In-StateNode holen.
+				final MetaEntry inStateNodeMetaEntry;
+				{
+					// Wenn dieser noch keinen hate einen neuen MetaEntry mit neuem MetaLevel anlegen und dem StateNode zuweisen.
+					final MetaEntry localMetaEntry = newInStateNode.getMetaEntry();
+					
+					// Hat der inStateNode keinen MetaEntry?
+					if (localMetaEntry == null)
+					{
+						// Erzeuge einen neuen MetaEntry:
 
+						// Meta-Level bauen:
+						final MetaLevel metaLevel = new MetaLevel();
+						
+						// Meta-Entry bauen:
+						inStateNodeMetaEntry = new MetaEntry(metaLevel, newInStateNode);
+			
+						newInStateNode.setMetaEntry(inStateNodeMetaEntry);
+					}
+					else
+					{
+						inStateNodeMetaEntry = localMetaEntry;
+					}
+				}
+				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 				// Den (alten) MapEntry holen.
 				final MetaEntry metaEntry = mapField.getMetaEntry();
 				
@@ -92,93 +116,6 @@ public class MetaDBService
 			}
 		}
 		//==========================================================================================
-	}
-
-	private MetaEntry findOrCreateInStateMetaEntry(final MapField mapField, final StateNode newInStateNode)
-	{
-		//==========================================================================================
-		final MetaEntry retMetaEntry;
-
-		//------------------------------------------------------------------------------------------
-		// Den MetaEntry des (neuen) In-StateNode holen.
-		final MetaEntry inStateNodeMetaEntry;
-		{
-			// Wenn dieser noch keinen hate einen neuen MetaEntry mit neuem MetaLevel anlegen und dem StateNode zuweisen.
-			final MetaEntry localMetaEntry = newInStateNode.getMetaEntry();
-			
-			// Hat der inStateNode keinen MetaEntry?
-			if (localMetaEntry == null)
-			{
-				// Erzeuge einen neuen MetaEntry.
-				inStateNodeMetaEntry = this.createInStateMetaEntry(mapField, newInStateNode);
-	
-				newInStateNode.setMetaEntry(inStateNodeMetaEntry);
-			}
-			else
-			{
-				inStateNodeMetaEntry = localMetaEntry;
-			}
-		}
-		//------------------------------------------------------------------------------------------
-		retMetaEntry = inStateNodeMetaEntry;
-		
-//		final MetaEntry mapFieldNextMetaEntry;
-//		final StateNode mapFieldNextInStateNode;
-//
-//		// Den (vorherigen) MetaEntry des MapField holen.
-//		final MetaEntry mapFieldMetaEntry = mapField.getMetaEntry();
-//
-//		if (mapFieldMetaEntry != null)
-//		{
-//			mapFieldNextMetaEntry = mapFieldMetaEntry.getNextMetaEntry();
-//			
-//			if (mapFieldNextMetaEntry != null)
-//			{
-//				mapFieldNextInStateNode = mapFieldNextMetaEntry.getInStateNode();
-//				
-//				// Der neue In-StateNode und der nächste In-StateNode des MapField sind gleich?
-//				if (newInStateNode == mapFieldNextInStateNode)
-//				{
-////					retMetaEntry = mapFieldNextMetaEntry;
-//				}
-//				else
-//				{
-//					
-//				}
-//			}
-//			else
-//			{
-//				mapFieldNextInStateNode = null;
-//			}
-//		}
-//		else
-//		{
-//			mapFieldNextMetaEntry = null;
-//			mapFieldNextInStateNode = null;
-//		}
-		//==========================================================================================
-		return retMetaEntry;
-	}
-
-	private MetaEntry createInStateMetaEntry(final MapField mapField, final StateNode inStateNode)
-	{
-		//==========================================================================================
-		final MetaEntry inStateNodeMetaEntry;
-		
-		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-		// Meta-Level bauen:
-		
-		final MetaLevel metaLevel = new MetaLevel();
-		
-		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-		// Meta-Entry bauen:
-		
-		inStateNodeMetaEntry = new MetaEntry(metaLevel, inStateNode);
-
-//		metaLevel.setStartMetaEntry(inStateNodeMetaEntry);
-		
-		//==========================================================================================
-		return inStateNodeMetaEntry;
 	}
 
 	/**
