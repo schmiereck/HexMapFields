@@ -1,3 +1,19 @@
 
+
 git - Der einfache Einstieg - kein Schnick-schnack!
 https://rogerdudler.github.io/git-guide/index.de.html
+
+
+----------------------------------
+Timm:
+
+
+git diff
+
+git rm -n -rf bin\*
+git rm -rf bin\*
+
+git add .gitignore
+
+git status
+
