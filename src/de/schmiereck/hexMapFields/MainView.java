@@ -320,26 +320,43 @@ public class MainView
 		final int xSizeMap = map.getXSize();
 		final int ySizeMap = map.getYSize();
 		
-		final int xPos = (int)(0 * this.xScale);
-		final int yPos = (int)(0 * this.yScale);
-		final int xSize = (int)(((xSizeMap * Map.s2Tri) + (this.xOverlap * Map.s2Tri)) * this.xScale);
-		final int ySize = (int)(((ySizeMap * Map.hTri) + (this.yOverlap * Map.hTri)) * this.yScale);
-		
+		//------------------------------------------------------------------------------------------
+		{
+			final int xPos = (int)(0 * this.xScale);
+			final int yPos = (int)(0 * this.yScale);
+			final int xSize = (int)(((xSizeMap * Map.s2Tri) + (this.xOverlap * Map.s2Tri)) * this.xScale);
+			final int ySize = (int)(((ySizeMap * Map.hTri) + (this.yOverlap * Map.hTri)) * this.yScale);
+			
+			g2.setColor(Color.WHITE);
+			g2.fillRect(xPos, yPos, 
+			            xSize, ySize);
+		}
+		//------------------------------------------------------------------------------------------
 		Font currentFont = g2.getFont();
-        Font newFont = currentFont.deriveFont(currentFont.getSize() * 3.2F);
-        g2.setFont(newFont);
-
-        //------------------------------------------------------------------------------------------
-		g2.setColor(Color.WHITE);
-		g2.fillRect(xPos, yPos, 
-		            xSize, ySize);
+		Font newFont = currentFont.deriveFont(currentFont.getSize() * 3.2F);
+		g2.setFont(newFont);
 		
 		//------------------------------------------------------------------------------------------
-		final List<MapField> mapFields = map.getMapFields();
+//		final List<MapField> mapFields = map.getMapFields();
+//		
+//		for (final MapField mapField : mapFields)
+//		{
+//			drawMapField(g2, map, mapField);
+//		}
+		final int xSize = map.getXSize();
+		final int ySize = map.getYSize();
 		
-		for (final MapField mapField : mapFields)
+		for (int yPos = 0; yPos < ySize; yPos++)
 		{
-			drawMapField(g2, map, mapField);
+			for (int xPos = 0; xPos < xSize; xPos++)
+			{
+				//----------------------------------------------------------------------------------
+				final MapField mapField = map.getMapField(xPos, yPos);
+				
+				drawMapField(g2, map, mapField);
+				
+				//----------------------------------------------------------------------------------
+			}
 		}
 		//==========================================================================================
 	}

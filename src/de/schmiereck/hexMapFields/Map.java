@@ -3,6 +3,7 @@
  */
 package de.schmiereck.hexMapFields;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -285,7 +286,8 @@ public class Map
 	private final int xSize;
 	private final int ySize;
 	
-	private final List<MapField> mapFields;
+//	private final List<MapField> mapFields;
+	private final MapFields mapFields;
 	
 	private int energie = 0;
 	private int nextEnergie = 0;
@@ -302,17 +304,18 @@ public class Map
 		this.xSize = xSize;
 		this.ySize = ySize;
 		
-		this.mapFields = new Vector<>(xSize * ySize);
+//		this.mapFields = new Vector<>(xSize * ySize);
+		this.mapFields = new MapFields();
 
 		for (int yPos = 0; yPos < this.ySize; yPos++)
 		{
 			for (int xPos = 0; xPos < this.xSize; xPos++)
 			{
-				final int mapPos = yPos * this.xSize + xPos;
-
 				final MapField mapField = new MapField();
 				
-				this.mapFields.add(mapPos, mapField);
+//				final int mapPos = yPos * this.xSize + xPos;
+//				this.mapFields.add(mapPos, mapField);
+				this.mapFields.set(new Long(xPos), new Long(yPos), mapField);
 			}
 		}
 		//----------------------------------------------------------------------------------------------
@@ -456,19 +459,20 @@ public class Map
 		this.nextEnergie = cloneMap.nextEnergie;
 
 		//------------------------------------------------------------------------------------------
-		this.mapFields = new Vector<>(this.xSize * this.ySize);
+//		this.mapFields = new Vector<>(this.xSize * this.ySize);
+		this.mapFields = new MapFields();
 
 		for (int yPos = 0; yPos < this.ySize; yPos++)
 		{
 			for (int xPos = 0; xPos < this.xSize; xPos++)
 			{
-				final int mapPos = yPos * this.xSize + xPos;
-				
-				final MapField cloneMapField = cloneMap.mapFields.get(mapPos);
+//				final int mapPos = yPos * this.xSize + xPos;
+				final MapField cloneMapField = cloneMap.mapFields.get(new Long(xPos), new Long(yPos));
 				
 				final MapField mapField = new MapField(cloneMapField);
 				
-				this.mapFields.add(mapPos, mapField);
+//				this.mapFields.add(mapPos, mapField);
+				this.mapFields.set(new Long(xPos), new Long(yPos), mapField);
 			}
 		}
 		//==========================================================================================
@@ -624,7 +628,8 @@ public class Map
 		x = makeNormSize(xPos, this.xSize);
 		y = makeNormSize(yPos, this.ySize);
 		
-		final MapField mapField = this.mapFields.get((y * this.xSize) + x);
+//		final MapField mapField = this.mapFields.get((y * this.xSize) + x);
+		final MapField mapField = this.mapFields.get(new Long(x), new Long(y));
 
 		//==========================================================================================
 		return mapField;
@@ -654,15 +659,14 @@ public class Map
 		return p;
 	}
 	
-	/**
-	 * @return 
-	 *			the value of attribute {@link #mapFields}.
-	 */
-	public List<MapField> getMapFields()
-	{
-		return this.mapFields;
-	}
-	
+//	/**
+//	 * @return 
+//	 *			the value of attribute {@link #mapFields}.
+//	 */
+//	public List<MapField> getMapFields()
+//	{
+//		return this.mapFields;
+//	}
 	
 	/**
 	 * @return 
