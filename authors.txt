@@ -1,2 +1,3 @@
 smk = Thomas Schmiereck <thomas@schmiereck.de>
 thoma = Thomas Schmiereck <thomas@schmiereck.de>
+schmiereck = Thomas Schmiereck <thomas@schmiereck.de>
