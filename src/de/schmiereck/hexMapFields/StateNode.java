@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import de.schmiereck.hexMapFields.metaDB.MetaEntry;
-
 /**
  * <p>
  *	State-Node.
@@ -55,9 +53,7 @@ public class StateNode
 	
 	private long usedCnt = 0;
 	
-	private /*final*/ RuleSet ruleSet;
-	
-	private MetaEntry metaEntry;
+	private final RuleSet ruleSet;
 	
 	//**********************************************************************************************
 	// Functions:
@@ -117,7 +113,6 @@ public class StateNode
 		this.parentNode = cloneStateNode.parentNode;
 		this.energie = cloneStateNode.energie;
 		this.ruleSet = ruleSet;
-		this.metaEntry = cloneStateNode.metaEntry;
 		
 		if (this.state == null) throw new RuntimeException("State is null.");
 
@@ -268,22 +263,4 @@ public class StateNode
 		
 	}
 	
-	/**
-	 * @return 
-	 *			the value of attribute {@link #metaEntry}.
-	 */
-	public MetaEntry getMetaEntry()
-	{
-		return this.metaEntry;
-	}
-	
-	/**
-	 * @param metaEntry 
-	 * 			used to set the value of attribute {@link #metaEntry}.
-	 */
-	public void setMetaEntry(MetaEntry metaEntry)
-	{
-		this.metaEntry = metaEntry;
-	}
-
 }

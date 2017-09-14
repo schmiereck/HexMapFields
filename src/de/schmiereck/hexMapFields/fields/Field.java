@@ -3,8 +3,6 @@
  */
 package de.schmiereck.hexMapFields.fields;
 
-import de.schmiereck.hexMapFields.metaDB.MetaLevel;
-
 /**
  * <p>
  *	Field.<br/>

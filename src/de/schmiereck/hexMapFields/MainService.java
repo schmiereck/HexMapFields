@@ -6,7 +6,6 @@ package de.schmiereck.hexMapFields;
 import java.util.List;
 
 import de.schmiereck.hexMapFields.genetic.GeneticService;
-import de.schmiereck.hexMapFields.metaDB.MetaDBService;
 
 /**
  * <p>
@@ -33,8 +32,7 @@ public class MainService
 	public static void calc(final Map map, 
 	                        final MainView mainView, 
 	                        final StateNodes stateNodes,
-	                        final GeneticService geneticService,
-	                        final MetaDBService metaDBService)
+	                        final GeneticService geneticService)
 	{
 		//==========================================================================================
 		final MapHolder mapHolder = new MapHolder();
@@ -66,20 +64,8 @@ public class MainService
 
 			calcInStates(map, stateNodes);
 			
-			if (metaDBService != null)
-			{
-				metaDBService.calcMetaEntries(map, stateNodes);
-
-				metaDBService.calcMetaLevels(map, stateNodes);
-			}
-			
 			calcNextStates(map, stateNodes);
 
-//			if (metaDBService != null)
-//			{
-//				metaDBService.calcNextMetaEntries(map, stateNodes);
-//			}
-			
 //			if (energie != nextEnergie)
 //			{
 //				throw new RuntimeException("energie \"" + map.getEnergie() + "\" != map.nextEnergie \"" + nextEnergie + "\"");

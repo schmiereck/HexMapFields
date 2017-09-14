@@ -19,7 +19,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import de.schmiereck.hexMapFields.Map.Orientation;
-import de.schmiereck.hexMapFields.metaDB.MetaEntry;
 
 /**
  * <p>
@@ -402,14 +401,14 @@ public class MainView
 		              xRadius, yRadius);
 
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-		final MetaEntry metaEntry = mapField.getMetaEntry();
-		
-		if (metaEntry != null)
-		{
-			this.drawString(g2,
-			                xm, ym,
-			                "(" + metaEntry.getLevelNo() + ")");
-		}
+//		final MetaEntry metaEntry = mapField.getMetaEntry();
+//		
+//		if (metaEntry != null)
+//		{
+//			this.drawString(g2,
+//			                xm, ym,
+//			                "(" + metaEntry.getLevelNo() + ")");
+//		}
 		//==========================================================================================
 	}
 	

@@ -3,8 +3,6 @@
  */
 package de.schmiereck.hexMapFields;
 
-import de.schmiereck.hexMapFields.metaDB.MetaEntry;
-
 /**
  * <p>
  *	States.

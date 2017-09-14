@@ -5,7 +5,6 @@ package de.schmiereck.hexMapFields;
 
 import de.schmiereck.hexMapFields.Map.Orientation;
 import de.schmiereck.hexMapFields.fields.Field;
-import de.schmiereck.hexMapFields.metaDB.MetaEntry;
 
 /**
  * <p>
@@ -63,8 +62,6 @@ public class MapField
 	 * Field.
 	 */
 	private Field field = null;
-	
-	private MetaEntry metaEntry = null;
 	
 	//**********************************************************************************************
 	// Functions:
@@ -291,24 +288,4 @@ public class MapField
 		this.field = field;
 	}
 
-	
-	/**
-	 * @return 
-	 *			the value of attribute {@link #metaEntry}.
-	 */
-	public MetaEntry getMetaEntry()
-	{
-		return this.metaEntry;
-	}
-
-	
-	/**
-	 * @param metaEntry 
-	 * 			used to set the value of attribute {@link #metaEntry}.
-	 */
-	public void setMetaEntry(MetaEntry metaEntry)
-	{
-		this.metaEntry = metaEntry;
-	}
-	
 }
