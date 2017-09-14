@@ -57,6 +57,9 @@ public class StateNode
 	
 	private /*final*/ RuleSet ruleSet;
 	
+	/**
+	 * Resulting Meta-Entry.
+	 */
 	private MetaEntry metaEntry;
 	
 	//**********************************************************************************************
