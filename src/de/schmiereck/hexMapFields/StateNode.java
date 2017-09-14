@@ -55,7 +55,7 @@ public class StateNode
 	
 	private long usedCnt = 0;
 	
-	private /*final*/ RuleSet ruleSet;
+	private RuleSet ruleSet;
 	
 	/**
 	 * Resulting Meta-Entry.
