@@ -486,7 +486,7 @@ public class MainView
 	private void drawStateOval(	final Graphics2D g2, double xm, double ym, double xab,
 								double yab, final double e)
 	{
-		this.drawOval(g2, xm+xab/2, ym+yab/2, e, e);//xRadius/2, yRadius/2);
+		this.fillOval(g2, xm+xab/2, ym+yab/2, e, e);//xRadius/2, yRadius/2);
 	}
 
 	private void drawOut(final Graphics2D g2, final double xm, final double ym, final MapField outField)
@@ -541,6 +541,17 @@ public class MainView
 	{
 		//==========================================================================================
 		g2.drawOval((int)((xm - xRadius) * this.xScale), (int)((ym - yRadius) * this.yScale), 
+		            (int)((xRadius + xRadius) * this.xScale), (int)((yRadius + yRadius) * this.yScale));
+
+		//==========================================================================================
+	}
+
+	private void fillOval(final Graphics2D g2,
+	                      final double xm, final double ym,
+	                      final double xRadius, final double yRadius)
+	{
+		//==========================================================================================
+		g2.fillOval((int)((xm - xRadius) * this.xScale), (int)((ym - yRadius) * this.yScale), 
 		            (int)((xRadius + xRadius) * this.xScale), (int)((yRadius + yRadius) * this.yScale));
 
 		//==========================================================================================

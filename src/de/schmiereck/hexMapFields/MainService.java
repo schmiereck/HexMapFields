@@ -232,34 +232,42 @@ public class MainService
 		}
 		else
 		{
-			// Nicht final, wird in der Schleife durchlaufen.
-			State parentState = state;
-			// Nicht final, wird in der Schleife gesetzt.
-			StateNode parentStateNode = null;
-
-			while (parentStateNode == null)
+			if (state != null)
 			{
-				parentState = parentState.getParentState();
-				
-				if (parentState != null)
+				// Nicht final, wird in der Schleife durchlaufen.
+				State parentState = state;
+				// Nicht final, wird in der Schleife gesetzt.
+				StateNode parentStateNode = null;
+	
+				while (parentStateNode == null)
 				{
-					parentStateNode = 
-							searchInStateNodeRecursive(stateNodes, 
-							                           stateNode, 
-							                           stateArr, stateArrPos, 
-							                           parentState);
+					parentState = parentState.getParentState();
 					
-					if ((parentStateNode != null) && (parentStateNode.getState() == null))
+					if (parentState != null)
 					{
-						throw new RuntimeException("parentStateNode State is null.");
+						parentStateNode = 
+								searchInStateNodeRecursive(stateNodes, 
+								                           stateNode, 
+								                           stateArr, stateArrPos, 
+								                           parentState);
+						
+//						if ((parentStateNode != null) && (parentStateNode.getState() == null))
+//						{
+//							throw new RuntimeException("parentStateNode State is null.");
+//						}
+					}
+					else
+					{
+						break;
 					}
 				}
-				else
-				{
-					break;
-				}
+				
+				retStateNode = parentStateNode;
 			}
-			retStateNode = parentStateNode;
+			else
+			{
+				retStateNode = null;
+			}
 		}
 		//==========================================================================================
 		return retStateNode;

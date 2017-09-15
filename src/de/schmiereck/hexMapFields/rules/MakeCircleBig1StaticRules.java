@@ -31,12 +31,12 @@ public class MakeCircleBig1StaticRules
 		final RuleSet ruleSet = new RuleSet(emptyRuleSet, MainService.getRunCnt());
 		
 		//------------------------------------------------------------------------------------------
-		final State s0EdgeState = Main.s0EdgeState;
+		final State s0EdgeState = Main.s0EdgeState;				// Energie: 0
 
-		final State s1EdgeState = new State(Main.s1EdgeState);
+		final State s1EdgeState = new State(Main.s1EdgeState);	// Energie: 1
 		ruleSet.addState(s1EdgeState);
 		
-		final State s2EdgeState = new State(Main.s1EdgeState);
+		final State s2EdgeState = new State(Main.s1EdgeState);	// Energie: 2
 		ruleSet.addState(s2EdgeState);
 		
 		//------------------------------------------------------------------------------------------
