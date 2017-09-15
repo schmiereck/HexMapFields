@@ -103,27 +103,45 @@ public class MainService
 				final MapField mapField = map.getMapField(xPos, yPos);
 
 				final StateNode stateNode = mapField.getStateNode();
-				retEnergie += stateNode.getEnergie();
-				
+				if (stateNode != null)
+				{
+					retEnergie += stateNode.getEnergie();
+				}
 				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-				final StateNode caStateNode = mapField.getStateNode();
-				final State caState = caStateNode.getState();
+				final State caState;
+				final State bcState;
+				final State abState;
 				
-				final StateNode bcStateNode = caStateNode.getParentNode();
-				final State bcState = bcStateNode.getState();
-				
-				final StateNode abStateNode = bcStateNode.getParentNode();
-				final State abState = abStateNode.getState();
+//				final StateNode caStateNode = mapField.getStateNode();
+//				caState = caStateNode.getState();
+//				
+//				final StateNode bcStateNode = caStateNode.getParentNode();
+//				bcState = bcStateNode.getState();
+//				
+//				final StateNode abStateNode = bcStateNode.getParentNode();
+//				abState = abStateNode.getState();
 
+				final StateNode caStateNode = mapField.getStateNode();
+				if (caStateNode != null)
+				{
+					caState = caStateNode.getState();
+					
+					final StateNode bcStateNode = caStateNode.getParentNode();
+					bcState = bcStateNode.getState();
+					
+					final StateNode abStateNode = bcStateNode.getParentNode();
+					abState = abStateNode.getState();
+				}
+				else
+				{
+					caState = null;
+					bcState = null;
+					abState = null;
+				}
 				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-				final StateNode abInStateNode = MapFieldUtils.extractABStateNode(mapField);
-				final State abInState = abInStateNode.getState();
-				
-				final StateNode bcInStateNode = MapFieldUtils.extractBCStateNode(mapField);
-				final State bcInState = bcInStateNode.getState();
-				
-				final StateNode caInStateNode = MapFieldUtils.extractCAStateNode(mapField);
-				final State caInState = caInStateNode.getState();
+				final State abInState = MapFieldUtils.extractABStateNodeState(mapField);
+				final State bcInState = MapFieldUtils.extractBCStateNodeState(mapField);
+				final State caInState = MapFieldUtils.extractCAStateNodeState(mapField);
 				
 				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 				final StateNode inStateNode = 
@@ -177,27 +195,7 @@ public class MainService
 		stateArr[4] = bcInState;
 		stateArr[5] = caInState;
 		
-		dbgCheckArrNullState(stateArr);
-		
 		final StateNode stateNode = searchInStateNodeRecursive(stateNodes, rootNode, stateArr, 0);
-		
-//		//------------------------------------------------------------------------------------------
-//		final StateNode abStateNode = states.searchNode(rootNode, abState);
-//		
-//		final StateNode bcStateNode = states.searchNode(abStateNode, bcState);
-//		
-//		final StateNode caStateNode = states.searchNode(bcStateNode, caState);
-//		
-//		//------------------------------------------------------------------------------------------
-//		final StateNode abInStateNode = states.searchNode(caStateNode, abInState);
-//		
-//		final StateNode bcInStateNode = states.searchNode(abInStateNode, bcInState);
-//		
-//		final StateNode caInStateNode = states.searchNode(bcInStateNode, caInState);
-//		
-//		final StateNode stateNode = caInStateNode;
-		//------------------------------------------------------------------------------------------
-//		final State localState = stateNode.getState();
 		
 		if (stateNode != null)
 		{
@@ -330,8 +328,6 @@ public class MainService
 						
 						final StateNode oldStateNode = mapField.getStateNode();
 						
-						dbgCheckFirst3NullState(nextStateNode);
-						
 						// Nur hochzählen, wenn sich der State auch ändert.
 						if (oldStateNode != nextStateNode)
 						{
@@ -354,38 +350,6 @@ public class MainService
 		map.setNextEnergie(retEnergie);
 		
 		//==========================================================================================
-	}
-
-	public static void dbgCheckFirst3NullState(final StateNode nextStateNode)
-	{
-		//==========================================================================================
-		StateNode stateNode = nextStateNode;
-		
-		for (int pos = 0; pos < 3; pos++)
-		{
-			State state = stateNode.getState();
-			if (state == null)
-			{
-				throw new RuntimeException("First3: State is null.");
-			}
-			stateNode = stateNode.getParentNode();
-		}
-		//==========================================================================================
-	}
-
-	private static void dbgCheckArrNullState(State[] stateArr)
-	{
-		//==========================================================================================
-		for (int pos = 0; pos < stateArr.length; pos++)
-		{
-			State state = stateArr[pos];
-			if (state == null)
-			{
-				throw new RuntimeException("StateArr: State is null.");
-			}
-		}
-		//==========================================================================================
-		
 	}
 
 	private static String inStateNodeToString(final StateNode inStateNode)
@@ -570,10 +534,6 @@ public class MainService
 			
 			retStateNode = foundStateNode;
 		}
-		
-		if (retStateNode != null)
-			MainService.dbgCheckFirst3NullState(retStateNode);
-
 		//==========================================================================================
 		return retStateNode;
 	}

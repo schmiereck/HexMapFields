@@ -353,8 +353,10 @@ public class MainView
 				//----------------------------------------------------------------------------------
 				final MapField mapField = map.getMapField(xPos, yPos);
 				
-				drawMapField(g2, map, mapField);
-				
+				if (mapField != null)
+				{
+					drawMapField(g2, map, mapField);
+				}
 				//----------------------------------------------------------------------------------
 			}
 		}
@@ -393,23 +395,31 @@ public class MainView
 		
 		// Prüfen ob der State aktiv ist und dann hervorheben.
 		final StateNode caStateNode = mapField.getStateNode();
-		final State caState = caStateNode.getState();
+		if (caStateNode != null)
+		{
+			final State caState = caStateNode.getState();
 
-		final StateNode bcStateNode = caStateNode.getParentNode();
-		final State bcState = bcStateNode.getState();
-		
-		final StateNode abStateNode = bcStateNode.getParentNode();
-		final State abState = abStateNode.getState();
-		
-		// From Origin to lr (AB).
-		this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED);
-		
-		// From Origin to rt (BC).
-		this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN);
-
-		// From Origin to lt (CA).
-		this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE);
-
+			// From Origin to lt (CA).
+			this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE);
+			
+			final StateNode bcStateNode = caStateNode.getParentNode();
+			if (bcStateNode != null)
+			{
+				final State bcState = bcStateNode.getState();
+				
+				// From Origin to rt (BC).
+				this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN);
+				
+				final StateNode abStateNode = bcStateNode.getParentNode();
+				if (abStateNode != null)
+				{
+					final State abState = abStateNode.getState();
+					
+					// From Origin to lr (AB).
+					this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED);
+				}
+			}
+		}
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		g2.setColor(Color.BLACK);
 		// Inner-Circle.

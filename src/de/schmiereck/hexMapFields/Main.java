@@ -34,13 +34,13 @@ public class Main
 	
 	// Für verscheidene Felder verschiendene States anlegen.
 	
-	public static final State emptyState = new State();				// Empty-State (Energie 0), Vacuum
+	public static final State emptyState = null;//new State();				// Empty-State (Energie 0), Vacuum
 	
-	public static final State s0EdgeState = new State(emptyState);	// inactive (Energie 1)
-	public static final State s1EdgeState = new State(s0EdgeState);	// active (Energie 2)
+	public static final State s0EdgeState = null;//new State(emptyState);	// inactive (Energie 1)
+	public static final State s1EdgeState = null;//new State(s0EdgeState);	// active (Energie 2)
 
-//	public static final State e0EdgeState = new State(emptyState);	// inactive (Energie 1)
-	public static final State e1EdgeState = new State(emptyState);	// active (Energie 1)
+//	public static final State e0EdgeState = null;//new State(emptyState);	// inactive (Energie 1)
+	public static final State e1EdgeState = null;//new State(emptyState);	// active (Energie 1)
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	private static final StateNodes stateNodes = new StateNodes();
@@ -55,9 +55,9 @@ public class Main
 	static
 	{
 //		emptyRuleSet.addState(Main.emptyState);
-		emptyRuleSet.addState(Main.s0EdgeState);
-		emptyRuleSet.addState(Main.s1EdgeState);
-		emptyRuleSet.addState(Main.e1EdgeState);
+		//emptyRuleSet.addState(Main.s0EdgeState);
+		//emptyRuleSet.addState(Main.s1EdgeState);
+		//emptyRuleSet.addState(Main.e1EdgeState);
 	}
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //	private static final StateNode emptyMapFieldStateNode; 
@@ -151,7 +151,7 @@ public class Main
 		{
 			for (int xPos = 0; xPos < xSize; xPos++)
 			{
-				final MapField mapField = map.getMapField(xPos, yPos);
+				final MapField mapField;// = map.getMapField(xPos, yPos);
 				
 				final StateNode stateNode;
 				final Field field;
@@ -174,8 +174,8 @@ public class Main
 				{
 					if ((xPos == 7) && (yPos == 3))
 					{
-						stateNode = emptyRuleSet.getInitStateNode();
-						field = emptyField;
+						stateNode = null;//emptyRuleSet.getInitStateNode();
+						field = null;//emptyField;
 //						stateNode = blinkerRuleSet.getInitStateNode();
 //						stateNode = circleStaticRuleSet.getInitStateNode();
 //						stateNode = circleDirRuleSet.getInitStateNode();		// Error.
@@ -184,13 +184,18 @@ public class Main
 					}
 					else
 					{
-						stateNode = s0MapFieldStateNode;
-						field = emptyField;
+						stateNode = null;//emptyRuleSet.getInitStateNode();
+						field = null;//emptyField;
 					}
 				}
 
-				mapField.setStateNode(stateNode);
-				mapField.setField(field);
+				if (stateNode != null)
+				{
+					mapField = map.getMapField(xPos, yPos);
+	
+					mapField.setStateNode(stateNode);
+					mapField.setField(field);
+				}
 			}
 		}
 		

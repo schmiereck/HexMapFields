@@ -41,60 +41,60 @@ public class MakeBlinkerRules
 		{
 			// AB active, others inactive
 			rMapFieldStateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                          s1EdgeState, s0EdgeState, s0EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s1EdgeState, s0EdgeState, s0EdgeState);
 		}
 		final StateNode rgMapFieldStateNode; 
 		{
 			// AB & BC active, others inactive
 			rgMapFieldStateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                          s1EdgeState, s1EdgeState, s0EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s1EdgeState, s1EdgeState, s0EdgeState);
 		}
 		final StateNode gMapFieldStateNode; 
 		{
 			// BC active, others inactive
 			gMapFieldStateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                          s0EdgeState, s1EdgeState, s0EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s0EdgeState, s1EdgeState, s0EdgeState);
 		}
 		final StateNode gbMapFieldStateNode; 
 		{
 			// BC & CA active, others inactive
 			gbMapFieldStateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                          s0EdgeState, s1EdgeState, s1EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s0EdgeState, s1EdgeState, s1EdgeState);
 		}
 		final StateNode bMapFieldStateNode; 
 		{
 			// CA active, others inactive
 			bMapFieldStateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                          s0EdgeState, s0EdgeState, s1EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s0EdgeState, s0EdgeState, s1EdgeState);
 		}
 		final StateNode rbMapFieldStateNode; 
 		{
 			// AB & CA active, others inactive
 			rbMapFieldStateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                          s1EdgeState, s0EdgeState, s1EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s1EdgeState, s0EdgeState, s1EdgeState);
 		}
 		//------------------------------------------------------------------------------------------
 		{
 			// R -> 0
 			final StateNode stateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                          s1EdgeState, s0EdgeState, s0EdgeState,
-					                          s0EdgeState, s0EdgeState, s0EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s1EdgeState, s0EdgeState, s0EdgeState,
+				                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
 			stateNode.setNextStateNode(s0MapFieldStateNode);
 		}
 		{
 			// inR -> R
 			final StateNode stateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                          s0EdgeState, s0EdgeState, s0EdgeState,
-					                          s1EdgeState, s0EdgeState, s0EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s0EdgeState, s0EdgeState, s0EdgeState,
+				                           s1EdgeState, s0EdgeState, s0EdgeState);
 			
 			stateNode.setNextStateNode(rMapFieldStateNode);
 		}
@@ -102,18 +102,18 @@ public class MakeBlinkerRules
 		{
 			// G -> 0
 			final StateNode stateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s0EdgeState, s1EdgeState, s0EdgeState,
-					                            s0EdgeState, s0EdgeState, s0EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s0EdgeState, s1EdgeState, s0EdgeState,
+				                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
 			stateNode.setNextStateNode(s0MapFieldStateNode);
 		}
 		{
 			// inG -> G
 			final StateNode stateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s0EdgeState, s0EdgeState, s0EdgeState,
-					                            s0EdgeState, s1EdgeState, s0EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s0EdgeState, s0EdgeState, s0EdgeState,
+				                           s0EdgeState, s1EdgeState, s0EdgeState);
 			
 			stateNode.setNextStateNode(gMapFieldStateNode);
 		}
@@ -121,18 +121,18 @@ public class MakeBlinkerRules
 		{
 			// B -> 0
 			final StateNode stateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s0EdgeState, s0EdgeState, s1EdgeState,
-					                            s0EdgeState, s0EdgeState, s0EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s0EdgeState, s0EdgeState, s1EdgeState,
+				                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
 			stateNode.setNextStateNode(s0MapFieldStateNode);
 		}
 		{
 			// inB -> B
 			final StateNode stateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s0EdgeState, s0EdgeState, s0EdgeState,
-					                            s0EdgeState, s0EdgeState, s1EdgeState);
+				RulesService.makeStateNode(stateNodes, ruleSet,
+				                           s0EdgeState, s0EdgeState, s0EdgeState,
+				                           s0EdgeState, s0EdgeState, s1EdgeState);
 			
 			stateNode.setNextStateNode(bMapFieldStateNode);
 		}

@@ -527,10 +527,29 @@ Fazit:
 ----------------------------------------------------------------------------------------------------
 Neueste Idee:
 *	Die Map auf einen Hash für die Positionen umstellen.
-*	Pro RuleSet eine Map aufbauen und diese überlagern.
+	=>	Nur noch die belegten Positionen (Long) im Hash durchlaufen.
+*	Pro RuleSet eine Map aufbauen.
+	=>	Emtpy-Fields entfernen (ist ein eigenes Rule-Set).
 	=>	Zeitschritte trennen oder nachvollziehbar/ zugreifbar machen.
-	=>	Vielleicht später mit dem Field verknüpfen.
-*	Diese Maps können, wenn ein Zustand als Ausgangszustand gefunden wird,
-	relativ in einer globalen Map verwendet werden.
-	
+		>	Index mit Time-Maps aufbauen der die jeweils gesetzen Felder beinhaltet.
+	=>	Die Idee in Ergebnis eines In-State-Node eine Referenz auf ein Map-Field abzulegen
+		war ja nocht blöd. So können am einfachsten Schleifen / Wiederholungen erkannt werden.
+	=>	Solche Maps mit einem Field verknüpfen und diese in einer Global-Map überlagern um Interaktionen zu ermöglichen.
+		>	Diese Maps können, wenn ein Zustand als Ausgangszustand gefunden wird,
+			relativ in einer globalen Map verwendet werden.
+	=>	Die Map dynamischer machen. Die ganzen vorberechnungen der Orientierung und Nachbarn 
+		werden nur für die Darstellung benötigt.
+	=>	Die State-Nodes weg von der hierarchischen zu einer Neighbour im Array umbauen.
+		Das hierarchische ist nur für die Hash Verwaltung sinnvoll.
+		
 ----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

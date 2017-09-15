@@ -64,11 +64,17 @@ public class State
 		//==========================================================================================
 		this.parentState = parentState;
 		
-		this.no = this.parentState.childStates.size();
-		
-		this.parentState.childStates.add(this);
-				
-		this.energie = parentState.getEnergie() + 1;
+		if (parentState != null)
+		{
+			this.no = this.parentState.childStates.size();
+			this.energie = parentState.getEnergie() + 1;
+			this.parentState.childStates.add(this);
+		}
+		else
+		{
+			this.no = 0;
+			this.energie = 1;
+		}
 		//==========================================================================================
 	}
 

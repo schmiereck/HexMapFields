@@ -25,16 +25,48 @@ public class MapFieldUtils
 	public static StateNode extractABStateNode(final MapField mapField)
 	{
 		//==========================================================================================
+		final StateNode abInStateNode;
+		
 		final MapField abOutField = mapField.getABOutField();
-		final StateNode abInStateNode = abOutField.getStateNode().getParentNode().getParentNode();
-
+		final StateNode stateNode = abOutField.getStateNode();
+		if (stateNode != null)
+		{
+			abInStateNode = abOutField.getStateNode().getParentNode().getParentNode();
+		}
+		else
+		{
+			abInStateNode = null;
+		}
 		//==========================================================================================
 		return abInStateNode;
 	}
-
+	
 	/**
 	 * @param mapField
 	 * 			ist the Map-Field.
+	 * @return
+	 * 			the AB-State of the Neighbour AB-Field of given Map-Field.
+	 */
+	public static State extractABStateNodeState(final MapField mapField)
+	{
+		//==========================================================================================
+		final State abInState;
+		final StateNode abInStateNode = MapFieldUtils.extractABStateNode(mapField);
+		if (abInStateNode != null)
+		{
+			abInState = abInStateNode.getState();
+		}
+		else
+		{
+			abInState = null;
+		}
+		//==========================================================================================
+		return abInState;
+	}
+
+	/**
+	 * 			ist the Map-Field.
+	 * @param mapField
 	 * @return
 	 * 			the In-StateNode of the Neighbour AB-Field of given Map-Field.
 	 */
@@ -57,11 +89,43 @@ public class MapFieldUtils
 	public static StateNode extractBCStateNode(final MapField mapField)
 	{
 		//==========================================================================================
+		final StateNode bcInStateNode;
+		
 		final MapField bcOutField = mapField.getBCOutField();
-		final StateNode bcInStateNode = bcOutField.getStateNode().getParentNode();
-
+		final StateNode stateNode = bcOutField.getStateNode();
+		if (stateNode != null)
+		{
+			bcInStateNode = stateNode.getParentNode();
+		}
+		else
+		{
+			bcInStateNode = null;
+		}
 		//==========================================================================================
 		return bcInStateNode;
+	}
+
+	/**
+	 * @param mapField
+	 * 			ist the Map-Field.
+	 * @return
+	 * 			the CB-State of the Neighbour CB-Field of given Map-Field.
+	 */
+	public static State extractBCStateNodeState(final MapField mapField)
+	{
+		//==========================================================================================
+		final State bcInState;
+		final StateNode bcInStateNode = MapFieldUtils.extractBCStateNode(mapField);
+		if (bcInStateNode != null)
+		{
+			bcInState = bcInStateNode.getState();
+		}
+		else
+		{
+			bcInState = null;
+		}
+		//==========================================================================================
+		return bcInState;
 	}
 
 	/**
@@ -94,6 +158,29 @@ public class MapFieldUtils
 
 		//==========================================================================================
 		return caInStateNode;
+	}
+
+	/**
+	 * @param mapField
+	 * 			ist the Map-Field.
+	 * @return
+	 * 			the CA-State of the Neighbour CA-Field of given Map-Field.
+	 */
+	public static State extractCAStateNodeState(final MapField mapField)
+	{
+		//==========================================================================================
+		final State caInState;
+		final StateNode caInStateNode = MapFieldUtils.extractCAStateNode(mapField);
+		if (caInStateNode != null)
+		{
+			caInState = caInStateNode.getState();
+		}
+		else
+		{
+			caInState = null;
+		}
+		//==========================================================================================
+		return caInState;
 	}
 	
 	/**
