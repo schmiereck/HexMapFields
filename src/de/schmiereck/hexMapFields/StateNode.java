@@ -5,7 +5,9 @@ package de.schmiereck.hexMapFields;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
+import java.util.Vector;
 
 /**
  * <p>
@@ -42,9 +44,9 @@ public class StateNode
 	/**
 	 * Is the State-Node of a Next-State-Node.
 	 */
-	private StateNode nextStateNode = null;
+	private List<NextStateNode> nextStateNodes = null;
 	
-	private /*final*/ StateNode parentNode;
+	private final StateNode parentNode;
 	
 	/**
 	 * Energie of all Parent-States and the {@link #state}.
@@ -100,25 +102,6 @@ public class StateNode
 		//==========================================================================================
 	}
 	
-	/**
-	 * Copy Constructor.
-	 *
-	 */
-	public StateNode(final StateNode cloneStateNode, final RuleSet ruleSet)
-	{
-		//==========================================================================================
-		this.states.putAll(cloneStateNode.states);
-		this.state = cloneStateNode.state;
-		this.nextStateNode = cloneStateNode.nextStateNode;
-		this.parentNode = cloneStateNode.parentNode;
-		this.energie = cloneStateNode.energie;
-		this.ruleSet = ruleSet;
-		
-		if (this.state == null) throw new RuntimeException("State is null.");
-
-		//==========================================================================================
-	}
-		
 	public void add(final StateNode stateNode)
 	{
 		//==========================================================================================
@@ -172,9 +155,9 @@ public class StateNode
 	 * @return 
 	 *			the value of attribute {@link #nextStateNode}.
 	 */
-	public StateNode getNextStateNode()
+	public List<NextStateNode> getNextStateNode()
 	{
-		return this.nextStateNode;
+		return this.nextStateNodes;
 	}
 
 	
@@ -182,9 +165,13 @@ public class StateNode
 	 * @param nextStateNode 
 	 * 			used to set the value of attribute {@link #nextStateNode}.
 	 */
-	public void setNextStateNode(StateNode nextStateNode)
+	public void setNextStateNode(final StateNode nextStateNode, final long probability)
 	{
-		this.nextStateNode = nextStateNode;
+		if (this.nextStateNodes == null)
+		{
+			this.nextStateNodes = new Vector<>();
+		}
+		this.nextStateNodes.add(new NextStateNode(nextStateNode, probability));
 	}
 
 	/**

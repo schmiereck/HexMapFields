@@ -3,6 +3,9 @@
  */
 package de.schmiereck.hexMapFields;
 
+import java.util.List;
+import java.util.Vector;
+
 import de.schmiereck.hexMapFields.Map.Orientation;
 import de.schmiereck.hexMapFields.fields.Field;
 
@@ -38,26 +41,9 @@ public class MapField
 	 * 2: CA
 	 */
 	private final MapField[] outFields = new MapField[NEIGHBOURS_CNT];
-
-	/**
-	 * Der Inner-State für jede Seite:
-	 * 0: AB (R)
-	 * 1: BC (G)
-	 * 2: CA (B)
-	 */
-	private StateNode stateNode = null;
-
-	/**
-	 * Der Inner- and In-State für jede Seite with the resulting Next-State:
-	 * 0: AB (R)
-	 * 1: BC (G)
-	 * 2: CA (B)
-	 * 3: inAB (inR)
-	 * 4: inBC (inG)
-	 * 5: inCA (inB)
-	 */
-	private StateNode inStateNode = null;
 	
+	private List<NextStateNode> nextStateNodes = new Vector<>();
+
 	/**
 	 * Field.
 	 */
@@ -72,26 +58,6 @@ public class MapField
 	public MapField()
 	{
 		//==========================================================================================
-		//==========================================================================================
-	}
-	
-	/**
-	 * Copy Constructor.
-	 */
-	public MapField(final MapField cloneMapField)
-	{
-		//==========================================================================================
-		this.xPos = cloneMapField.xPos;
-		this.yPos = cloneMapField.yPos;
-		
-		this.orientation = cloneMapField.orientation;
-		for (int pos = 0; pos < cloneMapField.outFields.length; pos++)
-		{
-			this.outFields[pos] = cloneMapField.outFields[pos];
-		}
-		this.stateNode = cloneMapField.stateNode;
-		this.inStateNode = cloneMapField.inStateNode;
-		
 		//==========================================================================================
 	}
 	
@@ -236,39 +202,22 @@ public class MapField
 
 	/**
 	 * @return 
-	 *			the value of attribute {@link #stateNode}.
+	 *			the value of attribute {@link #nextStateNodes}.
 	 */
-	public StateNode getStateNode()
+	public List<NextStateNode> getNextStateNodes()
 	{
-		return this.stateNode;
+		return this.nextStateNodes;
 	}
 	
 	/**
-	 * @param stateNode 
-	 * 			used to set the value of attribute {@link #stateNode}.
+	 * @param nextStateNode 
+	 * 			used to add the value of attribute {@link #nextStateNodes}.
 	 */
-	public void setStateNode(final StateNode stateNode)
+	public void addNextStateNode(final NextStateNode nextStateNode)
 	{
-		this.stateNode = stateNode;
+		this.nextStateNodes.add(nextStateNode);
 	}
 	
-	/**
-	 * @return 
-	 *			the value of attribute {@link #inStateNode}.
-	 */
-	public StateNode getInStateNode()
-	{
-		return this.inStateNode;
-	}
-	
-	/**
-	 * @param inStateNode
-	 * 			used to set the value of attribute {@link #inStateNode}.
-	 */
-	public void setInStateNode(StateNode inStateNode)
-	{
-		this.inStateNode = inStateNode;
-	}
 	
 	/**
 	 * @return 

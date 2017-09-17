@@ -526,17 +526,36 @@ Fazit:
 	=>	Funktioniert nicht!
 ----------------------------------------------------------------------------------------------------
 Neueste Idee:
-*	Die Map auf einen Hash für die Positionen umstellen.
+*	DONE: Die Map auf einen Hash für die Positionen umstellen.
 	=>	Nur noch die belegten Positionen (Long) im Hash durchlaufen.
 *	Pro RuleSet eine Map aufbauen.
-	=>	Emtpy-Fields entfernen (ist ein eigenes Rule-Set).
+	=>	DONE: Emtpy-Fields entfernen (ist ein eigenes Rule-Set).
 	=>	Zeitschritte trennen oder nachvollziehbar/ zugreifbar machen.
 		>	Index mit Time-Maps aufbauen der die jeweils gesetzen Felder beinhaltet.
+		>	Wozu?
 	=>	Die Idee in Ergebnis eines In-State-Node eine Referenz auf ein Map-Field abzulegen
-		war ja nocht blöd. So können am einfachsten Schleifen / Wiederholungen erkannt werden.
+		war ja nicht blöd. So können am einfachsten Schleifen / Wiederholungen erkannt werden.
+		>	Wozu? Die In-State-Nodes bilden das doch schon ab.
+	
+	FÜr ein Field:
+	=>	RUN: Mehrere Ausgangszustände für einen In-State-Node mit verschiedenen Wahrscheinlichkeiten einbauen.
+		>	NextStateNode
+		>	Es können neue Kombinationen entstehen, für die es keine Rule gibt.
+			-	Darf es nicht geben, die müssen eingebaut werden.
+		>	Wenn sich die Wahrscheinlichkeiten beim Zusammentreffen nur addieren,
+			müssen keine zusätzlichen Fields erzeugt werden.
+	
+	Zusätzlich:
+	=>	RUN: Mehrere Ausgangszustände für einen MapField mit verschiedenen Wahrscheinlichkeiten einbauen.
+		>	ResultStateNode
+		
+	=>	Map-Fields nach Fields getrennt verwalten.
 	=>	Solche Maps mit einem Field verknüpfen und diese in einer Global-Map überlagern um Interaktionen zu ermöglichen.
 		>	Diese Maps können, wenn ein Zustand als Ausgangszustand gefunden wird,
 			relativ in einer globalen Map verwendet werden.
+	=>	Ein Field hat für die Richtungen oder Zustände eigene Wahrscheinlichkeiten die eine
+		eigene Haupt-Richtung überlagern können, so das sich ein Feld / teilchen eher in eine 
+		Richtung bewegt oder ein Teilchen sich auf einem anderen Radius bewegt (wie Energie?).
 	=>	Die Map dynamischer machen. Die ganzen vorberechnungen der Orientierung und Nachbarn 
 		werden nur für die Darstellung benötigt.
 	=>	Die State-Nodes weg von der hierarchischen zu einer Neighbour im Array umbauen.

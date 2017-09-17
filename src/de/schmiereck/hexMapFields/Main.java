@@ -4,7 +4,6 @@
 package de.schmiereck.hexMapFields;
 
 import de.schmiereck.hexMapFields.fields.Field;
-import de.schmiereck.hexMapFields.genetic.GeneticService;
 import de.schmiereck.hexMapFields.rules.MakeBlinkerRules;
 import de.schmiereck.hexMapFields.rules.MakeCircleBig1StaticRules;
 import de.schmiereck.hexMapFields.rules.MakeCircleDirRules;
@@ -161,8 +160,8 @@ public class Main
 				{
 //					stateNode = emptyRuleSet.getInitStateNode();
 					field = emptyField;
-//					stateNode = blinkerRuleSet.getInitStateNode();
-					stateNode = circleStaticRuleSet.getInitStateNode();
+					stateNode = blinkerRuleSet.getInitStateNode();
+//					stateNode = circleStaticRuleSet.getInitStateNode();
 //					stateNode = circleStaticBig1RuleSet.getInitStateNode();
 //					stateNode = circleDirRuleSet.getInitStateNode();
 //					stateNode = dirFieldRuleSet.getInitStateNode();
@@ -199,26 +198,7 @@ public class Main
 		}
 		
 		//------------------------------------------------------------------------------------------
-		final GeneticService geneticService;
-		
-		if (useGenetic == true)
-		{
-			geneticService = new GeneticService(map);
-			
-			geneticService.addRuleSet(emptyRuleSet);
-			geneticService.addRuleSet(blinkerRuleSet);
-			geneticService.addRuleSet(runnerRuleSet);
-			geneticService.addRuleSet(circleStaticRuleSet);
-			geneticService.addRuleSet(circleDirRuleSet);
-			geneticService.addRuleSet(dirFieldRuleSet);
-		}
-		else
-		{
-			geneticService = null;
-		}
-		
-		//------------------------------------------------------------------------------------------
-		final ViewService viewService = new ViewService(geneticService);
+		final ViewService viewService = new ViewService();
 		
 		final MainView mainView = new MainView(map, xSizeView, ySizeView,
 		                                       viewService);
@@ -228,8 +208,7 @@ public class Main
         //------------------------------------------------------------------------------------------
 		MainService.calc(map, 
 		                 mainView,
-		                 stateNodes,
-		                 geneticService);
+		                 stateNodes);
 		
 		//==========================================================================================
 	}

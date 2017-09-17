@@ -448,6 +448,8 @@ public class MainView
 		if (state == Main.s0EdgeState)
 		{
 			g2.setColor(Color.LIGHT_GRAY);
+//			final double e = 0.01D;
+//			drawStateOval(g2, xm, ym, xab, yab, e);
 		}
 		else
 		{

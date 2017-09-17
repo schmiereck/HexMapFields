@@ -5,6 +5,7 @@ package de.schmiereck.hexMapFields.rules;
 
 import de.schmiereck.hexMapFields.Main;
 import de.schmiereck.hexMapFields.MainService;
+import de.schmiereck.hexMapFields.NextStateNode;
 import de.schmiereck.hexMapFields.RuleSet;
 import de.schmiereck.hexMapFields.State;
 import de.schmiereck.hexMapFields.StateNode;
@@ -87,7 +88,7 @@ public class MakeBlinkerRules
 				                           s1EdgeState, s0EdgeState, s0EdgeState,
 				                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// inR -> R
@@ -96,7 +97,7 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(rMapFieldStateNode);
+			stateNode.setNextStateNode(rMapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		
 		{
@@ -106,7 +107,7 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s1EdgeState, s0EdgeState,
 				                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// inG -> G
@@ -115,7 +116,7 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s0EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(gMapFieldStateNode);
+			stateNode.setNextStateNode(gMapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		
 		{
@@ -125,7 +126,7 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s1EdgeState,
 				                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// inB -> B
@@ -134,7 +135,7 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s0EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.setNextStateNode(bMapFieldStateNode);
+			stateNode.setNextStateNode(bMapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(bMapFieldStateNode);

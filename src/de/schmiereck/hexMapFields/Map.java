@@ -441,39 +441,6 @@ public class Map
 		//==========================================================================================
 	}
 	
-	/**
-	 * Copy Constructor.
-	 *
-	 */
-	public Map(final Map cloneMap)
-	{
-		//==========================================================================================
-		this.xSize = cloneMap.xSize;
-		this.ySize = cloneMap.ySize;
-		
-		this.energie = cloneMap.energie;
-		this.nextEnergie = cloneMap.nextEnergie;
-
-		//------------------------------------------------------------------------------------------
-//		this.mapFields = new Vector<>(this.xSize * this.ySize);
-		this.mapFields = new MapFields();
-
-		for (int yPos = 0; yPos < this.ySize; yPos++)
-		{
-			for (int xPos = 0; xPos < this.xSize; xPos++)
-			{
-//				final int mapPos = yPos * this.xSize + xPos;
-				final MapField cloneMapField = cloneMap.mapFields.get(new Long(xPos), new Long(yPos));
-				
-				final MapField mapField = new MapField(cloneMapField);
-				
-//				this.mapFields.add(mapPos, mapField);
-				this.mapFields.set(new Long(xPos), new Long(yPos), mapField);
-			}
-		}
-		//==========================================================================================
-	}
-
 	private void addOutFields(final MapField mapField, final int xPos, final int yPos)
 	{
 		//==========================================================================================

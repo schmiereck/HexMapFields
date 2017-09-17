@@ -3,10 +3,6 @@
  */
 package de.schmiereck.hexMapFields;
 
-import java.util.List;
-
-import de.schmiereck.hexMapFields.genetic.GeneticService;
-
 /**
  * <p>
  *	View Service.
@@ -20,8 +16,6 @@ public class ViewService
 	//**********************************************************************************************
 	// Fields:
 	
-	private final GeneticService geneticService;
-
 	//**********************************************************************************************
 	// Functions:
 	
@@ -29,10 +23,9 @@ public class ViewService
 	 * Constructor.
 	 *
 	 */
-	public ViewService(final GeneticService geneticService)
+	public ViewService()
 	{
 		//==========================================================================================
-		this.geneticService = geneticService;
 
 		//==========================================================================================
 	}
@@ -42,16 +35,8 @@ public class ViewService
 		//==========================================================================================
 		final int sizeRuleSets;
 		
-		if (this.geneticService != null)
-		{
-			final List<RuleSet> ruleSets = this.geneticService.getRuleSets();
-			
-			sizeRuleSets = ruleSets.size();
-		}
-		else
-		{
-			sizeRuleSets = 0;
-		}
+		sizeRuleSets = 0;
+
 		//==========================================================================================
 		return sizeRuleSets;
 	}
