@@ -5,6 +5,7 @@ package de.schmiereck.hexMapFields.rules;
 
 import de.schmiereck.hexMapFields.Main;
 import de.schmiereck.hexMapFields.MainService;
+import de.schmiereck.hexMapFields.NextStateNode;
 import de.schmiereck.hexMapFields.RuleSet;
 import de.schmiereck.hexMapFields.State;
 import de.schmiereck.hexMapFields.StateNode;
@@ -93,7 +94,7 @@ public class MakeCircleStaticRules
 					                            s1EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// inR -> G
@@ -102,7 +103,7 @@ public class MakeCircleStaticRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(gMapFieldStateNode);
+			stateNode.setNextStateNode(gMapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// G -> s0
@@ -111,7 +112,7 @@ public class MakeCircleStaticRules
 					                            s0EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// inG -> R
@@ -120,7 +121,7 @@ public class MakeCircleStaticRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(rMapFieldStateNode);
+			stateNode.setNextStateNode(rMapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(rMapFieldStateNode);

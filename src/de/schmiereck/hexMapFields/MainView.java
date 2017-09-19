@@ -394,29 +394,38 @@ public class MainView
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		
 		// Prüfen ob der State aktiv ist und dann hervorheben.
-		final StateNode caStateNode = mapField.getStateNode();
-		if (caStateNode != null)
+		final List<NextStateNode> nextStateNodes = mapField.getNextStateNodes();
+		
+		if (nextStateNodes != null)
 		{
-			final State caState = caStateNode.getState();
-
-			// From Origin to lt (CA).
-			this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE);
-			
-			final StateNode bcStateNode = caStateNode.getParentNode();
-			if (bcStateNode != null)
+			for (final NextStateNode nextStateNode : nextStateNodes)
 			{
-				final State bcState = bcStateNode.getState();
+				final StateNode caStateNode = nextStateNode.getStateNode();
 				
-				// From Origin to rt (BC).
-				this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN);
-				
-				final StateNode abStateNode = bcStateNode.getParentNode();
-				if (abStateNode != null)
+				if (caStateNode != null)
 				{
-					final State abState = abStateNode.getState();
+					final State caState = caStateNode.getState();
+		
+					// From Origin to lt (CA).
+					this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE);
 					
-					// From Origin to lr (AB).
-					this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED);
+					final StateNode bcStateNode = caStateNode.getParentNode();
+					if (bcStateNode != null)
+					{
+						final State bcState = bcStateNode.getState();
+						
+						// From Origin to rt (BC).
+						this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN);
+						
+						final StateNode abStateNode = bcStateNode.getParentNode();
+						if (abStateNode != null)
+						{
+							final State abState = abStateNode.getState();
+							
+							// From Origin to lr (AB).
+							this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED);
+						}
+					}
 				}
 			}
 		}

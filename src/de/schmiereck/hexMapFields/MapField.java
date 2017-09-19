@@ -237,4 +237,13 @@ public class MapField
 		this.field = field;
 	}
 
+	/**
+	 * @param nextStateNodes 
+	 * 			used to set the value of attribute {@link #nextStateNodes}.
+	 */
+	public void setNextStateNodes(List<NextStateNode> nextStateNodes)
+	{
+		this.nextStateNodes = nextStateNodes;
+	}
+
 }

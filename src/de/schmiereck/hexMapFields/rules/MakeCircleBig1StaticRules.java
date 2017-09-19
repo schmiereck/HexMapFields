@@ -5,6 +5,7 @@ package de.schmiereck.hexMapFields.rules;
 
 import de.schmiereck.hexMapFields.Main;
 import de.schmiereck.hexMapFields.MainService;
+import de.schmiereck.hexMapFields.NextStateNode;
 import de.schmiereck.hexMapFields.RuleSet;
 import de.schmiereck.hexMapFields.State;
 import de.schmiereck.hexMapFields.StateNode;
@@ -95,7 +96,7 @@ public class MakeCircleBig1StaticRules
 					                          s1EdgeState, s0EdgeState, s0EdgeState,
 					                          s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// R2 -> s0
@@ -104,7 +105,7 @@ public class MakeCircleBig1StaticRules
 					                          s2EdgeState, s0EdgeState, s0EdgeState,
 					                          s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 
 		{
@@ -114,7 +115,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(g1MapFieldStateNode);
+			stateNode.setNextStateNode(g1MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// inR2 -> B2
@@ -123,7 +124,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s2EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(b2MapFieldStateNode);
+			stateNode.setNextStateNode(b2MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		// G:
@@ -134,7 +135,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// G2 -> s0
@@ -143,7 +144,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s2EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 
 		{
@@ -153,7 +154,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(b1MapFieldStateNode);
+			stateNode.setNextStateNode(b1MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// inG2 -> R2
@@ -162,7 +163,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s2EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(r2MapFieldStateNode);
+			stateNode.setNextStateNode(r2MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		// B:
@@ -173,7 +174,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// B2 -> s0
@@ -182,7 +183,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s0EdgeState, s2EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode);
+			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 
 		{
@@ -192,7 +193,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.setNextStateNode(g2MapFieldStateNode);
+			stateNode.setNextStateNode(g2MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		{
 			// inB2 -> R1
@@ -201,7 +202,7 @@ public class MakeCircleBig1StaticRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s2EdgeState);
 			
-			stateNode.setNextStateNode(r1MapFieldStateNode);
+			stateNode.setNextStateNode(r1MapFieldStateNode, NextStateNode.MAX_probability);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(g1MapFieldStateNode);

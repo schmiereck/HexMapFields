@@ -95,7 +95,7 @@ public class Main
 				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState,
 				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState);
 		
-		s0InStateNode.setNextStateNode(s0MapFieldStateNode);
+		s0InStateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
 	}
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	static
@@ -191,12 +191,13 @@ public class Main
 				{
 					mapField = map.getMapField(xPos, yPos);
 	
-					mapField.setStateNode(stateNode);
+					final long probability = NextStateNode.MAX_probability;
+					
+					mapField.addNextStateNode(new NextStateNode(stateNode, probability));
 					mapField.setField(field);
 				}
 			}
 		}
-		
 		//------------------------------------------------------------------------------------------
 		final ViewService viewService = new ViewService();
 		

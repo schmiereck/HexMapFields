@@ -4,8 +4,7 @@
 package de.schmiereck.hexMapFields;
 
 import java.util.List;
-
-import de.schmiereck.hexMapFields.genetic.GeneticService;
+import java.util.Vector;
 
 /**
  * <p>
@@ -31,8 +30,7 @@ public class MainService
 	
 	public static void calc(final Map map, 
 	                        final MainView mainView, 
-	                        final StateNodes stateNodes,
-	                        final GeneticService geneticService)
+	                        final StateNodes stateNodes)
 	{
 		//==========================================================================================
 		final MapHolder mapHolder = new MapHolder();
@@ -66,16 +64,6 @@ public class MainService
 			
 			calcNextStates(map, stateNodes);
 
-//			if (energie != nextEnergie)
-//			{
-//				throw new RuntimeException("energie \"" + map.getEnergie() + "\" != map.nextEnergie \"" + nextEnergie + "\"");
-//			}
-			
-			if (geneticService != null)
-			{
-				geneticService.calc(mapHolder, stateNodes);
-			}
-			
 //			calcMetaStates(map, states);
 
 			runCnt++;
@@ -90,8 +78,6 @@ public class MainService
 	{
 		//==========================================================================================
 		// Not final, calculating in the loops.
-		int retEnergie = 0;
-		
 		final int xSize = map.getXSize();
 		final int ySize = map.getYSize();
 		
@@ -102,81 +88,89 @@ public class MainService
 				//----------------------------------------------------------------------------------
 				final MapField mapField = map.getMapField(xPos, yPos);
 
-				final StateNode stateNode = mapField.getStateNode();
-				if (stateNode != null)
-				{
-					retEnergie += stateNode.getEnergie();
-				}
 				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-				final State caState;
-				final State bcState;
-				final State abState;
+				final List<NextStateNode> nextStateNodes = mapField.getNextStateNodes();
+				hier kommen keine nodes zurück,
+				muss auch über so eine leere Dummmy-liste gelöst werden
 				
-//				final StateNode caStateNode = mapField.getStateNode();
-//				caState = caStateNode.getState();
-//				
-//				final StateNode bcStateNode = caStateNode.getParentNode();
-//				bcState = bcStateNode.getState();
-//				
-//				final StateNode abStateNode = bcStateNode.getParentNode();
-//				abState = abStateNode.getState();
-
-				final StateNode caStateNode = mapField.getStateNode();
-				if (caStateNode != null)
+				if (nextStateNodes != null)
 				{
-					caState = caStateNode.getState();
-					
-					final StateNode bcStateNode = caStateNode.getParentNode();
-					bcState = bcStateNode.getState();
-					
-					final StateNode abStateNode = bcStateNode.getParentNode();
-					abState = abStateNode.getState();
-				}
-				else
-				{
-					caState = null;
-					bcState = null;
-					abState = null;
-				}
-				
-				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-				final StateNode abInStateNode = MapFieldUtils.extractABStateNode(mapField);
-				final State abInState = abInStateNode.getState();
-				
-				final StateNode bcInStateNode = MapFieldUtils.extractBCStateNode(mapField);
-				final State bcInState = bcInStateNode.getState();
-				
-				final StateNode caInStateNode = MapFieldUtils.extractCAStateNode(mapField);
-				final State caInState = caInStateNode.getState();
-				
-				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-				final StateNode inStateNode = 
-						searchInStateNode(stateNodes,
-						                  abState, bcState, caState, 
-						                  abInState, bcInState, caInState);
-				
-				if (inStateNode != null)
-				{
-					final StateNode oldInStateNode = mapField.getInStateNode();
-					
-					// Nur hochzählen, wenn sich der In State auch ändert.
-					if (oldInStateNode != inStateNode)
+					for (NextStateNode nextStateNode : nextStateNodes)
 					{
-						mapField.setInStateNode(inStateNode);
-						inStateNode.addUsedCnt(runCnt);
+						final State caState;
+						final State bcState;
+						final State abState;
+						
+	//				final StateNode caStateNode = mapField.getStateNode();
+	//				caState = caStateNode.getState();
+	//				
+	//				final StateNode bcStateNode = caStateNode.getParentNode();
+	//				bcState = bcStateNode.getState();
+	//				
+	//				final StateNode abStateNode = bcStateNode.getParentNode();
+	//				abState = abStateNode.getState();
+						
+						final StateNode caStateNode = nextStateNode.getStateNode();
+						if (caStateNode != null)
+						{
+							caState = caStateNode.getState();
+							
+							final StateNode bcStateNode = caStateNode.getParentNode();
+							bcState = bcStateNode.getState();
+							
+							final StateNode abStateNode = bcStateNode.getParentNode();
+							abState = abStateNode.getState();
+						}
+						else
+						{
+							caState = null;
+							bcState = null;
+							abState = null;
+						}
+						// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+						final List<StateNode> abInStateNodes = MapFieldUtils.extractABInStateNodes(mapField);
+	
+						final List<StateNode> bcInStateNodes = MapFieldUtils.extractBCInStateNodes(mapField);
+						
+						final List<StateNode> caInStateNodes = MapFieldUtils.extractCAInStateNodes(mapField);
+						
+						for (final StateNode abInStateNode : abInStateNodes)
+						{
+							final State abInState = abInStateNode.getState();
+							
+							for (final StateNode bcInStateNode : bcInStateNodes)
+							{
+								final State bcInState = bcInStateNode.getState();
+								
+								for (final StateNode caInStateNode : caInStateNodes)
+								{
+									final State caInState = caInStateNode.getState();
+									
+									// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+									final StateNode inStateNode = 
+											searchInStateNode(stateNodes,
+											                  abState, bcState, caState, 
+											                  abInState, bcInState, caInState);
+									
+									if (inStateNode != null)
+									{
+										final StateNode oldInStateNode = nextStateNode.getInStateNode();
+										
+										// Nur hochzählen, wenn sich der In State auch ändert.
+										if (oldInStateNode != inStateNode)
+										{
+											nextStateNode.setInStateNode(inStateNode);
+											inStateNode.addUsedCnt(runCnt);
+										}
+									}
+								}
+							}
+						}
 					}
-				}
-				else
-				{
-					//throw new RuntimeException("No In-State found:\n" + inStateNodeToString(abState, bcState, caState, abInState, bcInState, caInState));
-					mapField.setInStateNode(Main.s0InStateNode);
 				}
 				//----------------------------------------------------------------------------------
 			}
 		}
-		
-		map.setEnergie(retEnergie);
-		
 		//==========================================================================================
 	}
 
@@ -201,7 +195,7 @@ public class MainService
 		stateArr[4] = bcInState;
 		stateArr[5] = caInState;
 		
-		dbgCheckArrNullState(stateArr);
+//		dbgCheckArrNullState(stateArr);
 		
 		final StateNode stateNode = searchInStateNodeRecursive(stateNodes, rootNode, stateArr, 0);
 		
@@ -330,9 +324,6 @@ public class MainService
 	                                  final StateNodes stateNodes)
 	{
 		//==========================================================================================
-		// Not final, calculating in the loops.
-		int retEnergie = 0;
-
 		final int xSize = map.getXSize();
 		final int ySize = map.getYSize();
 		
@@ -342,41 +333,64 @@ public class MainService
 			{
 				final MapField mapField = map.getMapField(xPos, yPos);
 			
-				final StateNode inStateNode = mapField.getInStateNode();
+				List<NextStateNode> newNextStateNodes = null;
+				final List<NextStateNode> nextStateNodes = mapField.getNextStateNodes();
 				
-				if (inStateNode != null)
+				if (nextStateNodes != null)
 				{
-					final StateNode nextStateNode = inStateNode.getNextStateNode();
-					
-					if (nextStateNode != null)
+					for (final NextStateNode nextStateNode : nextStateNodes)
 					{
-						retEnergie += nextStateNode.getEnergie();
+						final StateNode inStateNode = nextStateNode.getInStateNode();
+						final long inStateNodeProbability = nextStateNode.getProbability();
 						
-						final StateNode oldStateNode = mapField.getStateNode();
-						
-						dbgCheckFirst3NullState(nextStateNode);
-						
-						// Nur hochzählen, wenn sich der State auch ändert.
-						if (oldStateNode != nextStateNode)
+						if (inStateNode != null)
 						{
-							mapField.setStateNode(nextStateNode);
-							nextStateNode.addUsedCnt(runCnt);
+							final List<NextStateNode> inNextStateNodes = inStateNode.getNextStateNodes();
+							
+							for (final NextStateNode inNextStateNode : inNextStateNodes)
+							{
+								final StateNode nextInStateNode = inNextStateNode.getInStateNode();
+								final long nextInStateNodeProbability = inNextStateNode.getProbability();
+								
+								if (nextInStateNode != null)
+								{
+									final StateNode oldStateNode = nextStateNode.getStateNode();
+									
+									dbgCheckFirst3NullState(nextInStateNode);
+									
+									// Nur hochzählen, wenn sich der State auch ändert.
+									if (oldStateNode != nextInStateNode)
+									{
+										final NextStateNode newNextStateNode =
+												new NextStateNode(nextInStateNode, 
+												                  (inStateNodeProbability +
+												                   nextInStateNodeProbability) / 2L);
+										
+										if (newNextStateNodes == null)
+										{
+											newNextStateNodes = new Vector<>();
+										}
+										
+										newNextStateNodes.add(newNextStateNode);
+										nextInStateNode.addUsedCnt(runCnt);
+									}
+								}
+	//							else
+	//							{
+	//								throw new RuntimeException("No Next-State-Node found for this In-State-Node:\n" + inStateNodeToString(inStateNode));
+	//							}
+							}
+						}
+						else
+						{
+							throw new RuntimeException("No In-State-Node found.");
 						}
 					}
-					else
-					{
-						throw new RuntimeException("No Next-State-Node found for this In-State-Node:\n" + inStateNodeToString(inStateNode));
-					}
 				}
-				else
-				{
-					throw new RuntimeException("No In-State-Node found.");
-				}
+
+				mapField.setNextStateNodes(newNextStateNodes);
 			}
 		}
-		
-		map.setNextEnergie(retEnergie);
-		
 		//==========================================================================================
 	}
 

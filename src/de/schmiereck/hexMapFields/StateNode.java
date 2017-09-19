@@ -153,9 +153,9 @@ public class StateNode
 	
 	/**
 	 * @return 
-	 *			the value of attribute {@link #nextStateNode}.
+	 *			the value of attribute {@link #nextStateNodes}.
 	 */
-	public List<NextStateNode> getNextStateNode()
+	public List<NextStateNode> getNextStateNodes()
 	{
 		return this.nextStateNodes;
 	}
@@ -163,7 +163,7 @@ public class StateNode
 	
 	/**
 	 * @param nextStateNode 
-	 * 			used to set the value of attribute {@link #nextStateNode}.
+	 * 			used to set the value of attribute {@link #nextStateNodes}.
 	 */
 	public void setNextStateNode(final StateNode nextStateNode, final long probability)
 	{
