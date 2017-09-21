@@ -27,6 +27,22 @@ public class MapField
 	 */
 	public static final int NEIGHBOURS_CNT = 3;
 	
+	public static final PropNextStateNode EMPTY_NextStateNode = new PropNextStateNode(Main.s0InStateNode, PropNextStateNode.MAX_probability);
+	
+//	public static final List<PropNextStateNode> EMPTY_NextStateNodes = new Vector<>();
+//	static
+//	{
+//		EMPTY_NextStateNodes.add(EMPTY_NextStateNode);
+//	}
+	
+	public static final PropInnerStateNode EMPTY_InnerStateNode = new PropInnerStateNode(Main.s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+	
+	public static final List<PropInnerStateNode> EMPTY_InnerStateNodes = new Vector<>();
+	static
+	{
+		EMPTY_InnerStateNodes.add(EMPTY_InnerStateNode);
+	}
+	
 	//**********************************************************************************************
 	// Fields:
 	
@@ -41,8 +57,16 @@ public class MapField
 	 * 2: CA
 	 */
 	private final MapField[] outFields = new MapField[NEIGHBOURS_CNT];
+
+	/**
+	 * Der Inner-State für jede Seite:
+	 * 0: AB (R)
+	 * 1: BC (G)
+	 * 2: CA (B)
+	 */
+	private List<PropInnerStateNode> propInnerStateNodes = new Vector<>();
 	
-	private List<NextStateNode> nextStateNodes = new Vector<>();
+	private List<PropInStateNode> propInStateNodes = new Vector<>();
 
 	/**
 	 * Field.
@@ -202,22 +226,39 @@ public class MapField
 
 	/**
 	 * @return 
-	 *			the value of attribute {@link #nextStateNodes}.
+	 *			the value of attribute {@link #propInnerStateNodes}.
 	 */
-	public List<NextStateNode> getNextStateNodes()
+	public List<PropInnerStateNode> getPropInnerStateNodes()
 	{
-		return this.nextStateNodes;
+		return this.propInnerStateNodes;
 	}
 	
 	/**
-	 * @param nextStateNode 
-	 * 			used to add the value of attribute {@link #nextStateNodes}.
+	 * @param propInnerStateNodes 
+	 * 			used to set the value of attribute {@link #propInnerStateNodes}.
 	 */
-	public void addNextStateNode(final NextStateNode nextStateNode)
+	public void setPropInnerStateNode(final List<PropInnerStateNode> propInnerStateNodes)
 	{
-		this.nextStateNodes.add(nextStateNode);
+		this.propInnerStateNodes = propInnerStateNodes;
+	}
+
+	/**
+	 * @return 
+	 *			the value of attribute {@link #propInStateNodes}.
+	 */
+	public List<PropInStateNode> getPropInStateNodes()
+	{
+		return this.propInStateNodes;
 	}
 	
+	/**
+	 * @param propInStateNode 
+	 * 			used to add the value of attribute {@link #propInStateNodes}.
+	 */
+	public void addPropInStateNode(final PropInStateNode propInStateNode)
+	{
+		this.propInStateNodes.add(propInStateNode);
+	}
 	
 	/**
 	 * @return 
@@ -238,12 +279,46 @@ public class MapField
 	}
 
 	/**
-	 * @param nextStateNodes 
-	 * 			used to set the value of attribute {@link #nextStateNodes}.
+	 * @param propInStateNodes 
+	 * 			used to set the value of attribute {@link #propInStateNodes}.
 	 */
-	public void setNextStateNodes(List<NextStateNode> nextStateNodes)
+	public void setInStateNodes(List<PropInStateNode> propInStateNodes)
 	{
-		this.nextStateNodes = nextStateNodes;
+		this.propInStateNodes = propInStateNodes;
+	}
+	
+	/**
+	 * @param propInnerStateNode 
+	 * 			used to add the value of attribute {@link #propInnerStateNodes}.
+	 */
+	public void addPropInnerStateNode(final PropInnerStateNode propInnerStateNode)
+	{
+		this.propInnerStateNodes.add(propInnerStateNode);
+	}
+
+	/**
+	 * Clear {@link #getPropInStateNodes()} and add an {@link #EMPTY_NextStateNode}.
+	 */
+	public void resetPropInStateNodes()
+	{
+		//==========================================================================================
+		this.propInStateNodes.clear();
+//		this.propInStateNodes.add(EMPTY_NextStateNode);
+		
+		//==========================================================================================
+		
+	}
+
+	/**
+	 * Clear {@link #getPropInnerStateNodes()} and add an {@link #EMPTY_InnerStateNode}.
+	 */
+	public void resetPropInnerStateNodes()
+	{
+		//==========================================================================================
+		this.propInnerStateNodes.clear();
+		
+		//==========================================================================================
+		
 	}
 
 }

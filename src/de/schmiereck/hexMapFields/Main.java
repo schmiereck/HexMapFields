@@ -95,7 +95,7 @@ public class Main
 				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState,
 				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState);
 		
-		s0InStateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
+		s0InStateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 	}
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	static
@@ -160,12 +160,12 @@ public class Main
 				{
 //					stateNode = emptyRuleSet.getInitStateNode();
 					field = emptyField;
-					stateNode = blinkerRuleSet.getInitStateNode();
+//					stateNode = blinkerRuleSet.getInitStateNode();
 //					stateNode = circleStaticRuleSet.getInitStateNode();
 //					stateNode = circleStaticBig1RuleSet.getInitStateNode();
 //					stateNode = circleDirRuleSet.getInitStateNode();
 //					stateNode = dirFieldRuleSet.getInitStateNode();
-//					stateNode = runnerRuleSet.getInitStateNode();
+					stateNode = runnerRuleSet.getInitStateNode();
 //					field = new Field();		// A inital new Field is born.
 				}
 				else
@@ -191,9 +191,9 @@ public class Main
 				{
 					mapField = map.getMapField(xPos, yPos);
 	
-					final long probability = NextStateNode.MAX_probability;
+					final long probability = PropNextStateNode.MAX_probability;
 					
-					mapField.addNextStateNode(new NextStateNode(stateNode, probability));
+					mapField.addPropInnerStateNode(new PropInnerStateNode(stateNode, probability));
 					mapField.setField(field);
 				}
 			}

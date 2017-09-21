@@ -37,32 +37,53 @@ public class MapFieldUtils
 	public static List<StateNode> extractABInStateNodes(final MapField mapField)
 	{
 		//==========================================================================================
-		List<StateNode> abInStateNodes = null;
+		List<StateNode> abInnerStateNodes = null;
+		
+//		AUfteilen und getrennt aufrufen - keine Zwischenliste nötig
 		
 		final MapField abOutField = mapField.getABOutField();
 		
-		final List<NextStateNode> nextStateNodes = abOutField.getNextStateNodes();
+		final List<PropInnerStateNode> propInnerStateNodes = abOutField.getPropInnerStateNodes();
 		
-		for (final NextStateNode nextStateNode : nextStateNodes)
+		for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
 		{
-			final StateNode stateNode = nextStateNode.getStateNode();
+			final StateNode innerStateNode = propInnerStateNode.getInnerStateNode();
 			
-			if (stateNode != null)
+			if (innerStateNode != null)
 			{
-				if (abInStateNodes == null)
+				if (abInnerStateNodes == null)
 				{
-					abInStateNodes = new Vector<>();
+					abInnerStateNodes = new Vector<>();
 				}
-				abInStateNodes.add(stateNode.getParentNode().getParentNode());
+				abInnerStateNodes.add(innerStateNode.getParentNode().getParentNode());
 			}
 		}
 		
-		if (abInStateNodes == null)
+		if (abInnerStateNodes == null)
 		{
-			abInStateNodes = EMPTY_InStateNodes;
+			abInnerStateNodes = EMPTY_InStateNodes;
 		}
 		//==========================================================================================
-		return abInStateNodes;
+		return abInnerStateNodes;
+	}
+
+	public static State extractABInnerState(final PropInnerStateNode propInnerStateNode)
+	{
+		//==========================================================================================
+		final State abState;
+		final StateNode caStateNode = propInnerStateNode.getInnerStateNode();
+		if (caStateNode != null)
+		{
+			final StateNode bcStateNode = caStateNode.getParentNode();
+			final StateNode abStateNode = bcStateNode.getParentNode();
+			abState = abStateNode.getState();
+		}
+		else
+		{
+			abState = null;
+		}
+		//==========================================================================================
+		return abState;
 	}
 	
 //	/**
@@ -117,11 +138,11 @@ public class MapFieldUtils
 		
 		final MapField bcOutField = mapField.getBCOutField();
 
-		final List<NextStateNode> nextStateNodes = bcOutField.getNextStateNodes();
+		final List<PropInnerStateNode> propInnerStateNodes = bcOutField.getPropInnerStateNodes();
 		
-		for (final NextStateNode nextStateNode : nextStateNodes)
+		for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
 		{
-			final StateNode stateNode = nextStateNode.getStateNode();
+			final StateNode stateNode = propInnerStateNode.getInnerStateNode();
 
 			if (stateNode != null)
 			{
@@ -139,6 +160,24 @@ public class MapFieldUtils
 		}
 		//==========================================================================================
 		return bcInStateNodes;
+	}
+
+	public static State extractBCInnerState(final PropInnerStateNode propInnerStateNode)
+	{
+		//==========================================================================================
+		final State bcState;
+		final StateNode caStateNode = propInnerStateNode.getInnerStateNode();
+		if (caStateNode != null)
+		{
+			final StateNode bcStateNode = caStateNode.getParentNode();
+			bcState = bcStateNode.getState();
+		}
+		else
+		{
+			bcState = null;
+		}
+		//==========================================================================================
+		return bcState;
 	}
 
 //	/**
@@ -177,9 +216,9 @@ public class MapFieldUtils
 //		
 //		final MapField bcOutField = mapField.getBCOutField();
 //
-//		final List<NextStateNode> nextStateNodes = bcOutField.getNextStateNodes();
+//		final List<PropNextStateNode> nextStateNodes = bcOutField.getNextStateNodes();
 //		
-//		for (final NextStateNode nextStateNode : nextStateNodes)
+//		for (final PropNextStateNode nextStateNode : nextStateNodes)
 //		{
 //			final StateNode stateNode = nextStateNode.getStateNode();
 //
@@ -209,11 +248,11 @@ public class MapFieldUtils
 		
 		final MapField caOutField = mapField.getCAOutField();
 		
-		final List<NextStateNode> nextStateNodes = caOutField.getNextStateNodes();
+		final List<PropInnerStateNode> propInnerStateNodes = caOutField.getPropInnerStateNodes();
 		
-		for (final NextStateNode nextStateNode : nextStateNodes)
+		for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
 		{
-			final StateNode stateNode = nextStateNode.getStateNode();
+			final StateNode stateNode = propInnerStateNode.getInnerStateNode();
 
 			if (stateNode != null)
 			{
@@ -231,6 +270,23 @@ public class MapFieldUtils
 		}
 		//==========================================================================================
 		return caInStateNodes;
+	}
+
+	public static State extractCAInnerState(final PropInnerStateNode propInnerStateNode)
+	{
+		//==========================================================================================
+		final State caState;
+		final StateNode caStateNode = propInnerStateNode.getInnerStateNode();
+		if (caStateNode != null)
+		{
+			caState = caStateNode.getState();
+		}
+		else
+		{
+			caState = null;
+		}
+		//==========================================================================================
+		return caState;
 	}
 
 //	/**

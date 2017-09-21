@@ -44,7 +44,7 @@ public class StateNode
 	/**
 	 * Is the State-Node of a Next-State-Node.
 	 */
-	private List<NextStateNode> nextStateNodes = null;
+	private List<PropNextStateNode> propNextStateNodes = null;
 	
 	private final StateNode parentNode;
 	
@@ -153,25 +153,25 @@ public class StateNode
 	
 	/**
 	 * @return 
-	 *			the value of attribute {@link #nextStateNodes}.
+	 *			the value of attribute {@link #propNextStateNodes}.
 	 */
-	public List<NextStateNode> getNextStateNodes()
+	public List<PropNextStateNode> getNextStateNodes()
 	{
-		return this.nextStateNodes;
+		return this.propNextStateNodes;
 	}
 
 	
 	/**
 	 * @param nextStateNode 
-	 * 			used to set the value of attribute {@link #nextStateNodes}.
+	 * 			used to set the value of attribute {@link #propNextStateNodes}.
 	 */
 	public void setNextStateNode(final StateNode nextStateNode, final long probability)
 	{
-		if (this.nextStateNodes == null)
+		if (this.propNextStateNodes == null)
 		{
-			this.nextStateNodes = new Vector<>();
+			this.propNextStateNodes = new Vector<>();
 		}
-		this.nextStateNodes.add(new NextStateNode(nextStateNode, probability));
+		this.propNextStateNodes.add(new PropNextStateNode(nextStateNode, probability));
 	}
 
 	/**

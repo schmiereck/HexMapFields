@@ -73,8 +73,13 @@ public class MainService
 		//==========================================================================================
 	}
 
+	/**
+	 * Für jeden Inner-StateNode und jeden der Nachbar Inner-StateNodes 
+	 * einen In-StateNode ermitteln und
+	 * als diesen als In-StateNode hinzufügen.
+	 */
 	private static void calcInStates(final Map map, 
-	                                final StateNodes stateNodes)
+	                                 final StateNodes stateNodes)
 	{
 		//==========================================================================================
 		// Not final, calculating in the loops.
@@ -89,86 +94,75 @@ public class MainService
 				final MapField mapField = map.getMapField(xPos, yPos);
 
 				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-				final List<NextStateNode> nextStateNodes = mapField.getNextStateNodes();
-				hier kommen keine nodes zurück,
-				muss auch über so eine leere Dummmy-liste gelöst werden
+				mapField.resetPropInStateNodes();
+
+				final List<PropInnerStateNode> propInnerStateNodes = mapField.getPropInnerStateNodes();
 				
-				if (nextStateNodes != null)
+				if (propInnerStateNodes.size() > 0)
 				{
-					for (NextStateNode nextStateNode : nextStateNodes)
+					for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
 					{
-						final State caState;
-						final State bcState;
-						final State abState;
-						
-	//				final StateNode caStateNode = mapField.getStateNode();
-	//				caState = caStateNode.getState();
-	//				
-	//				final StateNode bcStateNode = caStateNode.getParentNode();
-	//				bcState = bcStateNode.getState();
-	//				
-	//				final StateNode abStateNode = bcStateNode.getParentNode();
-	//				abState = abStateNode.getState();
-						
-						final StateNode caStateNode = nextStateNode.getStateNode();
-						if (caStateNode != null)
-						{
-							caState = caStateNode.getState();
-							
-							final StateNode bcStateNode = caStateNode.getParentNode();
-							bcState = bcStateNode.getState();
-							
-							final StateNode abStateNode = bcStateNode.getParentNode();
-							abState = abStateNode.getState();
-						}
-						else
-						{
-							caState = null;
-							bcState = null;
-							abState = null;
-						}
-						// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-						final List<StateNode> abInStateNodes = MapFieldUtils.extractABInStateNodes(mapField);
+						final State abState = MapFieldUtils.extractABInnerState(propInnerStateNode);
+						final State bcState = MapFieldUtils.extractBCInnerState(propInnerStateNode);
+						final State caState = MapFieldUtils.extractCAInnerState(propInnerStateNode);
 	
-						final List<StateNode> bcInStateNodes = MapFieldUtils.extractBCInStateNodes(mapField);
-						
-						final List<StateNode> caInStateNodes = MapFieldUtils.extractCAInStateNodes(mapField);
-						
-						for (final StateNode abInStateNode : abInStateNodes)
-						{
-							final State abInState = abInStateNode.getState();
-							
-							for (final StateNode bcInStateNode : bcInStateNodes)
-							{
-								final State bcInState = bcInStateNode.getState();
-								
-								for (final StateNode caInStateNode : caInStateNodes)
-								{
-									final State caInState = caInStateNode.getState();
-									
-									// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-									final StateNode inStateNode = 
-											searchInStateNode(stateNodes,
-											                  abState, bcState, caState, 
-											                  abInState, bcInState, caInState);
-									
-									if (inStateNode != null)
-									{
-										final StateNode oldInStateNode = nextStateNode.getInStateNode();
-										
-										// Nur hochzählen, wenn sich der In State auch ändert.
-										if (oldInStateNode != inStateNode)
-										{
-											nextStateNode.setInStateNode(inStateNode);
-											inStateNode.addUsedCnt(runCnt);
-										}
-									}
-								}
-							}
-						}
+						calcInStates(stateNodes, mapField, abState, bcState, caState);
 					}
 				}
+				else
+				{
+					final State abState = null;
+					final State bcState = null;
+					final State caState = null;
+
+					calcInStates(stateNodes, mapField, abState, bcState, caState);
+				}
 				//----------------------------------------------------------------------------------
+			}
+		}
+		//==========================================================================================
+	}
+
+	public static void calcInStates(final StateNodes stateNodes, final MapField mapField,
+	                                final State abState, final State bcState, final State caState)
+	{
+		//==========================================================================================
+		final List<StateNode> abInStateNodes = MapFieldUtils.extractABInStateNodes(mapField);
+
+		final List<StateNode> bcInStateNodes = MapFieldUtils.extractBCInStateNodes(mapField);
+		
+		final List<StateNode> caInStateNodes = MapFieldUtils.extractCAInStateNodes(mapField);
+		
+		for (final StateNode abInStateNode : abInStateNodes)
+		{
+			final State abInState = abInStateNode.getState();
+			
+			for (final StateNode bcInStateNode : bcInStateNodes)
+			{
+				final State bcInState = bcInStateNode.getState();
+				
+				for (final StateNode caInStateNode : caInStateNodes)
+				{
+					//------------------------------------------------------------------------------
+					final State caInState = caInStateNode.getState();
+					
+					// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+					final StateNode inStateNode = 
+							searchInStateNode(stateNodes,
+							                  abState, bcState, caState, 
+							                  abInState, bcInState, caInState);
+					
+					if (inStateNode != null)
+					{
+						final PropInStateNode newPropInStateNode = 
+								new PropInStateNode(inStateNode, PropNextStateNode.MAX_probability);
+						
+						mapField.addPropInStateNode(newPropInStateNode);
+						
+						inStateNode.addUsedCnt(runCnt);
+					}
+					//------------------------------------------------------------------------------
+				}
 			}
 		}
 		//==========================================================================================
@@ -259,23 +253,31 @@ public class MainService
 
 			while (parentStateNode == null)
 			{
-				parentState = parentState.getParentState();
-				
 				if (parentState != null)
 				{
-					parentStateNode = 
-							searchInStateNodeRecursive(stateNodes, 
-							                           stateNode, 
-							                           stateArr, stateArrPos, 
-							                           parentState);
+					parentState = parentState.getParentState();
 					
-					if ((parentStateNode != null) && (parentStateNode.getState() == null))
+					if (parentState != null)
 					{
-						throw new RuntimeException("parentStateNode State is null.");
+						parentStateNode = 
+								searchInStateNodeRecursive(stateNodes, 
+								                           stateNode, 
+								                           stateArr, stateArrPos, 
+								                           parentState);
+						
+//						if ((parentStateNode != null) && (parentStateNode.getState() == null))
+//						{
+//							throw new RuntimeException("parentStateNode State is null.");
+//						}
+					}
+					else
+					{
+						break;
 					}
 				}
 				else
 				{
+					parentStateNode = null;
 					break;
 				}
 			}
@@ -320,6 +322,10 @@ public class MainService
 		return retStateNode;
 	}
 
+	/** 
+	 * Aus dem In-StateNodes
+	 * die nächsten StateNodes auslesen und setzen.
+	 */
 	private static void calcNextStates(final Map map, 
 	                                  final StateNodes stateNodes)
 	{
@@ -331,64 +337,50 @@ public class MainService
 		{
 			for (int xPos = 0; xPos < xSize; xPos++)
 			{
+				//----------------------------------------------------------------------------------
 				final MapField mapField = map.getMapField(xPos, yPos);
 			
-				List<NextStateNode> newNextStateNodes = null;
-				final List<NextStateNode> nextStateNodes = mapField.getNextStateNodes();
+				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+				mapField.resetPropInnerStateNodes();
 				
-				if (nextStateNodes != null)
+				final List<PropInStateNode> propInStateNodes = mapField.getPropInStateNodes();
+				
+				for (final PropInStateNode propInStateNode : propInStateNodes)
 				{
-					for (final NextStateNode nextStateNode : nextStateNodes)
+					final StateNode inStateNode = propInStateNode.getInStateNode();
+					final long inStateNodeProbability = propInStateNode.getProbability();
+					
+					if (inStateNode != null)
 					{
-						final StateNode inStateNode = nextStateNode.getInStateNode();
-						final long inStateNodeProbability = nextStateNode.getProbability();
+						final List<PropNextStateNode> inNextStateNodes = inStateNode.getNextStateNodes();
 						
-						if (inStateNode != null)
+						for (final PropNextStateNode inNextStateNode : inNextStateNodes)
 						{
-							final List<NextStateNode> inNextStateNodes = inStateNode.getNextStateNodes();
+							final StateNode nextInStateNode = inNextStateNode.getNextStateNode();
+							final long nextInStateNodeProbability = inNextStateNode.getProbability();
 							
-							for (final NextStateNode inNextStateNode : inNextStateNodes)
+							if (nextInStateNode != null)
 							{
-								final StateNode nextInStateNode = inNextStateNode.getInStateNode();
-								final long nextInStateNodeProbability = inNextStateNode.getProbability();
+								final PropInnerStateNode newPropInnerStateNode =
+										new PropInnerStateNode(nextInStateNode, 
+										                       (inStateNodeProbability +
+										                        nextInStateNodeProbability) / 2L);
 								
-								if (nextInStateNode != null)
-								{
-									final StateNode oldStateNode = nextStateNode.getStateNode();
-									
-									dbgCheckFirst3NullState(nextInStateNode);
-									
-									// Nur hochzählen, wenn sich der State auch ändert.
-									if (oldStateNode != nextInStateNode)
-									{
-										final NextStateNode newNextStateNode =
-												new NextStateNode(nextInStateNode, 
-												                  (inStateNodeProbability +
-												                   nextInStateNodeProbability) / 2L);
-										
-										if (newNextStateNodes == null)
-										{
-											newNextStateNodes = new Vector<>();
-										}
-										
-										newNextStateNodes.add(newNextStateNode);
-										nextInStateNode.addUsedCnt(runCnt);
-									}
-								}
-	//							else
-	//							{
-	//								throw new RuntimeException("No Next-State-Node found for this In-State-Node:\n" + inStateNodeToString(inStateNode));
-	//							}
+								mapField.addPropInnerStateNode(newPropInnerStateNode);
+								nextInStateNode.addUsedCnt(runCnt);
 							}
-						}
-						else
-						{
-							throw new RuntimeException("No In-State-Node found.");
+//							else
+//							{
+//								throw new RuntimeException("No Next-State-Node found for this In-State-Node:\n" + inStateNodeToString(inStateNode));
+//							}
 						}
 					}
+					else
+					{
+						throw new RuntimeException("No In-State-Node found.");
+					}
 				}
-
-				mapField.setNextStateNodes(newNextStateNodes);
+				//----------------------------------------------------------------------------------
 			}
 		}
 		//==========================================================================================
@@ -579,7 +571,7 @@ public class MainService
 
 	/**
 	 * @param nodeStates
-	 * 			from last (NextStateNode) to Root-StateNode (without Root-Node).
+	 * 			from last (PropNextStateNode) to Root-StateNode (without Root-Node).
 	 * @return
 	 * 			<code>null</code> if no State-Node found.
 	 */

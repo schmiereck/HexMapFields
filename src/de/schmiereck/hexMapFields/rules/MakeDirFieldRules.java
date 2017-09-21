@@ -5,7 +5,7 @@ package de.schmiereck.hexMapFields.rules;
 
 import de.schmiereck.hexMapFields.Main;
 import de.schmiereck.hexMapFields.MainService;
-import de.schmiereck.hexMapFields.NextStateNode;
+import de.schmiereck.hexMapFields.PropNextStateNode;
 import de.schmiereck.hexMapFields.RuleSet;
 import de.schmiereck.hexMapFields.State;
 import de.schmiereck.hexMapFields.StateNode;
@@ -98,7 +98,7 @@ public class MakeDirFieldRules
 					                            s1EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// G -> s0
@@ -107,7 +107,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// B -> s0
@@ -116,7 +116,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// RG -> s0
@@ -125,7 +125,7 @@ public class MakeDirFieldRules
 					                            s1EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// GB -> s0
@@ -134,7 +134,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s1EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// RB -> s0
@@ -143,7 +143,7 @@ public class MakeDirFieldRules
 					                            s1EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		
 		{
@@ -153,7 +153,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(gbMapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(gbMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		
 		{
@@ -163,7 +163,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(rbMapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(rbMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// inB -> RG
@@ -172,7 +172,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.setNextStateNode(rgMapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(rgMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		
 		{
@@ -182,7 +182,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(bMapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// inGB -> R
@@ -191,7 +191,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s1EdgeState);
 			
-			stateNode.setNextStateNode(rMapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// inRB -> G
@@ -200,7 +200,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.setNextStateNode(gMapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// inRGB -> s0
@@ -209,7 +209,7 @@ public class MakeDirFieldRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s1EdgeState, s1EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, NextStateNode.MAX_probability);
+			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(bMapFieldStateNode);

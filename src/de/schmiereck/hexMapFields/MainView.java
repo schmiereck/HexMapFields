@@ -394,13 +394,13 @@ public class MainView
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		
 		// Prüfen ob der State aktiv ist und dann hervorheben.
-		final List<NextStateNode> nextStateNodes = mapField.getNextStateNodes();
+		final List<PropInnerStateNode> propInnerStateNodes = mapField.getPropInnerStateNodes();
 		
-		if (nextStateNodes != null)
+		if (propInnerStateNodes != null)
 		{
-			for (final NextStateNode nextStateNode : nextStateNodes)
+			for (final PropInnerStateNode propNextStateNode : propInnerStateNodes)
 			{
-				final StateNode caStateNode = nextStateNode.getStateNode();
+				final StateNode caStateNode = propNextStateNode.getInnerStateNode();
 				
 				if (caStateNode != null)
 				{
@@ -497,7 +497,7 @@ public class MainView
 	private void drawStateOval(	final Graphics2D g2, double xm, double ym, double xab,
 								double yab, final double e)
 	{
-		this.fillOval(g2, xm+xab/2, ym+yab/2, e, e);//xRadius/2, yRadius/2);
+		this.drawOval(g2, xm+xab/2, ym+yab/2, e, e);//xRadius/2, yRadius/2);
 	}
 
 	private void drawOut(final Graphics2D g2, final double xm, final double ym, final MapField outField)
