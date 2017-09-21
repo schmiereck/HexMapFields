@@ -4,7 +4,6 @@
 package de.schmiereck.hexMapFields;
 
 import java.util.List;
-import java.util.Vector;
 
 /**
  * <p>
@@ -127,26 +126,43 @@ public class MainService
 	                                final State abState, final State bcState, final State caState)
 	{
 		//==========================================================================================
-		final List<StateNode> abInStateNodes = MapFieldUtils.extractABInStateNodes(mapField);
-
-		final List<StateNode> bcInStateNodes = MapFieldUtils.extractBCInStateNodes(mapField);
-		
-		final List<StateNode> caInStateNodes = MapFieldUtils.extractCAInStateNodes(mapField);
-		
-		for (final StateNode abInStateNode : abInStateNodes)
+		final List<PropInnerStateNode> abPropInnerStateNodes;
 		{
-			final State abInState = abInStateNode.getState();
-			
-			for (final StateNode bcInStateNode : bcInStateNodes)
+			final MapField abOutField = mapField.getABOutField();
+			abPropInnerStateNodes = abOutField.getNotEmptyPropInnerStateNodes();
+		}
+		for (final PropInnerStateNode abPropInnerStateNode : abPropInnerStateNodes)
+		{
+			final State abInState;
 			{
-				final State bcInState = bcInStateNode.getState();
-				
-				for (final StateNode caInStateNode : caInStateNodes)
+				final StateNode innerStateNode = abPropInnerStateNode.getInnerStateNode();
+				final StateNode abInStateNode = innerStateNode.getParentNode().getParentNode();
+				abInState = abInStateNode.getState();
+			}			
+			final MapField bcOutField = mapField.getBCOutField();
+			final List<PropInnerStateNode> bcPropInnerStateNodes = bcOutField.getNotEmptyPropInnerStateNodes();
+			
+			for (final PropInnerStateNode bcPropInnerStateNode : bcPropInnerStateNodes)
+			{
+				final State bcInState;
 				{
+					final StateNode bcInnerStateNode = abPropInnerStateNode.getInnerStateNode();
+					final StateNode bcInStateNode = bcInnerStateNode.getParentNode();
+					bcInState = bcInStateNode.getState();
+				}
+				
+				final MapField caOutField = mapField.getCAOutField();
+				final List<PropInnerStateNode> caPropInnerStateNodes = caOutField.getNotEmptyPropInnerStateNodes();
+				
+				for (final PropInnerStateNode caPropInnerStateNode : caPropInnerStateNodes)
+				{
+					final State caInState;
+					{
+						final StateNode caInnerStateNode = caPropInnerStateNode.getInnerStateNode();
+						final StateNode caInStateNode = caInnerStateNode;
+						caInState = caInStateNode.getState();
+					}
 					//------------------------------------------------------------------------------
-					final State caInState = caInStateNode.getState();
-					
-					// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 					final StateNode inStateNode = 
 							searchInStateNode(stateNodes,
 							                  abState, bcState, caState, 
@@ -155,8 +171,10 @@ public class MainService
 					if (inStateNode != null)
 					{
 						final PropInStateNode newPropInStateNode = 
-								new PropInStateNode(inStateNode, PropNextStateNode.MAX_probability);
-						
+								new PropInStateNode(inStateNode, //PropNextStateNode.MAX_probability);
+								                    (abPropInnerStateNode.getProbability() +
+								                     bcPropInnerStateNode.getProbability() +
+								                     caPropInnerStateNode.getProbability()) / 3L);
 						mapField.addPropInStateNode(newPropInStateNode);
 						
 						inStateNode.addUsedCnt(runCnt);

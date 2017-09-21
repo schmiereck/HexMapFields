@@ -232,6 +232,27 @@ public class MapField
 	{
 		return this.propInnerStateNodes;
 	}
+
+	/**
+	 * @return 
+	 *			the value of attribute {@link #propInnerStateNodes}.
+	 */
+	public List<PropInnerStateNode> getNotEmptyPropInnerStateNodes()
+	{
+		//==========================================================================================
+		final List<PropInnerStateNode> retPropInnerStateNodes;
+		
+		if (this.propInnerStateNodes.size() > 0)
+		{
+			retPropInnerStateNodes = this.propInnerStateNodes;
+		}
+		else
+		{
+			retPropInnerStateNodes = EMPTY_InnerStateNodes;
+		}
+		//==========================================================================================
+		return retPropInnerStateNodes;
+	}
 	
 	/**
 	 * @param propInnerStateNodes 
@@ -310,7 +331,7 @@ public class MapField
 	}
 
 	/**
-	 * Clear {@link #getPropInnerStateNodes()} and add an {@link #EMPTY_InnerStateNode}.
+	 * Clear {@link #propInnerStateNodes} and add an {@link #EMPTY_InnerStateNode}.
 	 */
 	public void resetPropInnerStateNodes()
 	{

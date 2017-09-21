@@ -398,16 +398,18 @@ public class MainView
 		
 		if (propInnerStateNodes != null)
 		{
-			for (final PropInnerStateNode propNextStateNode : propInnerStateNodes)
+			for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
 			{
-				final StateNode caStateNode = propNextStateNode.getInnerStateNode();
+				final long propInnerProbability = propInnerStateNode.getProbability();
+				
+				final StateNode caStateNode = propInnerStateNode.getInnerStateNode();
 				
 				if (caStateNode != null)
 				{
 					final State caState = caStateNode.getState();
 		
 					// From Origin to lt (CA).
-					this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE);
+					this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE, propInnerProbability);
 					
 					final StateNode bcStateNode = caStateNode.getParentNode();
 					if (bcStateNode != null)
@@ -415,7 +417,7 @@ public class MainView
 						final State bcState = bcStateNode.getState();
 						
 						// From Origin to rt (BC).
-						this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN);
+						this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN, propInnerProbability);
 						
 						final StateNode abStateNode = bcStateNode.getParentNode();
 						if (abStateNode != null)
@@ -423,7 +425,7 @@ public class MainView
 							final State abState = abStateNode.getState();
 							
 							// From Origin to lr (AB).
-							this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED);
+							this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED, propInnerProbability);
 						}
 					}
 				}
@@ -449,9 +451,10 @@ public class MainView
 	}
 	
 	private void drawState(final Graphics2D g2, 
-	                       double xm, double ym, 
-	                       State state, 
-	                       double xab, double yab, Color color)
+	                       final double xm, final double ym, 
+	                       final State state, 
+	                       final double xab, final double yab, final Color color,
+	                       final long propInnerProbability)
 	{
 		//==========================================================================================
 		if (state == Main.s0EdgeState)
@@ -464,7 +467,7 @@ public class MainView
 		{
 			g2.setColor(color);
 			
-			final double en = state.getEnergie();
+			final double en = (state.getEnergie() * propInnerProbability) / PropNextStateNode.MAX_probability;
 
 //			if (en < 5.0D)
 //			{

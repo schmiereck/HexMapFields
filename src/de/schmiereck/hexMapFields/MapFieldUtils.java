@@ -28,44 +28,6 @@ public class MapFieldUtils
 	//**********************************************************************************************
 	// Functions:
 	
-	/**
-	 * @param mapField
-	 * 			ist the Map-Field.
-	 * @return
-	 * 			the AB-StateNode of the Neighbour AB-Field of given Map-Field.
-	 */
-	public static List<StateNode> extractABInStateNodes(final MapField mapField)
-	{
-		//==========================================================================================
-		List<StateNode> abInnerStateNodes = null;
-		
-//		AUfteilen und getrennt aufrufen - keine Zwischenliste nötig
-		
-		final MapField abOutField = mapField.getABOutField();
-		
-		final List<PropInnerStateNode> propInnerStateNodes = abOutField.getPropInnerStateNodes();
-		
-		for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
-		{
-			final StateNode innerStateNode = propInnerStateNode.getInnerStateNode();
-			
-			if (innerStateNode != null)
-			{
-				if (abInnerStateNodes == null)
-				{
-					abInnerStateNodes = new Vector<>();
-				}
-				abInnerStateNodes.add(innerStateNode.getParentNode().getParentNode());
-			}
-		}
-		
-		if (abInnerStateNodes == null)
-		{
-			abInnerStateNodes = EMPTY_InStateNodes;
-		}
-		//==========================================================================================
-		return abInnerStateNodes;
-	}
 
 	public static State extractABInnerState(final PropInnerStateNode propInnerStateNode)
 	{
@@ -124,43 +86,6 @@ public class MapFieldUtils
 //		//==========================================================================================
 //		return abInStateNode;
 //	}
-
-	/**
-	 * @param mapField
-	 * 			ist the Map-Field.
-	 * @return
-	 * 			the CB-StateNode of the Neighbour CB-Field of given Map-Field.
-	 */
-	public static List<StateNode> extractBCInStateNodes(final MapField mapField)
-	{
-		//==========================================================================================
-		List<StateNode> bcInStateNodes = null;
-		
-		final MapField bcOutField = mapField.getBCOutField();
-
-		final List<PropInnerStateNode> propInnerStateNodes = bcOutField.getPropInnerStateNodes();
-		
-		for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
-		{
-			final StateNode stateNode = propInnerStateNode.getInnerStateNode();
-
-			if (stateNode != null)
-			{
-				if (bcInStateNodes == null)
-				{
-					bcInStateNodes = new Vector<>();
-				}
-				bcInStateNodes.add(stateNode.getParentNode());
-			}
-		}
-		
-		if (bcInStateNodes == null)
-		{
-			bcInStateNodes = EMPTY_InStateNodes;
-		}
-		//==========================================================================================
-		return bcInStateNodes;
-	}
 
 	public static State extractBCInnerState(final PropInnerStateNode propInnerStateNode)
 	{
@@ -234,43 +159,6 @@ public class MapFieldUtils
 //		//==========================================================================================
 //		return bcInStateNodes;
 //	}
-
-	/**
-	 * @param mapField
-	 * 			ist the Map-Field.
-	 * @return
-	 * 			the CA-StateNode of the Neighbour CA-Field of given Map-Field.
-	 */
-	public static List<StateNode> extractCAInStateNodes(final MapField mapField)
-	{
-		//==========================================================================================
-		List<StateNode> caInStateNodes = null;
-		
-		final MapField caOutField = mapField.getCAOutField();
-		
-		final List<PropInnerStateNode> propInnerStateNodes = caOutField.getPropInnerStateNodes();
-		
-		for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
-		{
-			final StateNode stateNode = propInnerStateNode.getInnerStateNode();
-
-			if (stateNode != null)
-			{
-				if (caInStateNodes == null)
-				{
-					caInStateNodes = new Vector<>();
-				}
-				caInStateNodes.add(stateNode);
-			}
-		}
-		
-		if (caInStateNodes == null)
-		{
-			caInStateNodes = EMPTY_InStateNodes;
-		}
-		//==========================================================================================
-		return caInStateNodes;
-	}
 
 	public static State extractCAInnerState(final PropInnerStateNode propInnerStateNode)
 	{

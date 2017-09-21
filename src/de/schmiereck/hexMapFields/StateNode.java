@@ -165,7 +165,7 @@ public class StateNode
 	 * @param nextStateNode 
 	 * 			used to set the value of attribute {@link #propNextStateNodes}.
 	 */
-	public void setNextStateNode(final StateNode nextStateNode, final long probability)
+	public void addNextStateNode(final StateNode nextStateNode, final long probability)
 	{
 		if (this.propNextStateNodes == null)
 		{

@@ -94,7 +94,7 @@ public class MakeRunnerRules
 					                            s1EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// inR -> G
@@ -103,7 +103,7 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// G -> s0
@@ -112,7 +112,7 @@ public class MakeRunnerRules
 					                            s0EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// inG -> B
@@ -121,7 +121,7 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// B -> s0
@@ -130,7 +130,7 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.setNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		{
 			// inB -> R
@@ -139,7 +139,7 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.setNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(bMapFieldStateNode);
