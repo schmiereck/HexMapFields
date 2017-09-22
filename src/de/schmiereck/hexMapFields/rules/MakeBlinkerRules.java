@@ -98,6 +98,8 @@ public class MakeBlinkerRules
 				                           s1EdgeState, s0EdgeState, s0EdgeState);
 			
 			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability/10L);
+			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability/10L);
 		}
 		
 		{
@@ -116,7 +118,9 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s0EdgeState, s1EdgeState, s0EdgeState);
 			
+			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability/10L);
 			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability/10L);
 		}
 		
 		{

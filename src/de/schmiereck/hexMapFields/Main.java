@@ -10,6 +10,7 @@ import de.schmiereck.hexMapFields.rules.MakeCircleDirRules;
 import de.schmiereck.hexMapFields.rules.MakeCircleStaticRules;
 import de.schmiereck.hexMapFields.rules.MakeDirFieldRules;
 import de.schmiereck.hexMapFields.rules.MakeRunnerRules;
+import de.schmiereck.hexMapFields.rules.MakeStaticRules;
 import de.schmiereck.hexMapFields.rules.RulesService;
 
 /**
@@ -116,6 +117,7 @@ public class Main
 	{
 		//==========================================================================================
 		// Farbladung:
+		final RuleSet staticRuleSet = MakeStaticRules.makeRules(stateNodes, emptyRuleSet, s0MapFieldStateNode);
 		final RuleSet blinkerRuleSet = MakeBlinkerRules.makeRules(stateNodes, emptyRuleSet, s0MapFieldStateNode);
 		final RuleSet runnerRuleSet = MakeRunnerRules.makeRules(stateNodes, emptyRuleSet, s0MapFieldStateNode);
 		final RuleSet circleStaticRuleSet = MakeCircleStaticRules.makeRules(stateNodes, emptyRuleSet, s0MapFieldStateNode);
@@ -160,7 +162,8 @@ public class Main
 				{
 //					stateNode = emptyRuleSet.getInitStateNode();
 					field = emptyField;
-					stateNode = blinkerRuleSet.getInitStateNode();
+					stateNode = staticRuleSet.getInitStateNode();
+//					stateNode = blinkerRuleSet.getInitStateNode();
 //					stateNode = circleStaticRuleSet.getInitStateNode();
 //					stateNode = circleStaticBig1RuleSet.getInitStateNode();
 //					stateNode = circleDirRuleSet.getInitStateNode();

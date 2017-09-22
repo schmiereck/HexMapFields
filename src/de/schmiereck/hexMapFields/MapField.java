@@ -3,6 +3,8 @@
  */
 package de.schmiereck.hexMapFields;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -59,12 +61,13 @@ public class MapField
 	private final MapField[] outFields = new MapField[NEIGHBOURS_CNT];
 
 	/**
+	 * Inner-StateNode is the Key.
 	 * Der Inner-State für jede Seite:
 	 * 0: AB (R)
 	 * 1: BC (G)
 	 * 2: CA (B)
 	 */
-	private List<PropInnerStateNode> propInnerStateNodes = new Vector<>();
+	private HashMap<StateNode, PropInnerStateNode> propInnerStateNodes = new HashMap<>();
 	
 	private List<PropInStateNode> propInStateNodes = new Vector<>();
 
@@ -228,23 +231,23 @@ public class MapField
 	 * @return 
 	 *			the value of attribute {@link #propInnerStateNodes}.
 	 */
-	public List<PropInnerStateNode> getPropInnerStateNodes()
+	public Collection<PropInnerStateNode> getPropInnerStateNodes()
 	{
-		return this.propInnerStateNodes;
+		return this.propInnerStateNodes.values();
 	}
 
 	/**
 	 * @return 
 	 *			the value of attribute {@link #propInnerStateNodes}.
 	 */
-	public List<PropInnerStateNode> getNotEmptyPropInnerStateNodes()
+	public Collection<PropInnerStateNode> getNotEmptyPropInnerStateNodes()
 	{
 		//==========================================================================================
-		final List<PropInnerStateNode> retPropInnerStateNodes;
+		final Collection<PropInnerStateNode> retPropInnerStateNodes;
 		
 		if (this.propInnerStateNodes.size() > 0)
 		{
-			retPropInnerStateNodes = this.propInnerStateNodes;
+			retPropInnerStateNodes = this.propInnerStateNodes.values();
 		}
 		else
 		{
@@ -254,15 +257,6 @@ public class MapField
 		return retPropInnerStateNodes;
 	}
 	
-	/**
-	 * @param propInnerStateNodes 
-	 * 			used to set the value of attribute {@link #propInnerStateNodes}.
-	 */
-	public void setPropInnerStateNode(final List<PropInnerStateNode> propInnerStateNodes)
-	{
-		this.propInnerStateNodes = propInnerStateNodes;
-	}
-
 	/**
 	 * @return 
 	 *			the value of attribute {@link #propInStateNodes}.
@@ -314,7 +308,36 @@ public class MapField
 	 */
 	public void addPropInnerStateNode(final PropInnerStateNode propInnerStateNode)
 	{
-		this.propInnerStateNodes.add(propInnerStateNode);
+		this.propInnerStateNodes.put(propInnerStateNode.getInnerStateNode(), 
+		                             propInnerStateNode);
+	}
+
+	public void addPropInnerStateNode(final StateNode nextInStateNode, final long probability)
+	{
+		//==========================================================================================
+		final PropInnerStateNode newPropInnerStateNode;
+		
+		final PropInnerStateNode propInnerStateNode = this.propInnerStateNodes.get(nextInStateNode);
+		
+		if (propInnerStateNode == null)
+		{
+			newPropInnerStateNode =
+					new PropInnerStateNode(nextInStateNode, 
+					                       probability);
+		}
+		else
+		{
+			propInnerStateNode.setProbability((propInnerStateNode.getProbability() + 
+			                                   probability) / 2L);
+			
+			newPropInnerStateNode = propInnerStateNode;
+		}
+		
+		this.propInnerStateNodes.put(nextInStateNode,
+		                             newPropInnerStateNode);
+		
+		//==========================================================================================
+		
 	}
 
 	/**
@@ -337,6 +360,8 @@ public class MapField
 	{
 		//==========================================================================================
 		this.propInnerStateNodes.clear();
+		this.propInnerStateNodes.put(EMPTY_InnerStateNode.getInnerStateNode(),
+		                             EMPTY_InnerStateNode);
 		
 		//==========================================================================================
 		

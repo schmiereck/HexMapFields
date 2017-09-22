@@ -13,7 +13,7 @@ import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
-import java.util.List;
+import java.util.Collection;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -394,7 +394,7 @@ public class MainView
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		
 		// Prüfen ob der State aktiv ist und dann hervorheben.
-		final List<PropInnerStateNode> propInnerStateNodes = mapField.getPropInnerStateNodes();
+		final Collection<PropInnerStateNode> propInnerStateNodes = mapField.getPropInnerStateNodes();
 		
 		if (propInnerStateNodes != null)
 		{
@@ -467,7 +467,7 @@ public class MainView
 		{
 			g2.setColor(color);
 			
-			final double en = (state.getEnergie() * propInnerProbability) / PropNextStateNode.MAX_probability;
+			final double en = ((double)(state.getEnergie() * propInnerProbability)) / PropNextStateNode.MAX_probability;
 
 //			if (en < 5.0D)
 //			{
@@ -479,14 +479,15 @@ public class MainView
 //				drawStateOval(g2, xm, ym, xab, yab, e);
 ////				this.drawOval(g2, xm+oTri.xab/2, ym+oTri.yab/2, xRadius/2, yRadius/2);
 //			}
-			if (en <= 1.0D)
+			if (en <= 0.5D)
 			{
 				final double e = 0.025D;
 				drawStateOval(g2, xm, ym, xab, yab, e);
 			}
 			else
 			{
-				final double e = 0.025D + Math.log(en) / 40.0D;
+//				final double e = 0.025D + Math.log(en) / 40.0D;
+				final double e = 0.025D + en / 20.0D;
 				drawStateOval(g2, xm, ym, xab, yab, e);
 			}
 		}
