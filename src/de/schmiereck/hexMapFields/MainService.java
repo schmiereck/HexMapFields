@@ -115,7 +115,7 @@ public class MainService
 					final State abState = null;
 					final State bcState = null;
 					final State caState = null;
-					final long innerProbability = PropNextStateNode.MAX_probability;
+					final long innerProbability = 0L;//PropNextStateNode.MAX_probability;
 
 					calcInStates(stateNodes, mapField, abState, bcState, caState, innerProbability);
 				}
@@ -139,8 +139,8 @@ public class MainService
 		{
 			final State abInState;
 			{
-				final StateNode innerStateNode = abPropInnerStateNode.getInnerStateNode();
-				final StateNode abInStateNode = innerStateNode.getParentNode().getParentNode();
+				final StateNode abInnerStateNode = abPropInnerStateNode.getInnerStateNode();
+				final StateNode abInStateNode = abInnerStateNode.getParentNode().getParentNode();
 				abInState = abInStateNode.getState();
 			}			
 			final MapField bcOutField = mapField.getBCOutField();

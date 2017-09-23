@@ -487,7 +487,8 @@ public class MainView
 			else
 			{
 //				final double e = 0.025D + Math.log(en) / 40.0D;
-				final double e = 0.025D + en / 20.0D;
+//				final double e = 0.025D + en / 20.0D;
+				final double e = 0.025D + (en*en) / 10.0D;
 				drawStateOval(g2, xm, ym, xab, yab, e);
 			}
 		}
