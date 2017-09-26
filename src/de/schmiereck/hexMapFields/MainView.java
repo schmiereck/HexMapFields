@@ -33,9 +33,27 @@ public class MainView
 	//**********************************************************************************************
 	// Constants:
 	
-	private static final Color RED = new Color(255, 32, 32);
-	private static final Color GREEN = new Color(0, 192, 0);
-	private static final Color BLUE = new Color(32, 32, 255);
+	private static final Color RED = new Color(255, 32, 32)
+			{
+				public String toString()
+				{
+					return "R";
+				}
+			};
+	private static final Color GREEN = new Color(16, 192, 0)
+			{
+				public String toString()
+				{
+					return "G";
+				}
+			};
+	private static final Color BLUE = new Color(32, 32, 255)
+			{
+				public String toString()
+				{
+					return "B";
+				}
+			};
 
 	//**********************************************************************************************
 	// Fields:
@@ -360,6 +378,7 @@ public class MainView
 				//----------------------------------------------------------------------------------
 			}
 		}
+System.out.println("-----------------------------------");
 		//==========================================================================================
 	}
 
@@ -400,10 +419,9 @@ public class MainView
 		{
 			for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
 			{
-				final long propInnerProbability = propInnerStateNode.getProbability();
+				final double propInnerProbability = propInnerStateNode.getProbability();
 				
 				final StateNode caStateNode = propInnerStateNode.getInnerStateNode();
-				
 				if (caStateNode != null)
 				{
 					final State caState = caStateNode.getState();
@@ -454,7 +472,7 @@ public class MainView
 	                       final double xm, final double ym, 
 	                       final State state, 
 	                       final double xab, final double yab, final Color color,
-	                       final long propInnerProbability)
+	                       final double propInnerProbability)
 	{
 		//==========================================================================================
 		if (state == Main.s0EdgeState)
@@ -468,6 +486,7 @@ public class MainView
 			g2.setColor(color);
 			
 			final double en = ((double)(state.getEnergie() * propInnerProbability)) / PropNextStateNode.MAX_probability;
+System.out.println(color+":"+en+",");
 
 //			if (en < 5.0D)
 //			{

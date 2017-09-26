@@ -160,18 +160,30 @@ public class StateNode
 		return this.propNextStateNodes;
 	}
 
-	
 	/**
 	 * @param nextStateNode 
 	 * 			used to set the value of attribute {@link #propNextStateNodes}.
 	 */
-	public void addNextStateNode(final StateNode nextStateNode, final long probability)
+	public void addNextStateNode(final StateNode nextStateNode, final double probability)
 	{
 		if (this.propNextStateNodes == null)
 		{
 			this.propNextStateNodes = new Vector<>();
 		}
 		this.propNextStateNodes.add(new PropNextStateNode(nextStateNode, probability));
+	}
+
+	/**
+	 * @param nextStateNode 
+	 * 			used to set the value of attribute {@link #propNextStateNodes}.
+	 */
+	public void addNextStateNode(final StateNode nextStateNode, final double probability, final String name)
+	{
+		if (this.propNextStateNodes == null)
+		{
+			this.propNextStateNodes = new Vector<>();
+		}
+		this.propNextStateNodes.add(new PropNextStateNode(nextStateNode, probability, name));
 	}
 
 	/**

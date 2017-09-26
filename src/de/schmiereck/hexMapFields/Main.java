@@ -96,7 +96,7 @@ public class Main
 				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState,
 				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState);
 		
-		s0InStateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+		s0InStateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability, "s0InStateNode");
 	}
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	static
@@ -194,7 +194,7 @@ public class Main
 				{
 					mapField = map.getMapField(xPos, yPos);
 	
-					final long probability = PropNextStateNode.MAX_probability;
+					final double probability = PropNextStateNode.MAX_probability;
 					
 					mapField.addPropInnerStateNode(new PropInnerStateNode(stateNode, probability));
 					mapField.setField(field);

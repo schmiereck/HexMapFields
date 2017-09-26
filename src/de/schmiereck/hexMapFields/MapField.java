@@ -29,7 +29,7 @@ public class MapField
 	 */
 	public static final int NEIGHBOURS_CNT = 3;
 	
-	public static final PropNextStateNode EMPTY_NextStateNode = new PropNextStateNode(Main.s0InStateNode, PropNextStateNode.MAX_probability);
+	public static final PropNextStateNode EMPTY_NextStateNode = new PropNextStateNode(Main.s0InStateNode, PropNextStateNode.MAX_probability, "EMPTY_NextStateNode");
 	
 //	public static final List<PropNextStateNode> EMPTY_NextStateNodes = new Vector<>();
 //	static
@@ -312,30 +312,26 @@ public class MapField
 		                             propInnerStateNode);
 	}
 
-	public void addPropInnerStateNode(final StateNode nextInStateNode, final long probability)
+	public void addPropInnerStateNode(final StateNode nextInStateNode, final double probability)
 	{
 		//==========================================================================================
-		final PropInnerStateNode newPropInnerStateNode;
-		
 		final PropInnerStateNode propInnerStateNode = this.propInnerStateNodes.get(nextInStateNode);
 		
 		if (propInnerStateNode == null)
 		{
+			final PropInnerStateNode newPropInnerStateNode;
+			
 			newPropInnerStateNode =
 					new PropInnerStateNode(nextInStateNode, 
 					                       probability);
+			
+			this.propInnerStateNodes.put(nextInStateNode,
+			                             newPropInnerStateNode);
 		}
 		else
 		{
-			propInnerStateNode.setProbability((propInnerStateNode.getProbability() + 
-			                                   probability) / 2L);
-			
-			newPropInnerStateNode = propInnerStateNode;
+			propInnerStateNode.setProbability((propInnerStateNode.getProbability() * probability) / PropNextStateNode.MAX_probability);
 		}
-		
-		this.propInnerStateNodes.put(nextInStateNode,
-		                             newPropInnerStateNode);
-		
 		//==========================================================================================
 		
 	}
