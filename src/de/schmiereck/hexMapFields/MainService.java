@@ -170,7 +170,10 @@ public class MainService
 							searchInStateNode(stateNodes,
 							                  abInnerState, bcInnerState, caInnerState, 
 							                  abInState, bcInState, caInState);
-					
+					if (inStateNode == null) 
+					{
+						System.out.println("XX");
+					}
 					if ((inStateNode != null) && (inStateNode != Main.s0InStateNode))
 					{
 						final double probability =
@@ -187,7 +190,6 @@ public class MainService
 								new PropInStateNode(inStateNode, //PropNextStateNode.MAX_probability);
 								                    probability);
 								                    
-						
 						mapField.addPropInStateNode(newPropInStateNode);
 						
 						inStateNode.addUsedCnt(runCnt);

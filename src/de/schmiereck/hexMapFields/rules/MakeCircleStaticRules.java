@@ -91,19 +91,19 @@ public class MakeCircleStaticRules
 			// inR -> G
 			final StateNode stateNode = 
 					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s0EdgeState, s0EdgeState, s0EdgeState,
-					                            s1EdgeState, s0EdgeState, s0EdgeState);
+					                           s0EdgeState, s0EdgeState, s0EdgeState,
+					                           s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+//			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+//			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 		}
 		{
 			// R -> s0
 			final StateNode stateNode = 
 					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s1EdgeState, s0EdgeState, s0EdgeState,
-					                            s0EdgeState, s0EdgeState, s0EdgeState);
+					                           s1EdgeState, s0EdgeState, s0EdgeState,
+					                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
 			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
@@ -112,19 +112,19 @@ public class MakeCircleStaticRules
 			// inG -> R
 			final StateNode stateNode = 
 					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s0EdgeState, s0EdgeState, s0EdgeState,
-					                            s0EdgeState, s1EdgeState, s0EdgeState);
+					                           s0EdgeState, s0EdgeState, s0EdgeState,
+					                           s0EdgeState, s1EdgeState, s0EdgeState);
 			
 			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+//			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+//			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 		}
 		{
 			// G -> s0
 			final StateNode stateNode = 
 					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s0EdgeState, s1EdgeState, s0EdgeState,
-					                            s0EdgeState, s0EdgeState, s0EdgeState);
+					                           s0EdgeState, s1EdgeState, s0EdgeState,
+					                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
 			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
@@ -133,19 +133,19 @@ public class MakeCircleStaticRules
 			// inB -> G
 			final StateNode stateNode = 
 					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s0EdgeState, s0EdgeState, s0EdgeState,
-					                            s0EdgeState, s0EdgeState, s1EdgeState);
+					                           s0EdgeState, s0EdgeState, s0EdgeState,
+					                           s0EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+//			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+//			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 		}
 		{
 			// B -> s0
 			final StateNode stateNode = 
 					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s0EdgeState, s0EdgeState, s1EdgeState,
-					                            s0EdgeState, s0EdgeState, s0EdgeState);
+					                           s0EdgeState, s0EdgeState, s1EdgeState,
+					                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
 			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}

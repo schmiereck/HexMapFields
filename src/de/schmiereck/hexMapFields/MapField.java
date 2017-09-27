@@ -68,6 +68,7 @@ public class MapField
 	 * 2: CA (B)
 	 */
 	private HashMap<StateNode, PropInnerStateNode> propInnerStateNodes = new HashMap<>();
+//	private List<PropInnerStateNode> propInnerStateNodes = new Vector<>();
 	
 	private List<PropInStateNode> propInStateNodes = new Vector<>();
 
@@ -85,6 +86,8 @@ public class MapField
 	public MapField()
 	{
 		//==========================================================================================
+		this.resetPropInnerStateNodes();
+		
 		//==========================================================================================
 	}
 	
@@ -234,6 +237,7 @@ public class MapField
 	public Collection<PropInnerStateNode> getPropInnerStateNodes()
 	{
 		return this.propInnerStateNodes.values();
+//		return this.propInnerStateNodes;
 	}
 
 	/**
@@ -248,6 +252,7 @@ public class MapField
 		if (this.propInnerStateNodes.size() > 0)
 		{
 			retPropInnerStateNodes = this.propInnerStateNodes.values();
+//			retPropInnerStateNodes = this.propInnerStateNodes;
 		}
 		else
 		{
@@ -310,6 +315,7 @@ public class MapField
 	{
 		this.propInnerStateNodes.put(propInnerStateNode.getInnerStateNode(), 
 		                             propInnerStateNode);
+//		this.propInnerStateNodes.add(propInnerStateNode);
 	}
 
 	public void addPropInnerStateNode(final StateNode nextInStateNode, final double probability)
@@ -331,7 +337,16 @@ public class MapField
 		else
 		{
 			propInnerStateNode.setProbability((propInnerStateNode.getProbability() * probability) / PropNextStateNode.MAX_probability);
+			propInnerStateNode.setProbability((propInnerStateNode.getProbability() + probability) / 2.0D);
 		}
+//		final PropInnerStateNode newPropInnerStateNode;
+//		
+//		newPropInnerStateNode =
+//				new PropInnerStateNode(nextInStateNode, 
+//				                       probability);
+//		
+//		this.propInnerStateNodes.add(newPropInnerStateNode);
+
 		//==========================================================================================
 		
 	}
@@ -358,6 +373,7 @@ public class MapField
 		this.propInnerStateNodes.clear();
 		this.propInnerStateNodes.put(EMPTY_InnerStateNode.getInnerStateNode(),
 		                             EMPTY_InnerStateNode);
+//		this.propInnerStateNodes.add(EMPTY_InnerStateNode);
 		
 		//==========================================================================================
 		

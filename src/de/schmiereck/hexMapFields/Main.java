@@ -173,12 +173,12 @@ public class Main
 				}
 				else
 				{
-					if ((xPos == 7) && (yPos == 3))
+					if ((xPos == 6) && (yPos == 1))
 					{
-						stateNode = null;//emptyRuleSet.getInitStateNode();
+//						stateNode = null;//emptyRuleSet.getInitStateNode();
 						field = null;//emptyField;
 //						stateNode = blinkerRuleSet.getInitStateNode();
-//						stateNode = circleStaticRuleSet.getInitStateNode();
+						stateNode = circleStaticRuleSet.getInitStateNode();
 //						stateNode = circleDirRuleSet.getInitStateNode();		// Error.
 //						stateNode = dirFieldRuleSet.getInitStateNode();
 //						stateNode = runnerRuleSet.getInitStateNode();
