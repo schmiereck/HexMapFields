@@ -537,7 +537,7 @@ Neueste Idee:
 		war ja nicht blöd. So können am einfachsten Schleifen / Wiederholungen erkannt werden.
 		>	Wozu? Die In-State-Nodes bilden das doch schon ab.
 	
-	FÜr ein Field:
+	Für ein Field:
 	=>	RUN: Mehrere Ausgangszustände für einen In-State-Node mit verschiedenen Wahrscheinlichkeiten einbauen.
 		>	NextStateNode
 		>	Es können neue Kombinationen entstehen, für die es keine Rule gibt.
@@ -561,11 +561,34 @@ Neueste Idee:
 	=>	Die State-Nodes weg von der hierarchischen zu einer Neighbour im Array umbauen.
 		Das hierarchische ist nur für die Hash Verwaltung sinnvoll.
 		
+Wahrscheinlichkeiten:
+*	Die W. eines Status wird immer nur weiter gegeben.
+	Sie verringert sich nicht von alleine beim weiter bewegen.
+	=>	Inner-W * Next-W
+		(80%  * 100%) / 100%  = 80%
+	
+*	Eine geringere W. darf also nur das Ergebnis einer Aufspaltung von verschiedenen Resultaten
+	eines Ausgangsstatus sein.
+	Diese bewegen sich dann mit der verringerten W. unverändert weiter.
+	
+*	Eingangsstatus mit verschiedenen Wahrscheinlichkeiten:
+	Der geringste bestimmt die W. des nächten Status.
+	=>	min(AB-In-W, BC-In-W, CA-In-W, Inner-W) = Inner-W (Winner!)
+		oder
+	=>	(AB-In-W * BC-In-W * CA-In-W * Inner-W) / (4 * 100%) = Inner-W
+	
+*	Wenn zwei gleiche Inner-States in ein Map-Field gesetzt werden sollen:
+	MapField.addPropInnerStateNode()
+	=>	Als unabhängige States betrachten die jeweils hinzugefügt werden.
+		oder
+	=>	Zusammenfassen:
+		->	max(Inner-W, Inner-W) = Inner-W  (Winner!)
+		->	(Inner-W * Inner-W) / 100% = Inner-W
+		->	(Inner-W + Inner-W) / 2 = Inner-W
+
+*	Übrig gebliebene W. (> 100%) erzeugen neue Status (Teilchen) ???
+
 ----------------------------------------------------------------------------------------------------
-
-
-
-
 
 
 

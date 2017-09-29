@@ -336,8 +336,9 @@ public class MapField
 		}
 		else
 		{
-			propInnerStateNode.setProbability((propInnerStateNode.getProbability() * probability) / PropNextStateNode.MAX_probability);
-			//propInnerStateNode.setProbability((propInnerStateNode.getProbability() + probability) / 2.0D);
+			//propInnerStateNode.setProbability((propInnerStateNode.getProbability() * probability) / PropNextStateNode.MAX_probability);
+//			propInnerStateNode.setProbability((propInnerStateNode.getProbability() + probability) / 2.0D);
+			propInnerStateNode.setProbability(Math.max(propInnerStateNode.getProbability(), probability));
 		}
 //		final PropInnerStateNode newPropInnerStateNode;
 //		

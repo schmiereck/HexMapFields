@@ -177,10 +177,10 @@ public class MainService
 					if ((inStateNode != null) && (inStateNode != Main.s0InStateNode))
 					{
 						final double probability =
-								(innerProbability +
-			                     abPropInnerStateNode.getProbability() +
-			                     bcPropInnerStateNode.getProbability() +
-			                     caPropInnerStateNode.getProbability()) / 4.0D;
+							calcProp(innerProbability,
+							         abPropInnerStateNode.getProbability(),
+							         bcPropInnerStateNode.getProbability(),
+							         caPropInnerStateNode.getProbability());
 						
 //		                if (probability < 100.0D)
 //		                {
@@ -199,6 +199,17 @@ public class MainService
 			}
 		}
 		//==========================================================================================
+	}
+
+	private static double calcProp(final double p0, final double p1,
+								  final double p2, final double p3)
+	{
+		//==========================================================================================
+		final double retProp = Math.min(p0, Math.min(p1, Math.min(p2, p3)));
+//		final double retProp = (p0 * p1 * p2 * p3) / (4 * PropNextStateNode.MAX_probability);
+		
+		//==========================================================================================
+		return retProp;
 	}
 
 	/** 
