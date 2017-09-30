@@ -485,6 +485,7 @@ System.out.println("-----------------------------------");
 		{
 			g2.setColor(color);
 			
+			// 100% = 1.0D
 			final double en = ((double)(state.getEnergie() * propInnerProbability)) / PropNextStateNode.MAX_probability;
 System.out.println(color+":"+en+",");
 
@@ -498,18 +499,21 @@ System.out.println(color+":"+en+",");
 //				drawStateOval(g2, xm, ym, xab, yab, e);
 ////				this.drawOval(g2, xm+oTri.xab/2, ym+oTri.yab/2, xRadius/2, yRadius/2);
 //			}
-			if (en <= 0.5D)
+			final double e;
+			
+			if (en <= 0.2D)
 			{
-				final double e = 0.025D;
-				drawStateOval(g2, xm, ym, xab, yab, e);
+				e = 0.2D;
 			}
 			else
 			{
 //				final double e = 0.025D + Math.log(en) / 40.0D;
 //				final double e = 0.025D + en / 20.0D;
-				final double e = 0.025D + (en*en) / 10.0D;
-				drawStateOval(g2, xm, ym, xab, yab, e);
+//				final double e = 0.025D + (en*en) / 10.0D;
+//				e = en*en;
+				e = en;
 			}
+			drawStateOval(g2, xm, ym, xab, yab, e * Map.s2Tri / 4.0D);
 		}
 		this.drawLine(g2, xm, ym, xab, yab);
 //		this.drawOut(g2, xm, ym, mapField.getABOutField());
