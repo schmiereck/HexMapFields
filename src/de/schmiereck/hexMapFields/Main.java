@@ -162,11 +162,11 @@ public class Main
 				{
 //					stateNode = emptyRuleSet.getInitStateNode();
 					field = emptyField;
-					stateNode = staticRuleSet.getInitStateNode();
+//					stateNode = staticRuleSet.getInitStateNode();
 //					stateNode = blinkerRuleSet.getInitStateNode();
 //					stateNode = circleStaticRuleSet.getInitStateNode();
 //					stateNode = circleStaticBig1RuleSet.getInitStateNode();
-//					stateNode = circleDirRuleSet.getInitStateNode();
+					stateNode = circleDirRuleSet.getInitStateNode();
 //					stateNode = dirFieldRuleSet.getInitStateNode();
 //					stateNode = runnerRuleSet.getInitStateNode();
 //					field = new Field();		// A inital new Field is born.
@@ -175,9 +175,9 @@ public class Main
 				{
 					if ((xPos == 6) && (yPos == 1))
 					{
-//						stateNode = null;//emptyRuleSet.getInitStateNode();
+						stateNode = null;//emptyRuleSet.getInitStateNode();
 						field = null;//emptyField;
-						stateNode = staticRuleSet.getInitStateNode();
+//						stateNode = staticRuleSet.getInitStateNode();
 //						stateNode = blinkerRuleSet.getInitStateNode();
 //						stateNode = circleStaticRuleSet.getInitStateNode();
 //						stateNode = circleDirRuleSet.getInitStateNode();		// Error.

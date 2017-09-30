@@ -98,8 +98,8 @@ public class MakeBlinkerRules
 				                           s1EdgeState, s0EdgeState, s0EdgeState);
 			
 			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability);
-//			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
-//			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 		}
 		
 		{
@@ -118,9 +118,9 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s0EdgeState, s1EdgeState, s0EdgeState);
 			
-//			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
-//			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 		}
 		
 		{
@@ -139,8 +139,8 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s0EdgeState, s0EdgeState, s1EdgeState);
 			
-//			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
-//			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		//------------------------------------------------------------------------------------------

@@ -575,7 +575,7 @@ Wahrscheinlichkeiten:
 	Der geringste bestimmt die W. des nächten Status.
 	=>	min(AB-In-W, BC-In-W, CA-In-W, Inner-W) = Inner-W (Winner!)
 		oder
-	=>	(AB-In-W * BC-In-W * CA-In-W * Inner-W) / (4 * 100%) = Inner-W
+	=>	(AB-In-W * BC-In-W * CA-In-W * Inner-W) / (100% * 100% * 100%) = Inner-W
 	
 *	Wenn zwei gleiche Inner-States in ein Map-Field gesetzt werden sollen:
 	MapField.addPropInnerStateNode()
@@ -583,7 +583,7 @@ Wahrscheinlichkeiten:
 		oder
 	=>	Zusammenfassen:
 		->	max(Inner-W, Inner-W) = Inner-W  (Winner!)
-		->	(Inner-W * Inner-W) / 100% = Inner-W
+		->	(Inner-W * Inner-W) / (100%) = Inner-W
 		->	(Inner-W + Inner-W) / 2 = Inner-W
 
 *	Übrig gebliebene W. (> 100%) erzeugen neue Status (Teilchen) ???

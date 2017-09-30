@@ -170,10 +170,10 @@ public class MainService
 							searchInStateNode(stateNodes,
 							                  abInnerState, bcInnerState, caInnerState, 
 							                  abInState, bcInState, caInState);
-					if (inStateNode == null) 
-					{
-						System.out.println("XX");
-					}
+//					if (inStateNode == null) 
+//					{
+//						System.out.println("XX");
+//					}
 					if ((inStateNode != null) && (inStateNode != Main.s0InStateNode))
 					{
 						final double probability =
@@ -194,6 +194,11 @@ public class MainService
 						
 						inStateNode.addUsedCnt(runCnt);
 					}
+					else
+					{
+						// Katastrophe!
+						// Irgend etwas unvorhergesehenes ist passiert!
+					}
 					//------------------------------------------------------------------------------
 				}
 			}
@@ -206,7 +211,7 @@ public class MainService
 	{
 		//==========================================================================================
 		final double retProp = Math.min(p0, Math.min(p1, Math.min(p2, p3)));
-//		final double retProp = (p0 * p1 * p2 * p3) / (4 * PropNextStateNode.MAX_probability);
+		//final double retProp = (p0 * p1 * p2 * p3) / (PropNextStateNode.MAX_probability * PropNextStateNode.MAX_probability * PropNextStateNode.MAX_probability);
 		
 		//==========================================================================================
 		return retProp;
