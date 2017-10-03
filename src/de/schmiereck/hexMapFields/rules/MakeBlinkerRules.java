@@ -22,6 +22,19 @@ import de.schmiereck.hexMapFields.StateNodes;
 public class MakeBlinkerRules
 {
 	//**********************************************************************************************
+	// Constants:
+	
+	/**
+	 * 1.0D is working
+	 */
+	private static final double MAX_PROP = 1.0D;
+
+	/**
+	 * 0.1D is working.
+	 */
+	private static final double MIN_PROP = 0.1D;
+
+	//**********************************************************************************************
 	// Functions:
 	
 	public static RuleSet 
@@ -97,8 +110,8 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*MAX_PROP);
+			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
 			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
 		}
 		

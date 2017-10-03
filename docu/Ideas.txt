@@ -566,17 +566,14 @@ Wahrscheinlichkeiten:
 	Sie verringert sich nicht von alleine beim weiter bewegen.
 	=>	Inner-W * Next-W
 		(80%  * 100%) / 100%  = 80%
-	
 *	Eine geringere W. darf also nur das Ergebnis einer Aufspaltung von verschiedenen Resultaten
 	eines Ausgangsstatus sein.
 	Diese bewegen sich dann mit der verringerten W. unverändert weiter.
-	
 *	Eingangsstatus mit verschiedenen Wahrscheinlichkeiten:
 	Der geringste bestimmt die W. des nächten Status.
 	=>	min(AB-In-W, BC-In-W, CA-In-W, Inner-W) = Inner-W (Winner!)
 		oder
 	=>	(AB-In-W * BC-In-W * CA-In-W * Inner-W) / (100% * 100% * 100%) = Inner-W
-	
 *	Wenn zwei gleiche Inner-States in ein Map-Field gesetzt werden sollen:
 	MapField.addPropInnerStateNode()
 	=>	Als unabhängige States betrachten die jeweils hinzugefügt werden.
@@ -585,10 +582,60 @@ Wahrscheinlichkeiten:
 		->	max(Inner-W, Inner-W) = Inner-W  (Winner!)
 		->	(Inner-W * Inner-W) / (100%) = Inner-W
 		->	(Inner-W + Inner-W) / 2 = Inner-W
-
 *	Übrig gebliebene W. (> 100%) erzeugen neue Status (Teilchen) ???
 
+Richtungen:
+*	Über die Wahrscheinlichkeit eine Richtung festlegen?
+	=>	???
+*	Eingänge (In-State) mit einer Orientation des Map-Field verknüpfen?
+	=>	So können vielleicht zusätzliche State vermieden werden, 
+		die nur für verschiedene Richtungen benötigt werden.
+	=>	Könnte eine Lösung für "fließende" Richtungen sein, wenn dies mit ??? verknüpft wird.
+*	Lösung für Runner-Rules.
+	Diese bewegen sich in die entgegengesetzte Richtung, sobald die y-Position sich ändert (Init mit B-State).
+
+
 ----------------------------------------------------------------------------------------------------
+TODO
+*	Felder die zusammenbrechen können, wenn... ???
+*	Getrennte Fields.
+*	Schwache Felder mit begrenter Reichweite.
+*	Meta-Maps die gleichförmige sich wiederholende Maps zusammenfassen und über die Zeit
+	speicherplatzsparend verwalten.
+
+----------------------------------------------------------------------------------------------------
+Quanten.de
+http://www.quanten.de/forum/showthread.php5?p=85382#post85382
+Entwicklung der Wahrscheinlichkeit für Ort und und Zeit
+Eine Frage zu der Wahrscheinlichkeit mit der sich ein z.B. Photon/Elektron bewegt.
+Im Hintergrund habe ich das Doppelspalt-Experiment im Kopf, aber das spielt erst mal keine Rolle.
+Basis ist die Betrachtung der Bewegung als Differenzialgleichung. Deshalb sage ich mal "Ort" und "Zeit" in der Frage.
+
+Also die Frage, alles ganz vereinfacht:
+Wenn sich nun das Elektron e auf seiner wahrscheinlichsten Bahn bewegt und 
+sagen wir zu einem Zeitpunkt t sich seine Aufenthaltswahrscheinlichkeit an eine Ort o aufspalten würde.
+Nehmen wir nur zwei Richtungen links und rechts an, zu denen sich das Elektron mit 10% Wahrscheinlichkeit bewegt.
+Wäre dann die Wahrscheinlichkeit von e zu einem Zeitpunkt t+1 zu 100% oder zu 80% 
+in seiner ursprünglichen Richtung unterwegs?
+
+Sprich, wieder allgemein gefragt, spaltet sich die Wahrscheinlichkeit, 
+dass ein Quant sich zu einem Zeitpunkt an einem Ort befindet auf, 
+oder kommen nur zusätzliche Wahrscheinliche Orte mit niedriger Wahrscheinlichkeit hinzu?
+
+Grüße, Thomas
+----
+Ich (Moderator):
+Die Summe der Wahrscheinlichkeiten ist die Gesamtwahrscheinlichkeit, 
+das Elektron in einem der Zustände vorzufinden. Wie groß ist die, 100% oder 120%? 
+----
+@Timm: Das ist soweit klar, aber die Wahrscheinlichkeit das man es dort messen kann, kann man ja berechnen.
+
+@Ich: Ok, das sollte natürlich 100% sein. Das bedeutet dann also, 
+dass die Wahrscheinlichkeit das Elektron zu einem späteren Zeitpunkt 
+auf seiner "ursprünglichen" wahrscheinlichsten Bahn zu finden über die Zeit immer geringer wird und 
+die Wahrscheinlichkeit es an anderen Orten messen zu können immer größer wird.
+----------------------------------------------------------------------------------------------------
+
 
 
 

@@ -17,6 +17,14 @@ import java.util.List;
 public class MainService
 {
 	//**********************************************************************************************
+	// Constants:
+	
+	/**
+	 * 0.0D is working.
+	 */
+	private static final double PROP_MIN_NEXT = 0.01D;
+
+	//**********************************************************************************************
 	// Fields:
 	
 	private static long fpsView = 4L;
@@ -269,7 +277,7 @@ public class MainService
 //					                {
 //					                	System.out.println("probability:"+probability);
 //					                }
-					                if (probability > 0.0D)
+					                if (probability > PROP_MIN_NEXT)
 					                {
 										mapField.addPropInnerStateNode(nextInStateNode,
 										                               probability);

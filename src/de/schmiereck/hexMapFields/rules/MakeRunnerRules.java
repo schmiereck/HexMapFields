@@ -22,6 +22,19 @@ import de.schmiereck.hexMapFields.StateNodes;
 public class MakeRunnerRules
 {
 	//**********************************************************************************************
+	// Constants:
+	
+	/**
+	 * 1.0D is working
+	 */
+	private static final double MAX_PROP = 0.9D;
+
+	/**
+	 * 0.1D is working.
+	 */
+	private static final double MIN_PROP = 0.05D;
+
+	//**********************************************************************************************
 	// Functions:
 	
 	public static RuleSet 
@@ -88,22 +101,15 @@ public class MakeRunnerRules
 		}
 		//------------------------------------------------------------------------------------------
 		{
-			// R -> s0
-			final StateNode stateNode = 
-					RulesService.makeStateNode(stateNodes, ruleSet,
-					                            s1EdgeState, s0EdgeState, s0EdgeState,
-					                            s0EdgeState, s0EdgeState, s0EdgeState);
-			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
-		}
-		{
 			// inR -> G
 			final StateNode stateNode = 
 					RulesService.makeStateNode(stateNodes, ruleSet,
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
+			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*MAX_PROP);
+			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
 		}
 		{
 			// G -> s0
@@ -114,6 +120,7 @@ public class MakeRunnerRules
 			
 			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
+		
 		{
 			// inG -> B
 			final StateNode stateNode = 
@@ -121,7 +128,9 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
+			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
+			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*MAX_PROP);
 		}
 		{
 			// B -> s0
@@ -132,6 +141,7 @@ public class MakeRunnerRules
 			
 			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
+
 		{
 			// inB -> R
 			final StateNode stateNode = 
@@ -139,7 +149,18 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*MAX_PROP);
+			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
+			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
+		}
+		{
+			// R -> s0
+			final StateNode stateNode = 
+					RulesService.makeStateNode(stateNodes, ruleSet,
+					                            s1EdgeState, s0EdgeState, s0EdgeState,
+					                            s0EdgeState, s0EdgeState, s0EdgeState);
+			
+			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(bMapFieldStateNode);
