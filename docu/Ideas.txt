@@ -583,7 +583,20 @@ Wahrscheinlichkeiten:
 		->	(Inner-W * Inner-W) / (100%) = Inner-W
 		->	(Inner-W + Inner-W) / 2 = Inner-W
 *	Übrig gebliebene W. (> 100%) erzeugen neue Status (Teilchen) ???
-
+*	W. muss für jeden State einzeln verwaltet werden, nicht pro Map-Field.
+	=>	Sonst ist es unheimlich schwierig die Verteilung zu berechnen.
+	=>	Empty-States dürfen bei der Verteilung nicht berücksichtigt werden.
+	=>	Exeption für jeden Input-Fall ohne Next-State.
+		>	Sonst geht W. verloren?
+	=>	Wenn Empty-States 100% hätten, ....?
+	=>	Nur noch In-States berücksichtigen, keine Inner-States mehr.
+									Inner-State gar nicht mehr berücksichtigen !!!!!!!!!
+		Eingänge nur auf nicht E-State verteilen.
+	
+		Das ist alles nicht gut - 
+		die W. einers States muss auf die angrenzenden Next-States verteilt werden.
+		Hierzu dienen die Rules, die machen das schon.
+	
 Richtungen:
 *	Über die Wahrscheinlichkeit eine Richtung festlegen?
 	=>	???
@@ -634,6 +647,17 @@ das Elektron in einem der Zustände vorzufinden. Wie groß ist die, 100% oder 12
 dass die Wahrscheinlichkeit das Elektron zu einem späteren Zeitpunkt 
 auf seiner "ursprünglichen" wahrscheinlichsten Bahn zu finden über die Zeit immer geringer wird und 
 die Wahrscheinlichkeit es an anderen Orten messen zu können immer größer wird.
+----
+Ich (Moderator):
+In deinem Szenario nicht, da soll sich die Bahn ja nur zu einem bestimmten Zeitpunkt aufspalten. 
+In vielen Fällen ist es aber tatsächlich so, dass die Aufenthaltswahrscheinlichkeit 
+mit der Zeit "auseinanderläuft" und immer breiter wird.
+Die Gesamtwahrscheinlikeit, das Teilchen irgendwo anzutreffen, bleibt natürlich immer konstant 1. 
+Diese Eigenschaft heißt "Unitarität des Zeitentwicklungsoperators". 
+
+=> https://de.wikipedia.org/wiki/Wellenpaket#Dispersion
+=> http://homepage.univie.ac.at/franz.embacher/Quantencomputer/Unitaritaet.html
+
 ----------------------------------------------------------------------------------------------------
 
 

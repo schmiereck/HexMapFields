@@ -96,7 +96,9 @@ public class Main
 				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState,
 				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState);
 		
-		s0InStateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability, "s0InStateNode");
+		s0InStateNode.addNextStateNode(s0MapFieldStateNode, 
+		                               0.0D,//PropNextStateNode.MAX_probability, 
+		                               "s0InStateNode");
 	}
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	static

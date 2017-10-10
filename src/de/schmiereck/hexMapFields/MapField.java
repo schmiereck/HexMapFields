@@ -29,7 +29,9 @@ public class MapField
 	 */
 	public static final int NEIGHBOURS_CNT = 3;
 	
-	public static final PropNextStateNode EMPTY_NextStateNode = new PropNextStateNode(Main.s0InStateNode, PropNextStateNode.MAX_probability, "EMPTY_NextStateNode");
+	public static final PropNextStateNode EMPTY_NextStateNode = new PropNextStateNode(Main.s0InStateNode, 
+	                                                                                  0.0D,//PropNextStateNode.MAX_probability, 
+	                                                                                  "EMPTY_NextStateNode");
 	
 //	public static final List<PropNextStateNode> EMPTY_NextStateNodes = new Vector<>();
 //	static
@@ -37,7 +39,8 @@ public class MapField
 //		EMPTY_NextStateNodes.add(EMPTY_NextStateNode);
 //	}
 	
-	public static final PropInnerStateNode EMPTY_InnerStateNode = new PropInnerStateNode(Main.s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+	public static final PropInnerStateNode EMPTY_InnerStateNode = new PropInnerStateNode(Main.s0MapFieldStateNode, 
+	                                                                                     0.0D);//PropNextStateNode.MAX_probability);
 	
 	public static final List<PropInnerStateNode> EMPTY_InnerStateNodes = new Vector<>();
 	static
@@ -318,7 +321,8 @@ public class MapField
 //		this.propInnerStateNodes.add(propInnerStateNode);
 	}
 
-	public void addPropInnerStateNode(final StateNode nextInStateNode, final double probability)
+	public void addPropInnerStateNode(final StateNode nextInStateNode, 
+	                                  final double probabilityR, final double probabilityG, final double probabilityB)
 	{
 		//==========================================================================================
 		// Gleiche States eines Map-Field zusammenfassen.
@@ -330,7 +334,7 @@ public class MapField
 			
 			newPropInnerStateNode =
 					new PropInnerStateNode(nextInStateNode, 
-					                       probability);
+					                       probabilityR, probabilityG, probabilityB);
 			
 			this.propInnerStateNodes.put(nextInStateNode,
 			                             newPropInnerStateNode);
@@ -338,10 +342,12 @@ public class MapField
 		else
 		{
 			// Das mit der höchsten Wahrscheinlichkeit gewinnt.
-			propInnerStateNode.setProbability(Math.max(propInnerStateNode.getProbability(), probability));
+//			propInnerStateNode.setProbability(Math.max(propInnerStateNode.getProbability(), probability));
+			propInnerStateNode.setProbability(propInnerStateNode.getProbability(0) + probabilityR,
+											  propInnerStateNode.getProbability(1) + probabilityG,
+											  propInnerStateNode.getProbability(2) + probabilityB);
 //			propInnerStateNode.setProbability((propInnerStateNode.getProbability() * probability) / PropNextStateNode.MAX_probability);
 //			propInnerStateNode.setProbability((propInnerStateNode.getProbability() + probability) / 2.0D);
-//			propInnerStateNode.setProbability((propInnerStateNode.getProbability() + probability));
 //			propInnerStateNode.setProbability(Math.min(propInnerStateNode.getProbability() + probability, PropNextStateNode.MAX_probability));
 		}
 //		final PropInnerStateNode newPropInnerStateNode;

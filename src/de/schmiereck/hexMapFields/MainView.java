@@ -419,34 +419,42 @@ System.out.println("-----------------------------------");
 		{
 			for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
 			{
-				final double propInnerProbability = propInnerStateNode.getProbability();
+				final double propInnerProbabilityR = propInnerStateNode.getProbability(0);
+				final double propInnerProbabilityG = propInnerStateNode.getProbability(1);
+				final double propInnerProbabilityB = propInnerStateNode.getProbability(2);
+				
+				boolean haveStates = false;
 				
 				final StateNode caStateNode = propInnerStateNode.getInnerStateNode();
 				if (caStateNode != null)
 				{
 					final State caState = caStateNode.getState();
 		
-					// From Origin to lt (CA).
-					this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE, propInnerProbability);
+					// From Origin to lt (CA, B).
+					if (this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE, propInnerProbabilityB))
+						haveStates = true;
 					
 					final StateNode bcStateNode = caStateNode.getParentNode();
 					if (bcStateNode != null)
 					{
 						final State bcState = bcStateNode.getState();
 						
-						// From Origin to rt (BC).
-						this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN, propInnerProbability);
-						
+						// From Origin to rt (BC, G).
+						if (this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN, propInnerProbabilityG))
+							haveStates = true;
+	
 						final StateNode abStateNode = bcStateNode.getParentNode();
 						if (abStateNode != null)
 						{
 							final State abState = abStateNode.getState();
 							
-							// From Origin to lr (AB).
-							this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED, propInnerProbability);
+							// From Origin to lr (AB, R).
+							if (this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED, propInnerProbabilityR))
+								haveStates = true;
 						}
 					}
 				}
+				if (haveStates == true) System.out.println();
 			}
 		}
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -468,26 +476,31 @@ System.out.println("-----------------------------------");
 		//==========================================================================================
 	}
 	
-	private void drawState(final Graphics2D g2, 
+	private boolean drawState(final Graphics2D g2, 
 	                       final double xm, final double ym, 
 	                       final State state, 
 	                       final double xab, final double yab, final Color color,
 	                       final double propInnerProbability)
 	{
 		//==========================================================================================
+		final boolean ret;
+		
 		if (state == Main.s0EdgeState)
 		{
 			g2.setColor(Color.LIGHT_GRAY);
 //			final double e = 0.01D;
 //			drawStateOval(g2, xm, ym, xab, yab, e);
+			
+			ret = false;
 		}
 		else
 		{
 			g2.setColor(color);
 			
 			// 100% = 1.0D
-			final double en = ((double)(state.getEnergie() * propInnerProbability)) / PropNextStateNode.MAX_probability;
-System.out.println(color+":"+en+",");
+//			final double en = ((double)(state.getEnergie() * propInnerProbability)) / PropNextStateNode.MAX_probability;
+			final double en = ((propInnerProbability));// / PropNextStateNode.MAX_probability;
+System.out.printf("%s:\t%.22f\t", color, en);
 
 //			if (en < 5.0D)
 //			{
@@ -514,12 +527,14 @@ System.out.println(color+":"+en+",");
 				e = en;
 			}
 			drawStateOval(g2, xm, ym, xab, yab, e * Map.s2Tri / 4.0D);
+			
+			ret = true;
 		}
 		this.drawLine(g2, xm, ym, xab, yab);
 //		this.drawOut(g2, xm, ym, mapField.getABOutField());
 		
 		//==========================================================================================
-		
+		return ret;
 	}
 
 	private void drawStateOval(	final Graphics2D g2, double xm, double ym, double xab,

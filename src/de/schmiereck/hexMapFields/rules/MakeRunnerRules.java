@@ -27,12 +27,19 @@ public class MakeRunnerRules
 	/**
 	 * 1.0D is working
 	 */
-	private static final double MAX_PROP = 0.9D;
+//	private static final double MAX_PROP = 1.0D;//0.98D;
+	private static final double MAX_PROP = 0.99998D;
 
 	/**
-	 * 0.1D is working.
+	 * 0.0D is working.
 	 */
-	private static final double MIN_PROP = 0.05D;
+//	private static final double MIN_PROP = 0.0D;//0.01D;
+	private static final double MIN_PROP = 0.00001D;
+
+	/**
+	 * 0.0D is working.
+	 */
+	private static final double EMPTY_PROP = 0.0D;
 
 	//**********************************************************************************************
 	// Functions:
@@ -118,7 +125,7 @@ public class MakeRunnerRules
 					                            s0EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability*EMPTY_PROP);
 		}
 		
 		{
@@ -139,7 +146,7 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability*EMPTY_PROP);
 		}
 
 		{
@@ -160,7 +167,7 @@ public class MakeRunnerRules
 					                            s1EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability*EMPTY_PROP);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(bMapFieldStateNode);

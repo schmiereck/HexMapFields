@@ -22,7 +22,7 @@ public class MainService
 	/**
 	 * 0.0D is working.
 	 */
-	private static final double PROP_MIN_NEXT = 0.01D;
+	private static final double PROP_MIN_NEXT = 0.0D;
 
 	//**********************************************************************************************
 	// Fields:
@@ -113,9 +113,12 @@ public class MainService
 						final State abState = MapFieldUtils.extractABInnerState(propInnerStateNode);
 						final State bcState = MapFieldUtils.extractBCInnerState(propInnerStateNode);
 						final State caState = MapFieldUtils.extractCAInnerState(propInnerStateNode);
-						final double innerProbability = propInnerStateNode.getProbability();
+						final double innerProbabilityR = 0.0D;//propInnerStateNode.getProbability(0);
+						final double innerProbabilityG = 0.0D;//propInnerStateNode.getProbability(1);
+						final double innerProbabilityB = 0.0D;//propInnerStateNode.getProbability(2);
 						
-						calcInStates(stateNodes, mapField, abState, bcState, caState, innerProbability);
+						calcInStates(stateNodes, mapField, abState, bcState, caState, 
+						             innerProbabilityR, innerProbabilityG, innerProbabilityB);
 					}
 				}
 				else
@@ -123,9 +126,10 @@ public class MainService
 					final State abState = null;
 					final State bcState = null;
 					final State caState = null;
-					final double innerProbability = PropNextStateNode.MAX_probability;
+					final double innerProbability = 0.0D;//PropNextStateNode.MAX_probability;
 
-					calcInStates(stateNodes, mapField, abState, bcState, caState, innerProbability);
+					calcInStates(stateNodes, mapField, abState, bcState, caState, 
+					             innerProbability, innerProbability, innerProbability);
 				}
 				//----------------------------------------------------------------------------------
 			}
@@ -135,7 +139,7 @@ public class MainService
 
 	public static void calcInStates(final StateNodes stateNodes, final MapField mapField,
 	                                final State abInnerState, final State bcInnerState, final State caInnerState,
-	                                final double innerProbability)
+	                                final double innerProbabilityR, final double innerProbabilityG, final double innerProbabilityB)
 	{
 		//==========================================================================================
 		final Collection<PropInnerStateNode> abPropInnerStateNodes;
@@ -184,19 +188,48 @@ public class MainService
 //					}
 					if ((inStateNode != null) && (inStateNode != Main.s0InStateNode))
 					{
-						final double probability =
-							calcProp(innerProbability,
-							         abPropInnerStateNode.getProbability(),
-							         bcPropInnerStateNode.getProbability(),
-							         caPropInnerStateNode.getProbability());
+						final double probabilityR;
+						final double probabilityG;
+						final double probabilityB;
 						
+						if (abInState != Main.s0EdgeState)
+						{
+							probabilityR = innerProbabilityR + abPropInnerStateNode.getProbability(0);
+						}
+						else
+						{
+							probabilityR = 0.0D;
+						}
+						
+						if (bcInState != Main.s0EdgeState)
+						{
+							probabilityG = innerProbabilityG + bcPropInnerStateNode.getProbability(1);
+						}
+						else
+						{
+							probabilityG = 0.0D;
+						}
+						
+						if (caInState != Main.s0EdgeState)
+						{
+							probabilityB = innerProbabilityB + caPropInnerStateNode.getProbability(2);
+						}						
+						else
+						{
+							probabilityB = 0.0D;
+						}
+						
+//		                if (probabilityR > 100.0D)
+//		                {
+//		                	System.out.println("probabilityR:"+probabilityR);
+//		                }
 //		                if (probability < 100.0D)
 //		                {
 //		                	System.out.println("probability:"+probability);
 //		                }
 						final PropInStateNode newPropInStateNode = 
 								new PropInStateNode(inStateNode, //PropNextStateNode.MAX_probability);
-								                    probability);
+								                    probabilityR, probabilityG, probabilityB);
 								                    
 						mapField.addPropInStateNode(newPropInStateNode);
 						
@@ -214,16 +247,17 @@ public class MainService
 		//==========================================================================================
 	}
 
-	private static double calcProp(final double p0, final double p1,
-								  final double p2, final double p3)
-	{
-		//==========================================================================================
-		final double retProp = Math.min(p0, Math.min(p1, Math.min(p2, p3)));
-		//final double retProp = (p0 * p1 * p2 * p3) / (PropNextStateNode.MAX_probability * PropNextStateNode.MAX_probability * PropNextStateNode.MAX_probability);
-		
-		//==========================================================================================
-		return retProp;
-	}
+//	private static double calcProp(final double p0, final double p1,
+//	                               final double p2, final double p3)
+//	{
+//		//==========================================================================================
+////		final double retProp = Math.min(p0, Math.min(p1, Math.min(p2, p3)));
+////		final double retProp = (p0 * p1 * p2 * p3) / (PropNextStateNode.MAX_probability * PropNextStateNode.MAX_probability * PropNextStateNode.MAX_probability);
+//		final double retProp = (p0 + p1 + p2 + p3);
+//		
+//		//==========================================================================================
+//		return retProp;
+//	}
 
 	/** 
 	 * Aus dem In-StateNodes
@@ -251,7 +285,9 @@ public class MainService
 				for (final PropInStateNode propInStateNode : propInStateNodes)
 				{
 					final StateNode inStateNode = propInStateNode.getInStateNode();
-					final double inStateNodeProbability = propInStateNode.getProbability();
+					final double inStateNodeProbabilityR = propInStateNode.getProbability(0);
+					final double inStateNodeProbabilityG = propInStateNode.getProbability(1);
+					final double inStateNodeProbabilityB = propInStateNode.getProbability(2);
 					
 					if (inStateNode != null)
 					{
@@ -266,21 +302,30 @@ public class MainService
 								
 								if (nextInStateNode != null)
 								{
-									final double probability = 
-											(
-												inStateNodeProbability 
-												*
-												nextInStateNodeProbability
-											) / PropNextStateNode.MAX_probability;
+//									final double probability = 
+//										(nextInStateNodeProbability);
+//										(inStateNodeProbability * nextInStateNodeProbability);
+									final double probabilityR = 
+											(inStateNodeProbabilityR * nextInStateNodeProbability);// / PropNextStateNode.MAX_probability;
+									final double probabilityG = 
+											(inStateNodeProbabilityG * nextInStateNodeProbability);// / PropNextStateNode.MAX_probability;
+									final double probabilityB = 
+											(inStateNodeProbabilityB * nextInStateNodeProbability);// / PropNextStateNode.MAX_probability;
+//										(inStateNodeProbability + nextInStateNodeProbability);
 					                
-//					                if (probability < 100.0D)
+									//Nur Probs von In-States von nicht Empty-States berücksichtigen!
+									final double prob = probabilityR + probabilityG + probabilityB;
+									
+									//Und das jetzt auf die nicht Empty Inner-States verteilen?
+									
+//					                if (prob > 100.0D)
 //					                {
-//					                	System.out.println("probability:"+probability);
+//					                	System.out.println("probability:"+prob);
 //					                }
-					                if (probability > PROP_MIN_NEXT)
+//					                if (probability > PROP_MIN_NEXT)
 					                {
 										mapField.addPropInnerStateNode(nextInStateNode,
-										                               probability);
+										                               prob, prob, prob);
 										
 										nextInStateNode.addUsedCnt(runCnt);
 					                }
