@@ -22,6 +22,19 @@ import de.schmiereck.hexMapFields.StateNodes;
 public class MakeCircleStaticRules
 {
 	//**********************************************************************************************
+	// Constants:
+	
+	/**
+	 * 1.0D is working
+	 */
+	private static final long MAX_PROB = PropNextStateNode.MAX_NEXT_probability;//1.0D;
+
+	/**
+	 * 0.1D is working.
+	 */
+	private static final long MIN_PROB = PropNextStateNode.MIN_NEXT_probability;//100L;//0.1D;
+
+	//**********************************************************************************************
 	// Functions:
 	
 	public static RuleSet 
@@ -94,9 +107,9 @@ public class MakeCircleStaticRules
 					                           s0EdgeState, s0EdgeState, s0EdgeState,
 					                           s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(rMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(gMapFieldStateNode, MAX_PROB);
+			stateNode.addNextStateNode(bMapFieldStateNode, MIN_PROB);
 		}
 		{
 			// R -> s0
@@ -105,7 +118,7 @@ public class MakeCircleStaticRules
 					                           s1EdgeState, s0EdgeState, s0EdgeState,
 					                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(s0MapFieldStateNode, MAX_PROB);
 		}
 		
 		{
@@ -115,9 +128,9 @@ public class MakeCircleStaticRules
 					                           s0EdgeState, s0EdgeState, s0EdgeState,
 					                           s0EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(rMapFieldStateNode, MAX_PROB);
+			stateNode.addNextStateNode(gMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(bMapFieldStateNode, MIN_PROB);
 		}
 		{
 			// G -> s0
@@ -126,7 +139,7 @@ public class MakeCircleStaticRules
 					                           s0EdgeState, s1EdgeState, s0EdgeState,
 					                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(s0MapFieldStateNode, MAX_PROB);
 		}
 		
 		{
@@ -136,9 +149,9 @@ public class MakeCircleStaticRules
 					                           s0EdgeState, s0EdgeState, s0EdgeState,
 					                           s0EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(rMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(gMapFieldStateNode, MAX_PROB);
+			stateNode.addNextStateNode(bMapFieldStateNode, MIN_PROB);
 		}
 		{
 			// B -> s0
@@ -147,7 +160,7 @@ public class MakeCircleStaticRules
 					                           s0EdgeState, s0EdgeState, s1EdgeState,
 					                           s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(s0MapFieldStateNode, MAX_PROB);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(rMapFieldStateNode);

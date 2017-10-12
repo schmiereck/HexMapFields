@@ -27,12 +27,12 @@ public class MakeBlinkerRules
 	/**
 	 * 1.0D is working
 	 */
-	private static final double MAX_PROP = 1.0D;
+	private static final long MAX_PROB = PropNextStateNode.MAX_NEXT_probability;//1.0D;
 
 	/**
 	 * 0.1D is working.
 	 */
-	private static final double MIN_PROP = 0.1D;
+	private static final long MIN_PROB = PropNextStateNode.MIN_NEXT_probability;//100L;//0.1D;
 
 	//**********************************************************************************************
 	// Functions:
@@ -110,9 +110,9 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*MAX_PROP);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(rMapFieldStateNode, MAX_PROB);
+			stateNode.addNextStateNode(gMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(bMapFieldStateNode, MIN_PROB);
 		}
 		
 		{
@@ -131,9 +131,9 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s0EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
+			stateNode.addNextStateNode(rMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(gMapFieldStateNode, MAX_PROB);
+			stateNode.addNextStateNode(bMapFieldStateNode, MIN_PROB);
 		}
 		
 		{
@@ -152,9 +152,9 @@ public class MakeBlinkerRules
 				                           s0EdgeState, s0EdgeState, s0EdgeState,
 				                           s0EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*0.1D);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability);
+			stateNode.addNextStateNode(rMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(gMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(bMapFieldStateNode, MAX_PROB);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(rMapFieldStateNode);

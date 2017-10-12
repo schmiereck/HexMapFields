@@ -158,6 +158,11 @@ public class MainView
 		    			MainService.setFpsView(fps);
 		    			break;
 		    		}
+		    		case KeyEvent.VK_SPACE:
+		    		{
+		    			MainService.switchStopCalc();
+		    			break;
+		    		}
 		    		case '#':
 		    		{
 		    			MainService.setAsapCalc(!MainService.getAsapCalc());
@@ -497,10 +502,13 @@ System.out.println("-----------------------------------");
 		{
 			g2.setColor(color);
 			
+			ret = true;
+		}
+		{
 			// 100% = 1.0D
 //			final double en = ((double)(state.getEnergie() * propInnerProbability)) / PropNextStateNode.MAX_probability;
-			final double en = ((propInnerProbability));// / PropNextStateNode.MAX_probability;
-System.out.printf("%s:\t%.22f\t", color, en);
+			final double en = ((propInnerProbability)) / PropNextStateNode.MAX_probability;
+if (ret) System.out.printf("%s:\t%.22f\t", color, en);
 
 //			if (en < 5.0D)
 //			{
@@ -527,8 +535,6 @@ System.out.printf("%s:\t%.22f\t", color, en);
 				e = en;
 			}
 			drawStateOval(g2, xm, ym, xab, yab, e * Map.s2Tri / 4.0D);
-			
-			ret = true;
 		}
 		this.drawLine(g2, xm, ym, xab, yab);
 //		this.drawOut(g2, xm, ym, mapField.getABOutField());

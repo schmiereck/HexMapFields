@@ -97,7 +97,7 @@ public class Main
 				                           Main.s0EdgeState, Main.s0EdgeState, Main.s0EdgeState);
 		
 		s0InStateNode.addNextStateNode(s0MapFieldStateNode, 
-		                               0.0D,//PropNextStateNode.MAX_probability, 
+		                               PropNextStateNode.MIN_probability,//PropNextStateNode.MAX_probability, 
 		                               "s0InStateNode");
 	}
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -117,6 +117,7 @@ public class Main
 	 */
 	public static void main(final String[] args)
 	{
+//		System.out.println("PropNextStateNode.MAX_probability: " + ((PropNextStateNode.MAX_probability * PropNextStateNode.MAX_probability)/PropNextStateNode.MAX_probability));
 		//==========================================================================================
 		// Farbladung:
 		final RuleSet staticRuleSet = MakeStaticRules.makeRules(stateNodes, emptyRuleSet, s0MapFieldStateNode);
@@ -197,7 +198,7 @@ public class Main
 				{
 					mapField = map.getMapField(xPos, yPos);
 	
-					final double probability = PropNextStateNode.MAX_probability;
+					final long probability = PropNextStateNode.MAX_probability;
 					
 					mapField.addPropInnerStateNode(new PropInnerStateNode(stateNode, probability));
 					mapField.setField(field);

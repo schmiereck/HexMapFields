@@ -615,6 +615,7 @@ TODO
 *	Schwache Felder mit begrenter Reichweite.
 *	Meta-Maps die gleichförmige sich wiederholende Maps zusammenfassen und über die Zeit
 	speicherplatzsparend verwalten.
+*	Datenbank aufräumen, die Node-Verwaltung braucht es nicht. Array reicht.
 
 ----------------------------------------------------------------------------------------------------
 Quanten.de

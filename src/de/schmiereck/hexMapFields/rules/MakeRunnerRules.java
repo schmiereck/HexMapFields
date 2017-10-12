@@ -27,19 +27,17 @@ public class MakeRunnerRules
 	/**
 	 * 1.0D is working
 	 */
-//	private static final double MAX_PROP = 1.0D;//0.98D;
-	private static final double MAX_PROP = 0.99998D;
+	private static final long MAX_PROB = PropNextStateNode.MAX_NEXT_probability;//1.0D;
+
+	/**
+	 * 0.1D is working.
+	 */
+	private static final long MIN_PROB = PropNextStateNode.MIN_NEXT_probability;//100L;//0.1D;
 
 	/**
 	 * 0.0D is working.
 	 */
-//	private static final double MIN_PROP = 0.0D;//0.01D;
-	private static final double MIN_PROP = 0.00001D;
-
-	/**
-	 * 0.0D is working.
-	 */
-	private static final double EMPTY_PROP = 0.0D;
+	private static final long EMPTY_PROB = 0L;//0.0D;
 
 	//**********************************************************************************************
 	// Functions:
@@ -114,9 +112,9 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s1EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*MAX_PROP);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
+			stateNode.addNextStateNode(rMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(gMapFieldStateNode, MAX_PROB);
+			stateNode.addNextStateNode(bMapFieldStateNode, MIN_PROB);
 		}
 		{
 			// G -> s0
@@ -125,7 +123,7 @@ public class MakeRunnerRules
 					                            s0EdgeState, s1EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability*EMPTY_PROP);
+			stateNode.addNextStateNode(s0MapFieldStateNode, EMPTY_PROB);
 		}
 		
 		{
@@ -135,9 +133,9 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s1EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*MAX_PROP);
+			stateNode.addNextStateNode(rMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(gMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(bMapFieldStateNode, MAX_PROB);
 		}
 		{
 			// B -> s0
@@ -146,7 +144,7 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s1EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability*EMPTY_PROP);
+			stateNode.addNextStateNode(s0MapFieldStateNode, EMPTY_PROB);
 		}
 
 		{
@@ -156,9 +154,9 @@ public class MakeRunnerRules
 					                            s0EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s1EdgeState);
 			
-			stateNode.addNextStateNode(rMapFieldStateNode, PropNextStateNode.MAX_probability*MAX_PROP);
-			stateNode.addNextStateNode(gMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
-			stateNode.addNextStateNode(bMapFieldStateNode, PropNextStateNode.MAX_probability*MIN_PROP);
+			stateNode.addNextStateNode(rMapFieldStateNode, MAX_PROB);
+			stateNode.addNextStateNode(gMapFieldStateNode, MIN_PROB);
+			stateNode.addNextStateNode(bMapFieldStateNode, MIN_PROB);
 		}
 		{
 			// R -> s0
@@ -167,7 +165,7 @@ public class MakeRunnerRules
 					                            s1EdgeState, s0EdgeState, s0EdgeState,
 					                            s0EdgeState, s0EdgeState, s0EdgeState);
 			
-			stateNode.addNextStateNode(s0MapFieldStateNode, PropNextStateNode.MAX_probability*EMPTY_PROP);
+			stateNode.addNextStateNode(s0MapFieldStateNode, EMPTY_PROB);
 		}
 		//------------------------------------------------------------------------------------------
 		ruleSet.setInitStateNode(bMapFieldStateNode);
