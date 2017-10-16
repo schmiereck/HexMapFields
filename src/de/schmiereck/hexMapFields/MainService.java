@@ -228,10 +228,10 @@ public class MainService
 //		                {
 //		                	System.out.printf("probabilityR:%.20f\n ",probabilityR);
 //		                }
-		                if (probabilityG > PropNextStateNode.MAX_probability / 2L)
-		                {
-		                	System.out.println("probabilityG:"+probabilityG);
-		                }
+//		                if (probabilityG > PropNextStateNode.MAX_probability / 2L)
+//		                {
+//		                	System.out.println("probabilityG:"+probabilityG);
+//		                }
 						final PropInStateNode newPropInStateNode = 
 								new PropInStateNode(inStateNode, //PropNextStateNode.MAX_probability);
 								                    probabilityR, probabilityG, probabilityB);
@@ -331,14 +331,20 @@ public class MainService
 //									final State inRState = nextInStateNode.getParentNode().getParentNode().getParentNode().getParentNode().getParentNode().getState();
 //									final State inGState = nextInStateNode.getParentNode().getParentNode().getParentNode().getParentNode().getState();
 //									final State inBState = nextInStateNode.getParentNode().getParentNode().getParentNode().getState();
-									//						Inner-B			Inner-G			Inner-R
+									//								Inner-B			Inner-G			Inner-R
 									final State nextInnerRState = nextInStateNode.getParentNode().getParentNode().getState();
 									final State nextInnerGState = nextInStateNode.getParentNode().getState();
 									final State nextInnerBState = nextInStateNode.getState();
 									
+//									probR = prob;
+//									probG = prob;
+//									probB = prob;
+//									probR = probabilityR;
+//									probG = probabilityG;
+//									probB = probabilityB;
 									if (nextInnerRState != Main.s0EdgeState)
 									{
-										probR = probabilityR;
+										probR = prob;//probabilityR;
 									}
 									else
 									{
@@ -347,7 +353,7 @@ public class MainService
 										
 									if (nextInnerGState != Main.s0EdgeState)
 									{
-										probG = probabilityG;
+										probG = prob;//probabilityG;
 									}
 									else
 									{
@@ -356,7 +362,7 @@ public class MainService
 									
 									if (nextInnerBState != Main.s0EdgeState)
 									{
-										probB = probabilityB;
+										probB = prob;//probabilityB;
 									}
 									else
 									{

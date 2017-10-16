@@ -12,6 +12,9 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.AffineTransform;
 import java.util.Collection;
 
@@ -80,6 +83,9 @@ public class MainView
 
 	private final double xScale;
 	private final double yScale;
+	
+	private int xMapPosSelected = 0;
+	private int yMapPosSelected = 0;
 	
 	//**********************************************************************************************
 	// Functions:
@@ -172,6 +178,90 @@ public class MainView
 		    }
 		});
 		
+		this.frame.addMouseMotionListener
+		(
+		 	new MouseMotionListener()
+			{
+				@Override
+				public void mouseMoved(final MouseEvent e)
+				{
+					//==========================================================================================
+					Dimension size = frame.getSize();
+					
+					double height = size.getHeight();
+					
+					final int x = (int)(e.getX() - xOffTx);
+					final int y = (int)(height - e.getY() - yOffTx);
+					
+					xMapPosSelected = (int)(x / xScale);
+					yMapPosSelected = (int)(y / yScale);
+					System.out.println("x:"+xMapPosSelected+", y:"+yMapPosSelected);
+					
+					//==========================================================================================
+					
+				}
+				
+				@Override
+				public void mouseDragged(final MouseEvent e)
+				{
+					//==========================================================================================
+					
+					//==========================================================================================
+					
+				}
+			}
+		);
+		
+		this.frame.addMouseListener
+		(
+		 	new MouseListener()
+			{
+				@Override
+				public void mouseReleased(final MouseEvent e)
+				{
+					//==========================================================================================
+					
+					//==========================================================================================
+					
+				}
+				
+				@Override
+				public void mousePressed(final MouseEvent e)
+				{
+					//==========================================================================================
+					
+					//==========================================================================================
+					
+				}
+				
+				@Override
+				public void mouseExited(final MouseEvent e)
+				{
+					//==========================================================================================
+					
+					//==========================================================================================
+					
+				}
+				
+				@Override
+				public void mouseEntered(final MouseEvent e)
+				{
+					//==========================================================================================
+					
+					//==========================================================================================
+					
+				}
+				
+				@Override
+				public void mouseClicked(final MouseEvent e)
+				{
+					//==========================================================================================
+					
+					//==========================================================================================
+					
+				}
+			}
+		);
 		//------------------------------------------------------------------------------------------
 		
 		// Scale of Drawing (line width, etc.).
@@ -378,7 +468,18 @@ public class MainView
 				
 				if (mapField != null)
 				{
-					drawMapField(g2, map, mapField);
+					final boolean isSelected;
+					
+					if ((this.xMapPosSelected == xPos) && (this.yMapPosSelected == yPos))
+					{
+						isSelected = true;
+					}
+					else
+					{
+						isSelected = false;
+					}
+					
+					drawMapField(g2, map, mapField, isSelected);
 				}
 				//----------------------------------------------------------------------------------
 			}
@@ -387,7 +488,7 @@ System.out.println("-----------------------------------");
 		//==========================================================================================
 	}
 
-	protected void drawMapField(final Graphics2D g2, final Map map, final MapField mapField)
+	protected void drawMapField(final Graphics2D g2, final Map map, final MapField mapField, final boolean isSelected)
 	{
 		//==========================================================================================
 		final double xPosMapField = mapField.getXPos();
@@ -463,7 +564,15 @@ System.out.println("-----------------------------------");
 			}
 		}
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-		g2.setColor(Color.BLACK);
+		if (isSelected == true)
+		{
+			g2.setColor(Color.GREEN);
+		}
+		else
+		{
+			g2.setColor(Color.BLACK);
+		}
+			
 		// Inner-Circle.
 		this.drawOval(g2,
 		              xm, ym, 
