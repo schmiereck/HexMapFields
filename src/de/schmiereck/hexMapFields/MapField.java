@@ -70,10 +70,10 @@ public class MapField
 	 * 1: BC (G)
 	 * 2: CA (B)
 	 */
-	private HashMap<StateNode, PropInnerStateNode> propInnerStateNodes = new HashMap<>();
-//	private List<PropInnerStateNode> propInnerStateNodes = new Vector<>();
+	private HashMap<StateNode, PropInnerStateNode> probInnerStateNodes = new HashMap<>();
+//	private List<PropInnerStateNode> probInnerStateNodes = new Vector<>();
 	
-	private List<PropInStateNode> propInStateNodes = new Vector<>();
+	private List<PropInStateNode> probInStateNodes = new Vector<>();
 
 	/**
 	 * Field.
@@ -235,27 +235,27 @@ public class MapField
 
 	/**
 	 * @return 
-	 *			the value of attribute {@link #propInnerStateNodes}.
+	 *			the value of attribute {@link #probInnerStateNodes}.
 	 */
 	public Collection<PropInnerStateNode> getPropInnerStateNodes()
 	{
-		return this.propInnerStateNodes.values();
-//		return this.propInnerStateNodes;
+		return this.probInnerStateNodes.values();
+//		return this.probInnerStateNodes;
 	}
 
 	/**
 	 * @return 
-	 *			the value of attribute {@link #propInnerStateNodes}.
+	 *			the value of attribute {@link #probInnerStateNodes}.
 	 */
 	public Collection<PropInnerStateNode> getNotEmptyPropInnerStateNodes()
 	{
 		//==========================================================================================
 		final Collection<PropInnerStateNode> retPropInnerStateNodes;
 		
-		if (this.propInnerStateNodes.size() > 0)
+		if (this.probInnerStateNodes.size() > 0)
 		{
-			retPropInnerStateNodes = this.propInnerStateNodes.values();
-//			retPropInnerStateNodes = this.propInnerStateNodes;
+			retPropInnerStateNodes = this.probInnerStateNodes.values();
+//			retPropInnerStateNodes = this.probInnerStateNodes;
 		}
 		else
 		{
@@ -267,20 +267,20 @@ public class MapField
 	
 	/**
 	 * @return 
-	 *			the value of attribute {@link #propInStateNodes}.
+	 *			the value of attribute {@link #probInStateNodes}.
 	 */
 	public List<PropInStateNode> getPropInStateNodes()
 	{
-		return this.propInStateNodes;
+		return this.probInStateNodes;
 	}
 	
 	/**
-	 * @param propInStateNode 
-	 * 			used to add the value of attribute {@link #propInStateNodes}.
+	 * @param probInStateNode 
+	 * 			used to add the value of attribute {@link #probInStateNodes}.
 	 */
-	public void addPropInStateNode(final PropInStateNode propInStateNode)
+	public void addPropInStateNode(final PropInStateNode probInStateNode)
 	{
-		this.propInStateNodes.add(propInStateNode);
+		this.probInStateNodes.add(probInStateNode);
 	}
 	
 	/**
@@ -302,23 +302,23 @@ public class MapField
 	}
 
 	/**
-	 * @param propInStateNodes 
-	 * 			used to set the value of attribute {@link #propInStateNodes}.
+	 * @param probInStateNodes 
+	 * 			used to set the value of attribute {@link #probInStateNodes}.
 	 */
-	public void setInStateNodes(List<PropInStateNode> propInStateNodes)
+	public void setInStateNodes(List<PropInStateNode> probInStateNodes)
 	{
-		this.propInStateNodes = propInStateNodes;
+		this.probInStateNodes = probInStateNodes;
 	}
 	
 	/**
-	 * @param propInnerStateNode 
-	 * 			used to add the value of attribute {@link #propInnerStateNodes}.
+	 * @param probInnerStateNode 
+	 * 			used to add the value of attribute {@link #probInnerStateNodes}.
 	 */
-	public void addPropInnerStateNode(final PropInnerStateNode propInnerStateNode)
+	public void addPropInnerStateNode(final PropInnerStateNode probInnerStateNode)
 	{
-		this.propInnerStateNodes.put(propInnerStateNode.getInnerStateNode(), 
-		                             propInnerStateNode);
-//		this.propInnerStateNodes.add(propInnerStateNode);
+		this.probInnerStateNodes.put(probInnerStateNode.getInnerStateNode(), 
+		                             probInnerStateNode);
+//		this.probInnerStateNodes.add(probInnerStateNode);
 	}
 
 	public void addPropInnerStateNode(final StateNode nextInStateNode, 
@@ -326,9 +326,9 @@ public class MapField
 	{
 		//==========================================================================================
 		// Gleiche States eines Map-Field zusammenfassen.
-		final PropInnerStateNode propInnerStateNode = this.propInnerStateNodes.get(nextInStateNode);
+		final PropInnerStateNode probInnerStateNode = this.probInnerStateNodes.get(nextInStateNode);
 		
-		if (propInnerStateNode == null)
+		if (probInnerStateNode == null)
 		{
 			final PropInnerStateNode newPropInnerStateNode;
 			
@@ -336,27 +336,28 @@ public class MapField
 					new PropInnerStateNode(nextInStateNode, 
 					                       probabilityR, probabilityG, probabilityB);
 			
-			this.propInnerStateNodes.put(nextInStateNode,
+			this.probInnerStateNodes.put(nextInStateNode,
 			                             newPropInnerStateNode);
 		}
 		else
 		{
 			// Das mit der höchsten Wahrscheinlichkeit gewinnt.
-//			propInnerStateNode.setProbability(Math.max(propInnerStateNode.getProbability(), probability));
-			propInnerStateNode.setProbability(propInnerStateNode.getProbability(0) + probabilityR,
-											  propInnerStateNode.getProbability(1) + probabilityG,
-											  propInnerStateNode.getProbability(2) + probabilityB);
-//			propInnerStateNode.setProbability((propInnerStateNode.getProbability() * probability) / PropNextStateNode.MAX_probability);
-//			propInnerStateNode.setProbability((propInnerStateNode.getProbability() + probability) / 2.0D);
-//			propInnerStateNode.setProbability(Math.min(propInnerStateNode.getProbability() + probability, PropNextStateNode.MAX_probability));
+//			probInnerStateNode.setProbability(Math.max(probInnerStateNode.getProbability(), probability));
+			probInnerStateNode.setProbability(probInnerStateNode.getProbability(0) + probabilityR,
+											  probInnerStateNode.getProbability(1) + probabilityG,
+											  probInnerStateNode.getProbability(2) + probabilityB);
+//			probInnerStateNode.setProbability((probInnerStateNode.getProbability() * probability) / PropNextStateNode.MAX_probability);
+//			probInnerStateNode.setProbability((probInnerStateNode.getProbability() + probability) / 2.0D);
+//			probInnerStateNode.setProbability(Math.min(probInnerStateNode.getProbability() + probability, PropNextStateNode.MAX_probability));
 		}
+		
 //		final PropInnerStateNode newPropInnerStateNode;
 //		
 //		newPropInnerStateNode =
 //				new PropInnerStateNode(nextInStateNode, 
-//				                       probability);
+//				                       probabilityR, probabilityG, probabilityB);
 //		
-//		this.propInnerStateNodes.add(newPropInnerStateNode);
+//		this.probInnerStateNodes.add(newPropInnerStateNode);
 
 		//==========================================================================================
 		
@@ -368,23 +369,23 @@ public class MapField
 	public void resetPropInStateNodes()
 	{
 		//==========================================================================================
-		this.propInStateNodes.clear();
-//		this.propInStateNodes.add(EMPTY_NextStateNode);
+		this.probInStateNodes.clear();
+//		this.probInStateNodes.add(EMPTY_NextStateNode);
 		
 		//==========================================================================================
 		
 	}
 
 	/**
-	 * Clear {@link #propInnerStateNodes} and add an {@link #EMPTY_InnerStateNode}.
+	 * Clear {@link #probInnerStateNodes} and add an {@link #EMPTY_InnerStateNode}.
 	 */
 	public void resetPropInnerStateNodes()
 	{
 		//==========================================================================================
-		this.propInnerStateNodes.clear();
-		this.propInnerStateNodes.put(EMPTY_InnerStateNode.getInnerStateNode(),
+		this.probInnerStateNodes.clear();
+		this.probInnerStateNodes.put(EMPTY_InnerStateNode.getInnerStateNode(),
 		                             EMPTY_InnerStateNode);
-//		this.propInnerStateNodes.add(EMPTY_InnerStateNode);
+//		this.probInnerStateNodes.add(EMPTY_InnerStateNode);
 		
 		//==========================================================================================
 		

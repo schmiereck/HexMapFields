@@ -27,7 +27,7 @@ public class MainService
 	//**********************************************************************************************
 	// Fields:
 	
-	private static long fpsView = 4L;
+	private static long fpsView = 1L;
 	
 	private static boolean asapCalc = false;
 	
@@ -109,18 +109,18 @@ public class MainService
 				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 				mapField.resetPropInStateNodes();
 
-				final Collection<PropInnerStateNode> propInnerStateNodes = mapField.getPropInnerStateNodes();
+				final Collection<PropInnerStateNode> probInnerStateNodes = mapField.getPropInnerStateNodes();
 				
-				if (propInnerStateNodes.size() > 0)
+				if (probInnerStateNodes.size() > 0)
 				{
-					for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
+					for (final PropInnerStateNode probInnerStateNode : probInnerStateNodes)
 					{
-						final State abState = MapFieldUtils.extractABInnerState(propInnerStateNode);
-						final State bcState = MapFieldUtils.extractBCInnerState(propInnerStateNode);
-						final State caState = MapFieldUtils.extractCAInnerState(propInnerStateNode);
-						final long innerProbabilityR = PropNextStateNode.MIN_probability;//propInnerStateNode.getProbability(0);
-						final long innerProbabilityG = PropNextStateNode.MIN_probability;//propInnerStateNode.getProbability(1);
-						final long innerProbabilityB = PropNextStateNode.MIN_probability;//propInnerStateNode.getProbability(2);
+						final State abState = MapFieldUtils.extractABInnerState(probInnerStateNode);
+						final State bcState = MapFieldUtils.extractBCInnerState(probInnerStateNode);
+						final State caState = MapFieldUtils.extractCAInnerState(probInnerStateNode);
+						final long innerProbabilityR = PropNextStateNode.MIN_probability;//probInnerStateNode.getProbability(0);
+						final long innerProbabilityG = PropNextStateNode.MIN_probability;//probInnerStateNode.getProbability(1);
+						final long innerProbabilityB = PropNextStateNode.MIN_probability;//probInnerStateNode.getProbability(2);
 						
 						calcInStates(stateNodes, mapField, abState, bcState, caState, 
 						             innerProbabilityR, innerProbabilityG, innerProbabilityB);
@@ -285,14 +285,14 @@ public class MainService
 				// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 				mapField.resetPropInnerStateNodes();
 				
-				final List<PropInStateNode> propInStateNodes = mapField.getPropInStateNodes();
+				final List<PropInStateNode> probInStateNodes = mapField.getPropInStateNodes();
 				
-				for (final PropInStateNode propInStateNode : propInStateNodes)
+				for (final PropInStateNode probInStateNode : probInStateNodes)
 				{
-					final StateNode inStateNode = propInStateNode.getInStateNode();
-					final long inStateNodeProbabilityR = propInStateNode.getProbability(0);
-					final long inStateNodeProbabilityG = propInStateNode.getProbability(1);
-					final long inStateNodeProbabilityB = propInStateNode.getProbability(2);
+					final StateNode inStateNode = probInStateNode.getInStateNode();
+					final long inStateNodeProbabilityR = probInStateNode.getProbability(0);
+					final long inStateNodeProbabilityG = probInStateNode.getProbability(1);
+					final long inStateNodeProbabilityB = probInStateNode.getProbability(2);
 					
 					if (inStateNode != null)
 					{
@@ -374,7 +374,7 @@ public class MainService
 //					                	System.out.printf("prob:%.20f\n ",prob);
 ////					                	System.out.println("probability:"+prob);
 //					                }
-//					                if (probability > PROP_MIN_NEXT)
+					                if (prob > PROP_MIN_NEXT)
 					                {
 										mapField.addPropInnerStateNode(nextInStateNode,
 										                               probR, probG, probB);
@@ -863,6 +863,15 @@ public class MainService
 		
 		//==========================================================================================
 		
+	}
+
+	/**
+	 * @return 
+	 *			the value of attribute {@link #runCalc}.
+	 */
+	public static boolean getRunCalc()
+	{
+		return runCalc;
 	}
 
 }

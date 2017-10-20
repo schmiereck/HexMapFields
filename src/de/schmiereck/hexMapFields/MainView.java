@@ -17,6 +17,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.AffineTransform;
 import java.util.Collection;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -193,9 +194,9 @@ public class MainView
 					final int x = (int)(e.getX() - xOffTx);
 					final int y = (int)(height - e.getY() - yOffTx);
 					
-					xMapPosSelected = (int)(x / xScale);
-					yMapPosSelected = (int)(y / yScale);
-					System.out.println("x:"+xMapPosSelected+", y:"+yMapPosSelected);
+					xMapPosSelected = (int)(x / ((xScale * Map.s2Tri) + (xOverlap * Map.s2Tri)) - (Map.s2Tri));
+					yMapPosSelected = (int)(y / ((yScale * Map.hTri) + (yOverlap * Map.hTri)));
+					//System.out.println("x:"+xMapPosSelected+", y:"+yMapPosSelected);
 					
 					//==========================================================================================
 					
@@ -256,7 +257,81 @@ public class MainView
 				public void mouseClicked(final MouseEvent e)
 				{
 					//==========================================================================================
+					final MapField mapField = map.getMapField(xMapPosSelected, yMapPosSelected);
 					
+					System.out.println("x:"+xMapPosSelected+", y:"+yMapPosSelected);
+					
+					final Collection<PropInnerStateNode> probInnerStateNodes = mapField.getPropInnerStateNodes();
+					
+					if (probInnerStateNodes != null)
+					{
+						for (final PropInnerStateNode probInnerStateNode : probInnerStateNodes)
+						{
+							final long probInnerProbabilityR = probInnerStateNode.getProbability(0);
+							final long probInnerProbabilityG = probInnerStateNode.getProbability(1);
+							final long probInnerProbabilityB = probInnerStateNode.getProbability(2);
+							
+							final StateNode caStateNode = probInnerStateNode.getInnerStateNode();
+							if (caStateNode != null)
+							{
+								final State caState = caStateNode.getState();
+								System.out.printf("inner-B:%,d, ", probInnerProbabilityB);
+								
+								final StateNode bcStateNode = caStateNode.getParentNode();
+								if (bcStateNode != null)
+								{
+									final State bcState = bcStateNode.getState();
+									System.out.printf("G:%,d, ", probInnerProbabilityG);
+									
+									final StateNode abStateNode = bcStateNode.getParentNode();
+									if (abStateNode != null)
+									{
+										final State abState = abStateNode.getState();
+										System.out.printf("R:%,d, ", probInnerProbabilityR);
+									}
+								}
+								System.out.println();
+							}
+						}
+					}
+					final List<PropInStateNode> probInStateNodes = mapField.getPropInStateNodes();
+					
+					for (final PropInStateNode probInStateNode : probInStateNodes)
+					{
+						final StateNode inStateNode = probInStateNode.getInStateNode();
+						final long inStateNodeProbabilityR = probInStateNode.getProbability(0);
+						final long inStateNodeProbabilityG = probInStateNode.getProbability(1);
+						final long inStateNodeProbabilityB = probInStateNode.getProbability(2);
+						
+						if (inStateNode != null)
+						{
+							final List<PropNextStateNode> inNextStateNodes = inStateNode.getNextStateNodes();
+							
+							if (inNextStateNodes != null)
+							{
+								for (final PropNextStateNode inNextStateNode : inNextStateNodes)
+								{
+									final StateNode nextInStateNode = inNextStateNode.getNextStateNode();
+									final long nextInStateNodeProbability = inNextStateNode.getProbability();
+									
+									if (nextInStateNode != null)
+									{
+										final long probabilityR = 
+												(inStateNodeProbabilityR * nextInStateNodeProbability) / PropNextStateNode.MAX_probability;
+										final long probabilityG = 
+												(inStateNodeProbabilityG * nextInStateNodeProbability) / PropNextStateNode.MAX_probability;
+										final long probabilityB = 
+												(inStateNodeProbabilityB * nextInStateNodeProbability) / PropNextStateNode.MAX_probability;
+						                
+										final long prob = ((probabilityR + probabilityG + probabilityB));
+
+										System.out.printf("in-R:%,d, G:%,d, B:%,d\n", probabilityR, probabilityG, probabilityB);
+									}
+								}
+							}
+//							System.out.println();
+						}
+					}
 					//==========================================================================================
 					
 				}
@@ -340,6 +415,8 @@ public class MainView
 		        
 		        // fps:
 		        {
+					g2.setColor(Color.BLACK);
+
 					final long timeMillis = System.currentTimeMillis();
 					final long divTimeMillis = timeMillis - this.lastTimeMillis;
 					this.lastTimeMillis = timeMillis;
@@ -484,6 +561,7 @@ public class MainView
 				//----------------------------------------------------------------------------------
 			}
 		}
+if (MainService.getRunCalc())
 System.out.println("-----------------------------------");
 		//==========================================================================================
 	}
@@ -519,25 +597,25 @@ System.out.println("-----------------------------------");
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		
 		// Prüfen ob der State aktiv ist und dann hervorheben.
-		final Collection<PropInnerStateNode> propInnerStateNodes = mapField.getPropInnerStateNodes();
+		final Collection<PropInnerStateNode> probInnerStateNodes = mapField.getPropInnerStateNodes();
 		
-		if (propInnerStateNodes != null)
+		if (probInnerStateNodes != null)
 		{
-			for (final PropInnerStateNode propInnerStateNode : propInnerStateNodes)
+			for (final PropInnerStateNode probInnerStateNode : probInnerStateNodes)
 			{
-				final double propInnerProbabilityR = propInnerStateNode.getProbability(0);
-				final double propInnerProbabilityG = propInnerStateNode.getProbability(1);
-				final double propInnerProbabilityB = propInnerStateNode.getProbability(2);
+				final double probInnerProbabilityR = probInnerStateNode.getProbability(0);
+				final double probInnerProbabilityG = probInnerStateNode.getProbability(1);
+				final double probInnerProbabilityB = probInnerStateNode.getProbability(2);
 				
 				boolean haveStates = false;
 				
-				final StateNode caStateNode = propInnerStateNode.getInnerStateNode();
+				final StateNode caStateNode = probInnerStateNode.getInnerStateNode();
 				if (caStateNode != null)
 				{
 					final State caState = caStateNode.getState();
 		
 					// From Origin to lt (CA, B).
-					if (this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE, propInnerProbabilityB))
+					if (this.drawState(g2, xm, ym, caState, oTri.xca, oTri.yca, MainView.BLUE, probInnerProbabilityB))
 						haveStates = true;
 					
 					final StateNode bcStateNode = caStateNode.getParentNode();
@@ -546,7 +624,7 @@ System.out.println("-----------------------------------");
 						final State bcState = bcStateNode.getState();
 						
 						// From Origin to rt (BC, G).
-						if (this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN, propInnerProbabilityG))
+						if (this.drawState(g2, xm, ym, bcState, oTri.xbc, oTri.ybc, MainView.GREEN, probInnerProbabilityG))
 							haveStates = true;
 	
 						final StateNode abStateNode = bcStateNode.getParentNode();
@@ -555,11 +633,12 @@ System.out.println("-----------------------------------");
 							final State abState = abStateNode.getState();
 							
 							// From Origin to lr (AB, R).
-							if (this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED, propInnerProbabilityR))
+							if (this.drawState(g2, xm, ym, abState, oTri.xab, oTri.yab, MainView.RED, probInnerProbabilityR))
 								haveStates = true;
 						}
 					}
 				}
+				if (MainService.getRunCalc())
 				if (haveStates == true) System.out.println();
 			}
 		}
@@ -594,7 +673,7 @@ System.out.println("-----------------------------------");
 	                       final double xm, final double ym, 
 	                       final State state, 
 	                       final double xab, final double yab, final Color color,
-	                       final double propInnerProbability)
+	                       final double probInnerProbability)
 	{
 		//==========================================================================================
 		final boolean ret;
@@ -615,8 +694,9 @@ System.out.println("-----------------------------------");
 		}
 		{
 			// 100% = 1.0D
-//			final double en = ((double)(state.getEnergie() * propInnerProbability)) / PropNextStateNode.MAX_probability;
-			final double en = ((propInnerProbability)) / PropNextStateNode.MAX_probability;
+//			final double en = ((double)(state.getEnergie() * probInnerProbability)) / PropNextStateNode.MAX_probability;
+			final double en = ((probInnerProbability)) / PropNextStateNode.MAX_probability;
+if (MainService.getRunCalc())
 if (ret) System.out.printf("%s:\t%.22f\t", color, en);
 
 //			if (en < 5.0D)
