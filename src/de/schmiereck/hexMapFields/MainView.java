@@ -533,36 +533,39 @@ public class MainView
 //		{
 //			drawMapField(g2, map, mapField);
 //		}
-		final int xSize = map.getXSize();
-		final int ySize = map.getYSize();
-		
-		for (int yPos = 0; yPos < ySize; yPos++)
+		synchronized (map)
 		{
-			for (int xPos = 0; xPos < xSize; xPos++)
+			final int xSize = map.getXSize();
+			final int ySize = map.getYSize();
+			
+			for (int yPos = 0; yPos < ySize; yPos++)
 			{
-				//----------------------------------------------------------------------------------
-				final MapField mapField = map.getMapField(xPos, yPos);
-				
-				if (mapField != null)
+				for (int xPos = 0; xPos < xSize; xPos++)
 				{
-					final boolean isSelected;
+					//----------------------------------------------------------------------------------
+					final MapField mapField = map.getMapField(xPos, yPos);
 					
-					if ((this.xMapPosSelected == xPos) && (this.yMapPosSelected == yPos))
+					if (mapField != null)
 					{
-						isSelected = true;
+						final boolean isSelected;
+						
+						if ((this.xMapPosSelected == xPos) && (this.yMapPosSelected == yPos))
+						{
+							isSelected = true;
+						}
+						else
+						{
+							isSelected = false;
+						}
+						
+						drawMapField(g2, map, mapField, isSelected);
 					}
-					else
-					{
-						isSelected = false;
-					}
-					
-					drawMapField(g2, map, mapField, isSelected);
+					//----------------------------------------------------------------------------------
 				}
-				//----------------------------------------------------------------------------------
 			}
-		}
 if (MainService.getRunCalc())
 System.out.println("-----------------------------------");
+		}
 		//==========================================================================================
 	}
 
@@ -595,7 +598,6 @@ System.out.println("-----------------------------------");
 		this.drawLine(g2, xm, ym, oTri.xc-oTri.xc*0.1, oTri.yc-oTri.yc*0.1, oTri.xa-oTri.xa*0.1, oTri.ya-oTri.ya*0.1);
 	
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-		
 		// Prüfen ob der State aktiv ist und dann hervorheben.
 		final Collection<PropInnerStateNode> probInnerStateNodes = mapField.getPropInnerStateNodes();
 		

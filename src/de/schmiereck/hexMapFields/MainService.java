@@ -75,8 +75,11 @@ public class MainService
 			{
 				calcInStates(map, stateNodes);
 				
-				calcInnerStates(map, stateNodes);
-	
+				// Wegen des Views, dort werden die Inner-States ausgelesen.
+				synchronized (map)
+				{
+					calcInnerStates(map, stateNodes);
+				}
 	//			calcMetaStates(map, states);
 	
 				runCnt++;
@@ -163,6 +166,8 @@ public class MainService
 			final MapField bcOutField = mapField.getBCOutField();
 			final Collection<PropInnerStateNode> bcPropInnerStateNodes = bcOutField.getNotEmptyPropInnerStateNodes();
 			
+			boolean found = false;
+			
 			for (final PropInnerStateNode bcPropInnerStateNode : bcPropInnerStateNodes)
 			{
 				final State bcInState;
@@ -239,6 +244,8 @@ public class MainService
 						mapField.addPropInStateNode(newPropInStateNode);
 						
 						inStateNode.addUsedCnt(runCnt);
+						found = true;
+						break;
 					}
 					else
 					{
@@ -247,6 +254,14 @@ public class MainService
 					}
 					//------------------------------------------------------------------------------
 				}
+				if (found == true)
+				{
+					break;
+				}
+			}
+			if (found == true)
+			{
+				break;
 			}
 		}
 		//==========================================================================================
